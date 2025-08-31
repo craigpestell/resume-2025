@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import DynamicFontLoader from '@/components/DynamicFontLoader';
 import { defaultFont } from '@/lib/fontLoader';
@@ -94,6 +95,7 @@ export default function RootLayout({
         <ThemeProvider>
           <DynamicFontLoader />
           {children}
+          <SpeedInsights />
         </ThemeProvider>
       </body>
     </html>
