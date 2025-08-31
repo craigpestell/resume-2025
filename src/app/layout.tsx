@@ -1,116 +1,8 @@
 import type { Metadata } from "next";
-import { 
-  Inter, 
-  Roboto, 
-  Open_Sans, 
-  Poppins, 
-  Montserrat,
-  Source_Sans_3,
-  Nunito,
-  Lato,
-  Work_Sans,
-  DM_Sans,
-  Plus_Jakarta_Sans,
-  Outfit,
-  JetBrains_Mono,
-  Fira_Code,
-  Ubuntu_Mono,
-  Space_Mono,
-  Inconsolata
-} from 'next/font/google';
 import { ThemeProvider } from '@/components/ThemeProvider';
+import DynamicFontLoader from '@/components/DynamicFontLoader';
+import { defaultFont } from '@/lib/fontLoader';
 import "./globals.css";
-
-// Configure Google Fonts
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-});
-
-const roboto = Roboto({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '700'],
-  variable: '--font-roboto',
-});
-
-const openSans = Open_Sans({
-  subsets: ['latin'],
-  variable: '--font-opensans',
-});
-
-const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-poppins',
-});
-
-const montserrat = Montserrat({
-  subsets: ['latin'],
-  variable: '--font-montserrat',
-});
-
-const sourceSans = Source_Sans_3({
-  subsets: ['latin'],
-  variable: '--font-sourcesans',
-});
-
-const nunito = Nunito({
-  subsets: ['latin'],
-  variable: '--font-nunito',
-});
-
-const lato = Lato({
-  subsets: ['latin'],
-  weight: ['300', '400', '700', '900'],
-  variable: '--font-lato',
-});
-
-const workSans = Work_Sans({
-  subsets: ['latin'],
-  variable: '--font-worksans',
-});
-
-const dmSans = DM_Sans({
-  subsets: ['latin'],
-  variable: '--font-dmsans',
-});
-
-const plusJakarta = Plus_Jakarta_Sans({
-  subsets: ['latin'],
-  variable: '--font-plusjakarta',
-});
-
-const outfit = Outfit({
-  subsets: ['latin'],
-  variable: '--font-outfit',
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ['latin'],
-  variable: '--font-jetbrains',
-});
-
-const firaCode = Fira_Code({
-  subsets: ['latin'],
-  variable: '--font-firacode',
-});
-
-const ubuntuMono = Ubuntu_Mono({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-  variable: '--font-ubuntu',
-});
-
-const spaceMono = Space_Mono({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-  variable: '--font-spacemono',
-});
-
-const inconsolata = Inconsolata({
-  subsets: ['latin'],
-  variable: '--font-inconsolata',
-});
 
 export const metadata: Metadata = {
   title: "Craig Pestell - Senior Software Engineer | React, TypeScript, Enterprise Applications",
@@ -196,10 +88,11 @@ export default function RootLayout({
         }} />
       </head>
       <body
-        className={`${inconsolata.className} ${inter.variable} ${roboto.variable} ${openSans.variable} ${poppins.variable} ${montserrat.variable} ${sourceSans.variable} ${nunito.variable} ${lato.variable} ${workSans.variable} ${dmSans.variable} ${plusJakarta.variable} ${outfit.variable} ${jetbrainsMono.variable} ${firaCode.variable} ${ubuntuMono.variable} ${spaceMono.variable} ${inconsolata.variable} tracking-normal antialiased`}
+        className={`${defaultFont.className} ${defaultFont.variable} tracking-normal antialiased`}
         suppressHydrationWarning
       >
         <ThemeProvider>
+          <DynamicFontLoader />
           {children}
         </ThemeProvider>
       </body>

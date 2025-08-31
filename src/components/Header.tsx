@@ -46,7 +46,9 @@ export default function Header({ onDownloadResume }: HeaderProps) {
     { href: '#contact', label: 'Contact' },
   ];
 
-  const scrollToSection = (href: string) => {
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    // Only prevent default and use smooth scroll if JavaScript is enabled
+    e.preventDefault();
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -72,17 +74,18 @@ export default function Header({ onDownloadResume }: HeaderProps) {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8 lg:space-x-12">
             {navLinks.map((link) => (
-              <button
+              <a
                 key={link.href}
-                onClick={() => scrollToSection(link.href)}
-                className={`font-semibold text-foreground hover:text-primary transition-colors lg:text-xl relative  cursor-pointer ${
+                href={link.href}
+                onClick={(e) => handleSmoothScroll(e, link.href)}
+                className={`font-semibold text-foreground hover:text-primary transition-colors lg:text-xl relative cursor-pointer ${
                   activeSection === link.href.substring(1) 
                     ? 'text-primary after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-primary after:content-[\'\']' 
                     : ''
                 }`}
               >
                 {link.label}
-              </button>
+              </a>
             ))}
           </nav>
 
@@ -120,9 +123,10 @@ export default function Header({ onDownloadResume }: HeaderProps) {
           <div className="md:hidden bg-card border-t border-border">
             <div className="py-4 space-y-2">
               {navLinks.map((link) => (
-                <button
+                <a
                   key={link.href}
-                  onClick={() => scrollToSection(link.href)}
+                  href={link.href}
+                  onClick={(e) => handleSmoothScroll(e, link.href)}
                   className={`block w-full text-left px-4 py-2 hover:bg-muted transition-colors ${
                     activeSection === link.href.substring(1)
                       ? 'text-primary bg-primary/10 border-l-2 border-primary'
@@ -130,7 +134,7 @@ export default function Header({ onDownloadResume }: HeaderProps) {
                   }`}
                 >
                   {link.label}
-                </button>
+                </a>
               ))}
               <button
                 onClick={onDownloadResume}

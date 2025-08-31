@@ -2,27 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { Type } from 'lucide-react';
-
-const fontOptions = [
-  { name: 'DM Sans', value: 'dmsans', className: 'font-dmsans' },
-  { name: 'Fira Code', value: 'firacode', className: 'font-firacode' },
-  { name: 'Geist', value: 'geist', className: 'font-sans' },
-  { name: 'Inconsolata', value: 'inconsolata', className: 'font-inconsolata' },
-  { name: 'Inter', value: 'inter', className: 'font-inter' },
-  { name: 'JetBrains Mono', value: 'jetbrains', className: 'font-jetbrains' },
-  { name: 'Lato', value: 'lato', className: 'font-lato' },
-  { name: 'Montserrat', value: 'montserrat', className: 'font-montserrat' },
-  { name: 'Nunito', value: 'nunito', className: 'font-nunito' },
-  { name: 'Open Sans', value: 'opensans', className: 'font-opensans' },
-  { name: 'Outfit', value: 'outfit', className: 'font-outfit' },
-  { name: 'Plus Jakarta Sans', value: 'plusjakarta', className: 'font-plusjakarta' },
-  { name: 'Poppins', value: 'poppins', className: 'font-poppins' },
-  { name: 'Roboto', value: 'roboto', className: 'font-roboto' },
-  { name: 'Source Sans 3', value: 'sourcesans', className: 'font-sourcesans' },
-  { name: 'Space Mono', value: 'spacemono', className: 'font-spacemono' },
-  { name: 'Ubuntu Mono', value: 'ubuntu', className: 'font-ubuntu' },
-  { name: 'Work Sans', value: 'worksans', className: 'font-worksans' },
-];
+import { fontOptions, loadGoogleFont } from '@/lib/fontLoader';
 
 export default function FontSelector() {
   const [selectedFont, setSelectedFont] = useState('inconsolata');
@@ -56,13 +36,22 @@ export default function FontSelector() {
     };
   }, [isOpen]);
 
-  const applyFont = (fontValue: string) => {
+  const applyFont = async (fontValue: string) => {
     const body = document.body;
     
     // Remove all font classes
     fontOptions.forEach(font => {
       body.classList.remove(font.className);
     });
+    
+    // Load the font if it's not the default and not already loaded
+    if (fontValue !== 'inconsolata' && fontValue !== 'geist') {
+      try {
+        await loadGoogleFont(fontValue);
+      } catch (error) {
+        console.error('Failed to load font:', fontValue, error);
+      }
+    }
     
     // Add the selected font class
     const selectedFontOption = fontOptions.find(font => font.value === fontValue);
@@ -71,10 +60,10 @@ export default function FontSelector() {
     }
   };
 
-  const handleFontChange = (fontValue: string) => {
+  const handleFontChange = async (fontValue: string) => {
     setSelectedFont(fontValue);
     localStorage.setItem('selected-font', fontValue);
-    applyFont(fontValue);
+    await applyFont(fontValue);
     setIsOpen(false);
   };
 
