@@ -44,8 +44,8 @@ export default function FontSelector() {
       body.classList.remove(font.className);
     });
     
-    // Load the font if it's not the default and not already loaded
-    if (fontValue !== 'inconsolata' && fontValue !== 'geist') {
+    // Load the font if it's not the default
+    if (fontValue !== 'inconsolata') {
       try {
         await loadGoogleFont(fontValue);
       } catch (error) {
@@ -125,7 +125,6 @@ export default function FontSelector() {
 // Helper function to get the actual font family for preview
 function getFontFamily(fontValue: string): string {
   const fontFamilies: Record<string, string> = {
-    geist: 'ui-sans-serif, system-ui, sans-serif',
     inter: 'Inter, ui-sans-serif, system-ui, sans-serif',
     roboto: 'Roboto, ui-sans-serif, system-ui, sans-serif',
     opensans: 'Open Sans, ui-sans-serif, system-ui, sans-serif',

@@ -90,7 +90,6 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     const fontClassMap: Record<string, string> = {
       dmsans: 'font-dmsans', 
       firacode: 'font-firacode', 
-      geist: 'font-sans',
       inconsolata: 'font-inconsolata', 
       inter: 'font-inter', 
       jetbrains: 'font-jetbrains',

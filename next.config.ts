@@ -6,16 +6,69 @@ const nextConfig: NextConfig = {
   
   // Enable experimental features for better SEO and performance
   experimental: {
-    optimizePackageImports: ['lucide-react', 'framer-motion'],
+    optimizePackageImports: ['lucide-react'],
+  },
+
+  // Configure for modern browsers to reduce polyfills
+  compiler: {
+    // Remove console logs in production
+    removeConsole: process.env.NODE_ENV === 'production',
   },
   
   // Webpack configuration for better code splitting
   webpack: (config, { dev, isServer }) => {
-    // Optimize chunks for better loading
+    // Add bundle analyzer when requested
+    if (process.env.ANALYZE === 'true' && !isServer) {
+      const { BundleAnalyzerPlugin } = eval('require')('webpack-bundle-analyzer');
+      config.plugins.push(
+        new BundleAnalyzerPlugin({
+          analyzerMode: 'static',
+          openAnalyzer: true,
+          reportFilename: '../bundle-analyzer-report.html',
+        })
+      );
+    }
+
+    // Configure for modern browsers - reduce polyfills
+    if (!isServer) {
+      config.target = ['web', 'es2020'];
+      
+      // Disable Node.js polyfills that aren't needed in modern browsers
+      config.resolve.fallback = {
+        fs: false,
+        net: false,
+        tls: false,
+        crypto: false,
+        stream: false,
+        util: false,
+        url: false,
+        assert: false,
+      };
+    }    // Optimize chunks for better loading
     if (!dev && !isServer) {
       config.optimization.splitChunks = {
         chunks: 'all',
         cacheGroups: {
+          // Split react-pdf and all its exclusive dependencies into separate chunk since they're only used on demand
+          reactPdf: {
+            test: /[\\/]node_modules[\\/](@react-pdf|yoga-layout|crypto-js|fontkit|brotli|base64-js|clone|dfa|bidi-js|jay-peg|abs-svg-path|linebreak|unicode-properties|unicode-trie|pako|tiny-inflate|restructure)[\\/]/,
+            name: 'react-pdf',
+            chunks: 'async', // Only load when needed
+            priority: 30,
+          },
+          // Split framer-motion into separate chunk 
+          framerMotion: {
+            test: /[\\/]node_modules[\\/]framer-motion[\\/]/,
+            name: 'framer-motion',
+            chunks: 'async', // Load separately
+            priority: 20,
+          },
+          lucideReact: {
+            test: /[\\/]node_modules[\\/]lucide-react[\\/]/,
+            name: 'lucide-react',
+            chunks: 'all',
+            priority: 15,
+          },
           vendor: {
             test: /[\\/]node_modules[\\/]/,
             name: 'vendors',
@@ -28,18 +81,6 @@ const nextConfig: NextConfig = {
             chunks: 'all',
             priority: 5,
             reuseExistingChunk: true,
-          },
-          framerMotion: {
-            test: /[\\/]node_modules[\\/]framer-motion[\\/]/,
-            name: 'framer-motion',
-            chunks: 'all',
-            priority: 20,
-          },
-          lucideReact: {
-            test: /[\\/]node_modules[\\/]lucide-react[\\/]/,
-            name: 'lucide-react',
-            chunks: 'all',
-            priority: 15,
           },
         },
       };

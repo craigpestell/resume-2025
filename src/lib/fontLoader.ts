@@ -13,7 +13,6 @@ export const DEFAULT_FONT = 'inconsolata';
 export const fontOptions = [
   { name: 'DM Sans', value: 'dmsans', className: 'font-dmsans' },
   { name: 'Fira Code', value: 'firacode', className: 'font-firacode' },
-  { name: 'Geist', value: 'geist', className: 'font-sans' },
   { name: 'Inconsolata', value: 'inconsolata', className: 'font-inconsolata' },
   { name: 'Inter', value: 'inter', className: 'font-inter' },
   { name: 'JetBrains Mono', value: 'jetbrains', className: 'font-jetbrains' },

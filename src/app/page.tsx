@@ -9,10 +9,10 @@ import Experience from '@/components/Experience';
 import Contact from '@/components/Contact';
 import FooterControls from '@/components/FooterControls';
 import { portfolioData } from '@/data/portfolio';
-import { generateResume } from '@/components/ResumeGenerator';
-
 export default function Home() {
-  const handleDownloadResume = () => {
+  const handleDownloadResume = async () => {
+    // Lazy load PDF generation only when needed
+    const { generateResume } = await import('@/components/ResumeGenerator');
     generateResume(portfolioData);
   };
 

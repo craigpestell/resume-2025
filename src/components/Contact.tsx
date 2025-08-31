@@ -3,7 +3,6 @@
 import { Mail, Phone, MapPin, Send, Eye } from 'lucide-react';
 import { PersonalInfo } from '@/data/portfolio';
 import { useState } from 'react';
-import emailjs from '@emailjs/browser';
 import { createRevealablePhone } from '@/lib/phoneUtils';
 import MotionWrapper from './MotionWrapper';
 
@@ -30,7 +29,10 @@ export default function Contact({ personalInfo }: ContactProps) {
     setSubmitStatus('idle');
 
     try {
-      await emailjs.send(
+      // Lazy load EmailJS only when form is submitted
+      const emailjs = await import('@emailjs/browser');
+      
+      await emailjs.default.send(
         'service_xm9bqxy', // Your service ID
         'template_uq22k5j', // Your template ID
         {

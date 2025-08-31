@@ -1,0 +1,30 @@
+# Extremely modern browsers only - no polyfills needed
+# This targets browsers that support Array.at, Object.hasOwn, etc. natively
+
+# Chrome 93+ (supports Object.hasOwn, Array.at, etc.)
+Chrome >= 93
+
+# Firefox 92+ (supports most modern features)
+Firefox >= 92
+
+# Safari 15.4+ (supports Object.hasOwn and other modern features)
+Safari >= 15.4
+
+# Edge 93+ (Chromium-based)
+Edge >= 93
+
+# Absolutely no legacy browsers
+not IE 11
+not Chrome < 93
+not Firefox < 92
+not Safari < 15.4
+not Edge < 93
+
+# Modern mobile only
+iOS >= 15.4
+Android >= 93
+
+# Additional exclusions for maximum modernness
+not dead
+not < 0.2%
+not op_mini all

@@ -1,7 +1,7 @@
 'use client';
 
-import { motion, Transition } from 'framer-motion';
 import { ReactNode, useEffect, useState } from 'react';
+import type { Transition } from 'framer-motion';
 
 interface MotionWrapperProps {
   children: ReactNode;
@@ -34,14 +34,24 @@ export default function MotionWrapper({
 }: MotionWrapperProps) {
   const [shouldAnimate, setShouldAnimate] = useState(false);
   const [mounted, setMounted] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [MotionComponent, setMotionComponent] = useState<React.ComponentType<any> | null>(null);
 
   useEffect(() => {
     setMounted(true);
     
     // Check if user prefers reduced motion
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    setShouldAnimate(!prefersReducedMotion);
-  }, []);
+    const shouldUseMotion = !prefersReducedMotion;
+    setShouldAnimate(shouldUseMotion);
+    
+    // Dynamically import framer-motion only when needed
+    if (shouldUseMotion) {
+      import('framer-motion').then(({ motion }) => {
+        setMotionComponent(() => motion[as]);
+      });
+    }
+  }, [as]);
 
   // Before mounting (SSR/initial render), render a regular div that's visible
   if (!mounted) {
@@ -49,9 +59,8 @@ export default function MotionWrapper({
     return <Component className={className}>{children}</Component>;
   }
 
-  // After mounting, use motion if animations are enabled
-  if (shouldAnimate) {
-    const MotionComponent = motion[as];
+  // After mounting, use motion if animations are enabled and component is loaded
+  if (shouldAnimate && MotionComponent) {
     return (
       <MotionComponent
         initial={initial}
