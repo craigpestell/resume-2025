@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
+    "build:sourcemaps": "ENABLE_SOURCE_MAPS=true npm run build",
     "start": "next start",
     "lint": "next lint",
     "analyze": "ANALYZE=true npm run build",

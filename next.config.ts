@@ -16,9 +16,23 @@ const nextConfig: NextConfig = {
     // Remove console logs in production
     removeConsole: process.env.NODE_ENV === 'production',
   },
+
+  // Source map configuration
+  productionBrowserSourceMaps: process.env.NODE_ENV !== 'production' || process.env.ENABLE_SOURCE_MAPS === 'true',
   
   // Webpack configuration for better code splitting
   webpack: (config, { dev, isServer }) => {
+    // Configure source maps
+    if (!isServer) {
+      if (dev) {
+        // Fast rebuilds in development
+        config.devtool = 'eval-source-map';
+      } else {
+        // Conditional source maps in production
+        config.devtool = process.env.ENABLE_SOURCE_MAPS === 'true' ? 'source-map' : false;
+      }
+    }
+
     // Add bundle analyzer when requested
     if (process.env.ANALYZE === 'true' && !isServer) {
       const { BundleAnalyzerPlugin } = eval('require')('webpack-bundle-analyzer');
