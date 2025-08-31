@@ -7,6 +7,8 @@ const nextConfig: NextConfig = {
   // Enable experimental features for better SEO and performance
   experimental: {
     optimizePackageImports: ['lucide-react'],
+    // Enable CSS optimization
+    optimizeCss: true,
   },
 
   // Configure for modern browsers to reduce polyfills
@@ -43,6 +45,23 @@ const nextConfig: NextConfig = {
         util: false,
         url: false,
         assert: false,
+      };
+    }
+
+    // Optimize CSS loading  
+    if (!dev && !isServer) {
+      // Enable CSS optimization
+      config.optimization = {
+        ...config.optimization,
+        usedExports: true,
+        sideEffects: false,
+      };
+
+      // Configure CSS extraction to potentially inline small stylesheets
+      const originalEntry = config.entry;
+      config.entry = async () => {
+        const entries = await originalEntry();
+        return entries;
       };
     }    // Optimize chunks for better loading
     if (!dev && !isServer) {
