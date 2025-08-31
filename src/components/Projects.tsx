@@ -1,9 +1,9 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { Github, Calendar } from 'lucide-react';
 import Image from 'next/image';
 import { Project } from '@/data/portfolio';
+import MotionWrapper from './MotionWrapper';
 
 interface ProjectsProps {
   projects: Project[];
@@ -19,7 +19,7 @@ export default function Projects({ projects }: ProjectsProps) {
   };
 
   const ProjectCard = ({ project, index, featured = false }: { project: Project; index: number; featured?: boolean }) => (
-    <motion.div
+    <MotionWrapper
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -96,13 +96,13 @@ export default function Projects({ projects }: ProjectsProps) {
           )}
         </div>
       </div>
-    </motion.div>
+    </MotionWrapper>
   );
 
   return (
     <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
-        <motion.div
+        <MotionWrapper
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -115,7 +115,7 @@ export default function Projects({ projects }: ProjectsProps) {
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Mission-critical applications built for Apple, Google, and Fortune 500 companies using React, TypeScript, and modern web technologies
           </p>
-        </motion.div>
+        </MotionWrapper>
 
         {/* Featured Projects */}
         {featuredProjects.length > 0 && (
@@ -136,15 +136,16 @@ export default function Projects({ projects }: ProjectsProps) {
         {/* Other Projects */}
         {otherProjects.length > 0 && (
           <div>
-            <motion.h3
+            <MotionWrapper
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
               className="text-2xl font-semibold text-center mb-12 text-foreground"
+              as="h3"
             >
               Other Projects
-            </motion.h3>
+            </MotionWrapper>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
               {otherProjects.map((project, index) => (
@@ -160,7 +161,7 @@ export default function Projects({ projects }: ProjectsProps) {
         )}
 
         {/* Call to Action */}
-        <motion.div
+        <MotionWrapper
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
@@ -179,7 +180,7 @@ export default function Projects({ projects }: ProjectsProps) {
             <Github className="w-5 h-5" />
             <span>View All Projects on GitHub</span>
           </a>
-        </motion.div>
+        </MotionWrapper>
       </div>
     </section>
   );

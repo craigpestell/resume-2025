@@ -1,7 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { Skill } from '@/data/portfolio';
+import MotionWrapper from './MotionWrapper';
 
 interface SkillsProps {
   skills: Skill[];
@@ -36,7 +36,7 @@ export default function Skills({ skills }: SkillsProps) {
   return (
     <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
-        <motion.div
+        <MotionWrapper
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -49,13 +49,13 @@ export default function Skills({ skills }: SkillsProps) {
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             15+ years of hands-on experience with modern technologies, enterprise platforms, and scalable solutions at Fortune 500 companies
           </p>
-        </motion.div>
+        </MotionWrapper>
 
         <div className="max-w-6xl mx-auto">
           {categoryOrder.filter(category => groupedSkills[category]).map((category, categoryIndex) => {
             const categorySkills = groupedSkills[category];
             return (
-              <motion.div
+              <MotionWrapper
                 key={category}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -69,7 +69,7 @@ export default function Skills({ skills }: SkillsProps) {
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {categorySkills.map((skill, index) => (
-                  <motion.div
+                  <MotionWrapper
                     key={skill.name}
                     initial={{ opacity: 0, x: -50 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -87,24 +87,24 @@ export default function Skills({ skills }: SkillsProps) {
                     </div>
                     
                     <div className="w-full bg-muted rounded-full h-3">
-                      <motion.div
+                      <MotionWrapper
                         initial={{ width: 0 }}
                         whileInView={{ width: `${skill.level * 10}%` }}
                         transition={{ duration: 1, delay: index * 0.1 }}
                         viewport={{ once: true }}
                         className={`h-3 rounded-full ${getSkillColor(skill.level)} transition-all duration-1000`}
-                      />
+                      > </MotionWrapper>
                     </div>
-                  </motion.div>
+                  </MotionWrapper>
                 ))}
               </div>
-            </motion.div>
+            </MotionWrapper>
             );
           })}
         </div>
 
         {/* Skills Summary */}
-        <motion.div
+        <MotionWrapper
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
@@ -147,7 +147,7 @@ export default function Skills({ skills }: SkillsProps) {
               );
             })}
           </div>
-        </motion.div>
+        </MotionWrapper>
       </div>
     </section>
   );

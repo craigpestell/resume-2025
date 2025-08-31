@@ -6,12 +6,15 @@ import ThemeChooser from './ThemeChooser';
 import HydrationSafeWrapper from './HydrationSafeWrapper';
 
 /**
- * Optimized footer controls component that minimizes DOM elements
- * by using efficient layout patterns and removing unnecessary wrapper divs
+ * Footer controls component that shows theme/font controls only when JavaScript is enabled.
+ * This prevents showing non-functional controls when JavaScript is disabled.
  */
 export default function FooterControls() {
   return (
-    <HydrationSafeWrapper as="fragment">
+    <HydrationSafeWrapper 
+      as="fragment"
+      fallback={null}
+    >
       <div className="flex flex-wrap items-center justify-center gap-6">
         <ThemeChooser 
           showLabels={true}

@@ -80,18 +80,18 @@ export default function FontSelector() {
 
   const currentFont = fontOptions.find(font => font.value === selectedFont);
 
-  // Prevent hydration mismatch by not rendering until mounted
+  // Show default state for SEO/no-JS, then enhance with JavaScript
   if (!mounted) {
+    const defaultFont = fontOptions.find(font => font.value === 'inconsolata');
     return (
       <div className="relative">
         <button
-          className="flex items-center space-x-2 px-3 py-2 text-sm text-muted-foreground transition-colors rounded-md"
-          disabled
-          aria-label="Loading font selector"
+          className="flex items-center space-x-2 px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-muted"
+          aria-label="Font selector"
           suppressHydrationWarning
         >
           <Type className="w-4 h-4" />
-          <span>Loading...</span>
+          <span>{defaultFont?.name || 'Inconsolata'}</span>
         </button>
       </div>
     );

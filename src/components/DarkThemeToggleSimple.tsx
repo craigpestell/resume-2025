@@ -72,18 +72,18 @@ export default function DarkThemeToggleSimple({
     setDarkMode(!isDarkMode);
   };
 
-  // Prevent hydration mismatch by not rendering until mounted
+  // Show default state for SEO/no-JS (light mode), then enhance with JavaScript
   if (!isHydrated) {
     return (
       <button
         className={getButtonClasses()}
-        aria-label="Loading theme toggle"
+        aria-label="Theme toggle (loading, default light mode)"
         disabled
         suppressHydrationWarning
       >
-        <div className={getIconSize()} />
+        <Sun className={getIconSize()} />
         {showLabel && (
-          <span>Loading</span>
+          <span>Light</span>
         )}
       </button>
     );

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { GeistSans } from 'geist/font/sans';
 import { 
   Inter, 
   Roboto, 
@@ -20,7 +19,6 @@ import {
   Inconsolata
 } from 'next/font/google';
 import { ThemeProvider } from '@/components/ThemeProvider';
-import PerformanceMonitor from '@/components/PerformanceMonitor';
 import "./globals.css";
 
 // Configure Google Fonts
@@ -189,13 +187,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth" data-theme="nord" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            // Add js-enabled class when JavaScript is available
+            document.documentElement.classList.add('js-enabled');
+          `
+        }} />
+      </head>
       <body
         className={`${inconsolata.className} ${inter.variable} ${roboto.variable} ${openSans.variable} ${poppins.variable} ${montserrat.variable} ${sourceSans.variable} ${nunito.variable} ${lato.variable} ${workSans.variable} ${dmSans.variable} ${plusJakarta.variable} ${outfit.variable} ${jetbrainsMono.variable} ${firaCode.variable} ${ubuntuMono.variable} ${spaceMono.variable} ${inconsolata.variable} tracking-normal antialiased`}
         suppressHydrationWarning
       >
         <ThemeProvider>
           {children}
-          <PerformanceMonitor />
         </ThemeProvider>
       </body>
     </html>

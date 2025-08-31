@@ -1,11 +1,11 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, Eye } from 'lucide-react';
 import { PersonalInfo } from '@/data/portfolio';
 import { useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { createRevealablePhone } from '@/lib/phoneUtils';
+import MotionWrapper from './MotionWrapper';
 
 interface ContactProps {
   personalInfo: PersonalInfo;
@@ -63,7 +63,7 @@ export default function Contact({ personalInfo }: ContactProps) {
   return (
     <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
-        <motion.div
+        <MotionWrapper
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -76,12 +76,12 @@ export default function Contact({ personalInfo }: ContactProps) {
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Have a project in mind or want to collaborate? I&apos;d love to hear from you!
           </p>
-        </motion.div>
+        </MotionWrapper>
 
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Information */}
-            <motion.div
+            <MotionWrapper
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
@@ -99,7 +99,7 @@ export default function Contact({ personalInfo }: ContactProps) {
               </div>
 
               <div className="space-y-6">
-                <motion.div
+                <MotionWrapper
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.1 }}
@@ -118,9 +118,9 @@ export default function Contact({ personalInfo }: ContactProps) {
                       {personalInfo.email}
                     </a>
                   </div>
-                </motion.div>
+                </MotionWrapper>
 
-                <motion.div
+                <MotionWrapper
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
@@ -155,9 +155,9 @@ export default function Contact({ personalInfo }: ContactProps) {
                       )}
                     </div>
                   </div>
-                </motion.div>
+                </MotionWrapper>
 
-                <motion.div
+                <MotionWrapper
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.3 }}
@@ -171,11 +171,11 @@ export default function Contact({ personalInfo }: ContactProps) {
                     <h4 className="font-medium text-foreground">Location</h4>
                     <p className="text-muted-foreground">{personalInfo.location}</p>
                   </div>
-                </motion.div>
+                </MotionWrapper>
               </div>
 
               {/* Quick Links */}
-              <motion.div
+              <MotionWrapper
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
@@ -226,11 +226,11 @@ export default function Contact({ personalInfo }: ContactProps) {
                     </div>
 
                 </div>
-              </motion.div>
-            </motion.div>
+              </MotionWrapper>
+            </MotionWrapper>
 
             {/* Contact Form */}
-            <motion.div
+            <MotionWrapper
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
@@ -334,7 +334,7 @@ export default function Contact({ personalInfo }: ContactProps) {
                   </div>
                 )}
               </form>
-            </motion.div>
+            </MotionWrapper>
           </div>
         </div>
       </div>

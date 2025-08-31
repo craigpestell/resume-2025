@@ -1,9 +1,9 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { Calendar, Building, ChevronDown, ChevronRight } from 'lucide-react';
 import { Experience, Education } from '@/data/portfolio';
 import { useState } from 'react';
+import MotionWrapper from './MotionWrapper';
 
 interface ExperienceProps {
   experience: Experience[];
@@ -37,7 +37,7 @@ export default function ExperienceSection({ experience, education }: ExperienceP
     const [isExpanded, setIsExpanded] = useState(false);
     
     return (
-      <motion.div
+      <MotionWrapper
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -90,10 +90,9 @@ export default function ExperienceSection({ experience, education }: ExperienceP
               </button>
               
               {isExpanded && (
-                <motion.div
+                <MotionWrapper
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: 'auto' }}
-                  exit={{ opacity: 0, height: 0 }}
                   transition={{ duration: 0.2 }}
                 >
                   <ul className="mx-4 list-disc list-outside space-y-1">
@@ -103,7 +102,7 @@ export default function ExperienceSection({ experience, education }: ExperienceP
                       </li>
                     ))}
                   </ul>
-                </motion.div>
+                </MotionWrapper>
               )}
             </div>
           )}
@@ -120,12 +119,12 @@ export default function ExperienceSection({ experience, education }: ExperienceP
             ))}
           </div>
         </div>
-      </motion.div>
+      </MotionWrapper>
     );
   };
 
   const EducationCard = ({ edu, index }: { edu: Education; index: number }) => (
-    <motion.div
+    <MotionWrapper
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -178,13 +177,13 @@ export default function ExperienceSection({ experience, education }: ExperienceP
           </div>
         )}
       </div>
-    </motion.div>
+    </MotionWrapper>
   );
 
   return (
     <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
-        <motion.div
+        <MotionWrapper
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -197,20 +196,21 @@ export default function ExperienceSection({ experience, education }: ExperienceP
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             My professional journey and educational background
           </p>
-        </motion.div>
+        </MotionWrapper>
 
         <div className="max-w-6xl mx-auto">
           {/* Experience Section */}
           <div className="mb-16">
-            <motion.h3
+            <MotionWrapper
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
               className="text-2xl font-semibold mb-8 text-foreground"
+              as="h3"
             >
               Professional Experience
-            </motion.h3>
+            </MotionWrapper>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {experience.map((exp, index) => (
@@ -223,15 +223,16 @@ export default function ExperienceSection({ experience, education }: ExperienceP
 
           {/* Education Section */}
           <div>
-            <motion.h3
+            <MotionWrapper
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
               className="text-2xl font-semibold mb-8 text-foreground"
+              as="h3"
             >
               Education
-            </motion.h3>
+            </MotionWrapper>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {education.map((edu, index) => (

@@ -68,18 +68,19 @@ export default function LetterSpacingSelector() {
 
   const currentSpacing = letterSpacingOptions.find(spacing => spacing.value === selectedSpacing);
 
-  // Prevent hydration mismatch by not rendering until mounted
+  // Show default state for SEO/no-JS, then enhance with JavaScript
   if (!mounted) {
+    const defaultSpacing = letterSpacingOptions.find(spacing => spacing.value === 'normal');
     return (
       <div className="relative">
         <button
           className="flex items-center space-x-2 px-3 py-2 text-sm text-muted-foreground transition-colors rounded-md"
           disabled
-          aria-label="Loading letter spacing selector"
+          aria-label="Letter spacing selector (loading)"
           suppressHydrationWarning
         >
           <Type className="w-4 h-4" />
-          <span>Loading...</span>
+          <span>{defaultSpacing?.name || 'Normal'}</span>
         </button>
       </div>
     );
