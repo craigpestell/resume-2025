@@ -1,7 +1,6 @@
 'use client';
 
 import { Skill } from '@/data/portfolio';
-import MotionWrapper from './MotionWrapper';
 
 interface SkillsProps {
   skills: Skill[];
@@ -36,31 +35,21 @@ export default function Skills({ skills }: SkillsProps) {
   return (
     <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
-        <MotionWrapper
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
             Technical Skills & Enterprise Expertise
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             15+ years of hands-on experience with modern technologies, enterprise platforms, and scalable solutions at Fortune 500 companies
           </p>
-        </MotionWrapper>
+        </div>
 
         <div className="max-w-6xl mx-auto">
-          {categoryOrder.filter(category => groupedSkills[category]).map((category, categoryIndex) => {
+          {categoryOrder.filter(category => groupedSkills[category]).map((category) => {
             const categorySkills = groupedSkills[category];
             return (
-              <MotionWrapper
+              <div
                 key={category}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
-                viewport={{ once: true }}
                 className="mb-12"
               >
                 <h3 className="text-2xl font-semibold mb-6 text-foreground">
@@ -68,13 +57,9 @@ export default function Skills({ skills }: SkillsProps) {
                 </h3>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {categorySkills.map((skill, index) => (
-                  <MotionWrapper
+                {categorySkills.map((skill) => (
+                  <div
                     key={skill.name}
-                    initial={{ opacity: 0, x: -50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    viewport={{ once: true }}
                     className="bg-gradient-to-br from-card to-card/10 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow"
                   >
                     <div className="flex items-center justify-between mb-3">
@@ -87,30 +72,21 @@ export default function Skills({ skills }: SkillsProps) {
                     </div>
                     
                     <div className="w-full bg-muted rounded-full h-3">
-                      <MotionWrapper
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level * 10}%` }}
-                        transition={{ duration: 1, delay: index * 0.1 }}
-                        viewport={{ once: true }}
+                      <div
                         className={`h-3 rounded-full ${getSkillColor(skill.level)} transition-all duration-1000`}
-                      > </MotionWrapper>
+                        style={{ width: `${skill.level * 10}%` }}
+                      />
                     </div>
-                  </MotionWrapper>
+                  </div>
                 ))}
               </div>
-            </MotionWrapper>
+              </div>
             );
           })}
         </div>
 
         {/* Skills Summary */}
-        <MotionWrapper
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="mt-16 text-center"
-        >
+        <div className="mt-16 text-center">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 max-w-6xl mx-auto">
             <div className="bg-card rounded-lg p-6 shadow-md">
               <div className="text-3xl font-bold text-accent mb-2">
@@ -147,7 +123,7 @@ export default function Skills({ skills }: SkillsProps) {
               );
             })}
           </div>
-        </MotionWrapper>
+        </div>
       </div>
     </section>
   );
