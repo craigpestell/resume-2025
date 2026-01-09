@@ -209,5 +209,18 @@
       "user_id": "d6b640cb-8402-48d4-8857-fbe8aca0f02a",
       "experiments": []
     }
+  },
+  {
+    "experimentId": "hero-cta-test",
+    "variantId": "control",
+    "eventType": "section_navigation",
+    "userId": "user-1767991198623",
+    "timestamp": 1767991198623,
+    "data": {
+      "section": "#projects",
+      "variant": null,
+      "user_id": "d559f830-1724-476f-a26c-5217ffb9edc3",
+      "experiments": []
+    }
   }
 ]
