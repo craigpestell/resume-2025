@@ -1,6 +1,6 @@
 'use client';
 
-import { Calendar, Building, ChevronDown, ChevronRight, Eye } from 'lucide-react';
+import { Calendar, Building, ChevronDown, ChevronRight } from 'lucide-react';
 import { Experience, Education } from '@/data/portfolio';
 import { useState } from 'react';
 import MotionWrapper from './MotionWrapper';
@@ -11,19 +11,8 @@ interface ExperienceProps {
 }
 
 export default function ExperienceSection({ experience, education }: ExperienceProps) {
-  const [showAllExperience, setShowAllExperience] = useState(false);
-  const [showEarlyCareer, setShowEarlyCareer] = useState(false);
-  
-  // Show experiences from 2020 onwards as recent, hide Kali Protectives and earlier
-  const cutoffDate = new Date('2020-01-01');
-  const earlyCareerCutoff = new Date('2005-01-01');
-  
-  const recentExperience = experience.filter(exp => new Date(exp.startDate) >= cutoffDate);
-  const midCareerExperience = experience.filter(exp => {
-    const startDate = new Date(exp.startDate);
-    return startDate < cutoffDate && startDate >= earlyCareerCutoff;
-  });
-  const earlyCareerExperience = experience.filter(exp => new Date(exp.startDate) < earlyCareerCutoff);
+  // Show only recent experience from 2015 onwards (Apple, Healthcare Startup, Google, Williams Sonoma, Macy's)
+  const recentExperience = experience.filter(exp => new Date(exp.startDate) >= new Date('2015-01-01'));
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
@@ -231,148 +220,7 @@ export default function ExperienceSection({ experience, education }: ExperienceP
                   <ExperienceCard exp={exp} index={index} />
                 </div>
               ))}
-              {showAllExperience && midCareerExperience.map((exp) => (
-                <div key={exp.id} className="relative">
-                  <div className="bg-gradient-to-br from-card to-card/10 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow h-full">
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                      <div>
-                        <h3 className="text-xl font-semibold text-card-foreground mb-1">
-                          {exp.position}
-                        </h3>
-                        <div className="flex items-center text-primary mb-2">
-                          <Building className="w-4 h-4 mr-2" />
-                          <span className="font-medium">{exp.company}</span>
-                        </div>
-                      </div>
-                      
-                      <div className="text-sm text-muted-foreground">
-                        <div className="flex items-center mb-1">
-                          <Calendar className="w-4 h-4 mr-3" />
-                          <div className="flex flex-col text-primary">
-                            <span className="text-right text-nowrap">{formatDate(exp.startDate)}</span>
-                            <span className="text-right text-nowrap">{exp.endDate ? formatDate(exp.endDate) : 'Present'}</span>
-                          </div>
-                        </div>
-                        <span className="text-xs bg-muted px-2 py-1 rounded block text-center">
-                          {calculateDuration(exp.startDate, exp.endDate)}
-                        </span>
-                      </div>
-                    </div>
-
-                    <p className="text-muted-foreground mb-4">
-                      {exp.description}
-                    </p>
-
-                    {/* Achievements */}
-                    {exp.achievements.length > 0 && (
-                      <div className="mb-4">
-                        <div className="text-sm font-medium text-card-foreground mb-2">
-                          Key Achievements ({exp.achievements.length})
-                        </div>
-                        <ul className="mx-4 list-disc list-outside space-y-1">
-                          {exp.achievements.map((achievement, i) => (
-                            <li key={i} className="text-muted-foreground text-sm">
-                              {achievement}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-
-                    {/* Technologies */}
-                    <div className="flex flex-wrap gap-2">
-                      {exp.technologies.map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-2 py-1 bg-muted text-muted-foreground text-xs rounded"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              ))}
-              {showAllExperience && showEarlyCareer && earlyCareerExperience.map((exp) => (
-                <div key={exp.id} className="relative">
-                  <div className="bg-gradient-to-br from-card/50 to-card/5 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow h-full border border-muted">
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                      <div>
-                        <h3 className="text-lg font-medium text-card-foreground mb-1">
-                          {exp.position}
-                        </h3>
-                        <div className="flex items-center text-primary mb-2">
-                          <Building className="w-3 h-3 mr-2" />
-                          <span className="font-medium text-sm">{exp.company}</span>
-                        </div>
-                      </div>
-                      
-                      <div className="text-sm text-muted-foreground">
-                        <div className="flex items-center mb-1">
-                          <Calendar className="w-3 h-3 mr-2" />
-                          <div className="flex flex-col text-primary text-xs">
-                            <span className="text-right text-nowrap">{formatDate(exp.startDate)}</span>
-                            <span className="text-right text-nowrap">{formatDate(exp.endDate!)}</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <p className="text-muted-foreground mb-4 text-sm">
-                      {exp.description}
-                    </p>
-
-                    {/* Technologies only for early career */}
-                    <div className="flex flex-wrap gap-1">
-                      {exp.technologies.map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-2 py-1 bg-muted text-muted-foreground text-xs rounded"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              ))}
             </div>
-            
-            {midCareerExperience.length > 0 && !showAllExperience && (
-              <MotionWrapper
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3 }}
-                viewport={{ once: true }}
-                className="mt-8 text-center"
-              >
-                <button
-                  onClick={() => setShowAllExperience(true)}
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors font-medium"
-                >
-                  <Eye className="w-4 h-4" />
-                  Show {midCareerExperience.length} More Experience{midCareerExperience.length !== 1 ? 's' : ''}
-                </button>
-              </MotionWrapper>
-            )}
-            
-            {earlyCareerExperience.length > 0 && showAllExperience && !showEarlyCareer && (
-              <MotionWrapper
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3 }}
-                viewport={{ once: true }}
-                className="mt-8 text-center"
-              >
-                <button
-                  onClick={() => setShowEarlyCareer(true)}
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-secondary text-secondary-foreground rounded-lg hover:bg-secondary/90 transition-colors font-medium text-sm"
-                >
-                  <Eye className="w-3 h-3" />
-                  Show {earlyCareerExperience.length} Early Career Role{earlyCareerExperience.length !== 1 ? 's' : ''}
-                </button>
-              </MotionWrapper>
-            )}
           </div>
 
           {/* Education Section */}
