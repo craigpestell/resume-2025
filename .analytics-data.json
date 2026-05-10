@@ -378,5 +378,18 @@
       "user_id": "d559f830-1724-476f-a26c-5217ffb9edc3",
       "experiments": []
     }
+  },
+  {
+    "experimentId": "hero-cta-test",
+    "variantId": "control",
+    "eventType": "section_navigation",
+    "userId": "user-1778416633508",
+    "timestamp": 1778416633508,
+    "data": {
+      "section": "#projects",
+      "variant": null,
+      "user_id": "d559f830-1724-476f-a26c-5217ffb9edc3",
+      "experiments": []
+    }
   }
 ]

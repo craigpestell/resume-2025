@@ -1,5 +1,3 @@
-'use client';
-
 import { Skill } from '@/data/portfolio';
 
 interface SkillsProps {

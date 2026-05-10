@@ -1,5 +1,3 @@
-'use client';
-
 import { PersonalInfo } from '@/data/portfolio';
 import { obfuscatePhoneNumber } from '@/lib/phoneUtils';
 
