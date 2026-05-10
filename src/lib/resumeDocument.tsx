@@ -86,7 +86,6 @@ const styles = StyleSheet.create({
   skillsGrid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    gap: 8,
   },
   skillItem: {
     fontSize: 10,
@@ -95,6 +94,7 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     color: '#374151',
     marginBottom: 5,
+    marginRight: 8,
   },
   projectItem: {
     marginBottom: 12,
