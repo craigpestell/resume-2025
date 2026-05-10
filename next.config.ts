@@ -91,7 +91,7 @@ const nextConfig: NextConfig = {
           },
           // Split framer-motion into separate chunk 
           framerMotion: {
-            test: /[\\/]node_modules[\\/]framer-motion[\\/]/,
+            test: /[\\/]node_modules[\\/](framer-motion|motion-dom|motion-utils)[\\/]/,
             name: 'framer-motion',
             chunks: 'async', // Load separately
             priority: 20,
@@ -99,19 +99,19 @@ const nextConfig: NextConfig = {
           lucideReact: {
             test: /[\\/]node_modules[\\/]lucide-react[\\/]/,
             name: 'lucide-react',
-            chunks: 'all',
+            chunks: 'initial',
             priority: 15,
           },
           vendor: {
             test: /[\\/]node_modules[\\/]/,
             name: 'vendors',
-            chunks: 'all',
+            chunks: 'initial',
             priority: 10,
           },
           common: {
             name: 'common',
             minChunks: 2,
-            chunks: 'all',
+            chunks: 'initial',
             priority: 5,
             reuseExistingChunk: true,
           },
