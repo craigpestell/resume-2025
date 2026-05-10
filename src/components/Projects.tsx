@@ -32,6 +32,7 @@ export default function Projects({ projects }: ProjectsProps) {
           src={project.imageUrl}
           alt={`${project.title} - ${project.description}. Built with ${project.technologies.join(', ')}`}
           fill
+          sizes="(min-width: 1024px) 672px, (min-width: 768px) 50vw, 100vw"
           className="object-cover"
         />
         <div className="absolute inset-0 bg-black/20 flex items-center justify-center">

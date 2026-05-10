@@ -321,7 +321,11 @@ export default function Contact({ personalInfo }: ContactProps) {
 
                 {/* Status Messages */}
                 {submitStatus === 'success' && (
-                  <div className="p-4 bg-success/10 border border-success/20 rounded-lg">
+                  <div
+                    className="p-4 bg-success/10 border border-success/20 rounded-lg"
+                    role="status"
+                    aria-live="polite"
+                  >
                     <p className="text-success text-sm font-medium">
                       ✅ Message sent successfully! I&apos;ll get back to you soon.
                     </p>
@@ -329,7 +333,11 @@ export default function Contact({ personalInfo }: ContactProps) {
                 )}
 
                 {submitStatus === 'error' && (
-                  <div className="p-4 bg-destructive/10 border border-destructive/20 rounded-lg">
+                  <div
+                    className="p-4 bg-destructive/10 border border-destructive/20 rounded-lg"
+                    role="alert"
+                    aria-live="assertive"
+                  >
                     <p className="text-destructive text-sm font-medium">
                       ❌ Failed to send message. Please try again or email me directly.
                     </p>

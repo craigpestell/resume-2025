@@ -80,6 +80,7 @@ export default function Hero({ personalInfo, onDownloadResume }: HeroProps) {
                   alt={`${personalInfo.name} - ${personalInfo.title} | Professional headshot of senior software engineer with experience at Apple, Google, and Williams Sonoma`}
                   width={192}
                   height={192}
+                  sizes="192px"
                   className="w-full h-full rounded-full object-cover"
                   priority
                 />

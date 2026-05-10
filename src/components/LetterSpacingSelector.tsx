@@ -76,7 +76,7 @@ export default function LetterSpacingSelector() {
         <button
           className="flex items-center space-x-2 px-3 py-2 text-sm text-muted-foreground transition-colors rounded-md"
           disabled
-          aria-label="Letter spacing selector (loading)"
+          aria-label={`Letter spacing: ${defaultSpacing?.name || 'Normal'}`}
           suppressHydrationWarning
         >
           <Type className="w-4 h-4" />
@@ -91,7 +91,7 @@ export default function LetterSpacingSelector() {
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center space-x-2 px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-muted"
-        aria-label="Adjust letter spacing"
+        aria-label={`Letter spacing: ${currentSpacing?.name || 'Normal'}`}
         suppressHydrationWarning
       >
         <Type className="w-4 h-4" />

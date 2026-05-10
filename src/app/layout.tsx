@@ -3,30 +3,35 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/react';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import DynamicFontLoader from '@/components/DynamicFontLoader';
+import { portfolioData } from '@/data/portfolio';
 import { defaultFont } from '@/lib/fontLoader';
 import "./globals.css";
 
+const { personalInfo } = portfolioData;
+
+const siteTitle = `${personalInfo.name} - ${personalInfo.title} | React, TypeScript, Enterprise Applications`;
+const siteDescription = `${personalInfo.title} with 15+ years of experience designing enterprise-scale computer systems for organizations including Apple, Google, and Macy's. Expert in React, TypeScript, Node.js, and scalable information workflows.`;
+
 export const metadata: Metadata = {
-  title: "Craig Pestell - Senior Software Engineer | React, TypeScript, Enterprise Applications",
-  description: "Senior Software Engineer with 15+ years at Apple, Google, Williams Sonoma. Expert in React, TypeScript, Node.js, and enterprise platform architecture. Available for senior engineering roles.",
+  title: siteTitle,
+  description: siteDescription,
   keywords: [
-    "Senior Software Engineer",
-    "React Developer", 
+    "Senior Computer Systems Analyst",
+    "Systems Analysis",
+    "React Developer",
     "TypeScript Expert",
-    "Full Stack Developer",
     "Enterprise Applications",
     "Apple Engineer",
     "Google Engineer",
-    "Williams Sonoma",
+    "Macy's",
     "Node.js",
     "Next.js",
-    "Frontend Architecture",
-    "Backend Development",
-    "Software Engineering"
+    "Information Workflows",
+    "Scalable System Infrastructure"
   ],
   authors: [{ name: "Craig Pestell" }],
-  creator: "Craig Pestell",
-  publisher: "Craig Pestell",
+  creator: personalInfo.name,
+  publisher: personalInfo.name,
   formatDetection: {
     email: false,
     address: false,
@@ -37,26 +42,26 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: "Craig Pestell - Senior Software Engineer",
-    description: "Senior Software Engineer with 15+ years at Apple, Google, Williams Sonoma. Expert in React, TypeScript, and enterprise platform architecture.",
+    title: siteTitle,
+    description: siteDescription,
     url: 'https://craigpestell.com',
     siteName: 'Craig Pestell Portfolio',
     type: 'website',
     locale: 'en_US',
     images: [
       {
-        url: '/images/profile.png',
-        width: 1200,
-        height: 630,
-        alt: 'Craig Pestell - Senior Software Engineer',
+        url: '/images/banner.webp',
+        width: 1280,
+        height: 426,
+        alt: `${personalInfo.name} - ${personalInfo.title}`,
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Craig Pestell - Senior Software Engineer",
-    description: "Senior Software Engineer with 15+ years at Apple, Google, Williams Sonoma. Expert in React, TypeScript, and enterprise applications.",
-    images: ['/images/profile.png'],
+    title: siteTitle,
+    description: siteDescription,
+    images: ['/images/banner.webp'],
   },
   robots: {
     index: true,

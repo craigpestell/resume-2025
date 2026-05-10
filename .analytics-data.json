@@ -222,5 +222,109 @@
       "user_id": "d559f830-1724-476f-a26c-5217ffb9edc3",
       "experiments": []
     }
+  },
+  {
+    "experimentId": "hero-cta-test",
+    "variantId": "variant-a",
+    "eventType": "resume_download",
+    "userId": "user-1778411238263",
+    "timestamp": 1778411238263,
+    "data": {
+      "variant": "variant-a",
+      "buttonText": "Get My Resume",
+      "user_id": "9bc2d2ce-01c4-4d4b-a7e8-bdd767d99f93",
+      "experiments": []
+    }
+  },
+  {
+    "experimentId": "hero-cta-test",
+    "variantId": "variant-a",
+    "eventType": "resume_download",
+    "userId": "user-1778412702242",
+    "timestamp": 1778412702242,
+    "data": {
+      "variant": "variant-a",
+      "buttonText": "Get My Resume",
+      "user_id": "1532b30b-28c7-495a-8238-085c17b60671",
+      "experiments": []
+    }
+  },
+  {
+    "experimentId": "hero-cta-test",
+    "variantId": "variant-a",
+    "eventType": "resume_download",
+    "userId": "user-1778412702348",
+    "timestamp": 1778412702348,
+    "data": {
+      "variant": "variant-a",
+      "buttonText": "Get My Resume",
+      "user_id": "1532b30b-28c7-495a-8238-085c17b60671",
+      "experiments": []
+    }
+  },
+  {
+    "experimentId": "hero-cta-test",
+    "variantId": "variant-a",
+    "eventType": "resume_download",
+    "userId": "user-1778412702631",
+    "timestamp": 1778412702631,
+    "data": {
+      "variant": "variant-a",
+      "buttonText": "Get My Resume",
+      "user_id": "1532b30b-28c7-495a-8238-085c17b60671",
+      "experiments": []
+    }
+  },
+  {
+    "experimentId": "hero-cta-test",
+    "variantId": "variant-a",
+    "eventType": "section_navigation",
+    "userId": "user-1778412702908",
+    "timestamp": 1778412702908,
+    "data": {
+      "section": "#projects",
+      "variant": "variant-a",
+      "user_id": "1532b30b-28c7-495a-8238-085c17b60671",
+      "experiments": []
+    }
+  },
+  {
+    "experimentId": "hero-cta-test",
+    "variantId": "variant-a",
+    "eventType": "section_navigation",
+    "userId": "user-1778412702918",
+    "timestamp": 1778412702918,
+    "data": {
+      "section": "#projects",
+      "variant": "variant-a",
+      "user_id": "1532b30b-28c7-495a-8238-085c17b60671",
+      "experiments": []
+    }
+  },
+  {
+    "experimentId": "hero-cta-test",
+    "variantId": "variant-a",
+    "eventType": "section_navigation",
+    "userId": "user-1778412702926",
+    "timestamp": 1778412702926,
+    "data": {
+      "section": "#projects",
+      "variant": "variant-a",
+      "user_id": "1532b30b-28c7-495a-8238-085c17b60671",
+      "experiments": []
+    }
+  },
+  {
+    "experimentId": "hero-cta-test",
+    "variantId": "variant-a",
+    "eventType": "section_navigation",
+    "userId": "user-1778412702931",
+    "timestamp": 1778412702931,
+    "data": {
+      "section": "#projects",
+      "variant": "variant-a",
+      "user_id": "1532b30b-28c7-495a-8238-085c17b60671",
+      "experiments": []
+    }
   }
 ]

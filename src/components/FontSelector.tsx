@@ -76,7 +76,7 @@ export default function FontSelector() {
       <div className="relative">
         <button
           className="flex items-center space-x-2 px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-muted"
-          aria-label="Font selector"
+          aria-label={`Font: ${defaultFont?.name || 'Inconsolata'}`}
           suppressHydrationWarning
         >
           <Type className="w-4 h-4" />
@@ -91,7 +91,7 @@ export default function FontSelector() {
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center space-x-2 px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-muted"
-        aria-label="Select font"
+        aria-label={`Font: ${currentFont?.name || 'Inconsolata'}`}
         suppressHydrationWarning
       >
         <Type className="w-4 h-4" />

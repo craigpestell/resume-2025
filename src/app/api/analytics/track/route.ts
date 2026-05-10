@@ -10,6 +10,10 @@ export interface ConversionStats {
   eventBreakdown: Record<string, number>;
 }
 
+function isAnalyticsAdminEnabled() {
+  return process.env.NODE_ENV === 'development' || process.env.ENABLE_ANALYTICS_ADMIN === 'true';
+}
+
 export async function POST(request: NextRequest) {
   try {
     const { event, data } = await request.json();
@@ -52,6 +56,10 @@ export async function POST(request: NextRequest) {
 }
 
 export async function GET() {
+  if (!isAnalyticsAdminEnabled()) {
+    return NextResponse.json({ error: 'Analytics admin access is disabled' }, { status: 403 });
+  }
+
   try {
     // Get events from persistent storage
     const conversionEvents = await AnalyticsStorage.getEvents();
@@ -114,6 +122,10 @@ export async function GET() {
 }
 
 export async function DELETE() {
+  if (!isAnalyticsAdminEnabled()) {
+    return NextResponse.json({ error: 'Analytics admin access is disabled' }, { status: 403 });
+  }
+
   try {
     await AnalyticsStorage.clearEvents();
     return NextResponse.json({ 

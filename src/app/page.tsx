@@ -10,10 +10,13 @@ import Contact from '@/components/Contact';
 import FooterControls from '@/components/FooterControls';
 import { portfolioData } from '@/data/portfolio';
 export default function Home() {
-  const handleDownloadResume = async () => {
-    // Lazy load PDF generation only when needed
-    const { generateResume } = await import('@/components/ResumeGenerator');
-    generateResume(portfolioData);
+  const handleDownloadResume = () => {
+    const link = document.createElement('a');
+    link.href = '/api/resume';
+    link.download = `${portfolioData.personalInfo.name.replace(/\s+/g, '_')}_Resume.pdf`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
