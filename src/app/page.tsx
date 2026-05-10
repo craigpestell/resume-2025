@@ -10,20 +10,11 @@ import Contact from '@/components/Contact';
 import FooterControls from '@/components/FooterControls';
 import { portfolioData } from '@/data/portfolio';
 export default function Home() {
-  const handleDownloadResume = () => {
-    const link = document.createElement('a');
-    link.href = '/api/resume';
-    link.download = `${portfolioData.personalInfo.name.replace(/\s+/g, '_')}_Resume.pdf`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
   return (
     <main className="min-h-screen bg-background text-foreground">
       <StructuredData personalInfo={portfolioData.personalInfo} />
-      <Header onDownloadResume={handleDownloadResume} />
-      <Hero personalInfo={portfolioData.personalInfo} onDownloadResume={handleDownloadResume} />
+      <Header />
+      <Hero personalInfo={portfolioData.personalInfo} />
       <section id="skills">
         <Skills skills={portfolioData.skills} />
       </section>

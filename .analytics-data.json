@@ -326,5 +326,57 @@
       "user_id": "1532b30b-28c7-495a-8238-085c17b60671",
       "experiments": []
     }
+  },
+  {
+    "experimentId": "hero-cta-test",
+    "variantId": "control",
+    "eventType": "resume_download",
+    "userId": "user-1778414717969",
+    "timestamp": 1778414717969,
+    "data": {
+      "variant": null,
+      "buttonText": "Download Resume",
+      "user_id": "d559f830-1724-476f-a26c-5217ffb9edc3",
+      "experiments": []
+    }
+  },
+  {
+    "experimentId": "hero-cta-test",
+    "variantId": "control",
+    "eventType": "resume_download",
+    "userId": "user-1778414772980",
+    "timestamp": 1778414772980,
+    "data": {
+      "variant": null,
+      "buttonText": "Download Resume",
+      "user_id": "d559f830-1724-476f-a26c-5217ffb9edc3",
+      "experiments": []
+    }
+  },
+  {
+    "experimentId": "hero-cta-test",
+    "variantId": "control",
+    "eventType": "resume_download",
+    "userId": "user-1778414936100",
+    "timestamp": 1778414936100,
+    "data": {
+      "variant": null,
+      "buttonText": "Download Resume",
+      "user_id": "d559f830-1724-476f-a26c-5217ffb9edc3",
+      "experiments": []
+    }
+  },
+  {
+    "experimentId": "hero-cta-test",
+    "variantId": "control",
+    "eventType": "resume_download",
+    "userId": "user-1778415037582",
+    "timestamp": 1778415037582,
+    "data": {
+      "variant": null,
+      "buttonText": "Download Resume",
+      "user_id": "d559f830-1724-476f-a26c-5217ffb9edc3",
+      "experiments": []
+    }
   }
 ]

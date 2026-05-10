@@ -4,12 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Download, Menu, X } from 'lucide-react';
 import DarkThemeToggleSimple from './DarkThemeToggleSimple';
-
-interface HeaderProps {
-  onDownloadResume: () => void;
-}
-
-export default function Header({ onDownloadResume }: HeaderProps) {
+export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('');
@@ -95,13 +90,13 @@ export default function Header({ onDownloadResume }: HeaderProps) {
             <DarkThemeToggleSimple size="md" variant="secondary" />
 
             {/* Download Resume Button */}
-            <button
-              onClick={onDownloadResume}
+            <a
+              href="/api/resume"
               className="hidden lg:flex items-center space-x-2 bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-2 rounded-lg transition-colors"
             >
               <Download className="w-4 h-4" />
               <span>Resume</span>
-            </button>
+            </a>
 
             {/* Mobile Menu Button */}
             <button
@@ -136,13 +131,14 @@ export default function Header({ onDownloadResume }: HeaderProps) {
                   {link.label}
                 </a>
               ))}
-              <button
-                onClick={onDownloadResume}
-                className="flex items-center space-x-2 px-4 py-2 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg transition-colors ml-4/*  */ mt-4"
+              <a
+                href="/api/resume"
+                onClick={() => setIsMenuOpen(false)}
+                className="flex items-center space-x-2 px-4 py-2 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg transition-colors ml-4 mt-4"
               >
                 <Download className="w-4 h-4" />
                 <span>Download Resume</span>
-              </button>
+              </a>
             </div>
           </div>
         )}

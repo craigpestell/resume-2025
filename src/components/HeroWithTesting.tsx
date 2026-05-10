@@ -7,10 +7,9 @@ import { useEdgeABTest } from '@/hooks/useEdgeExperiment';
 
 interface HeroProps {
   personalInfo: PersonalInfo;
-  onDownloadResume?: () => void;
 }
 
-export default function Hero({ personalInfo, onDownloadResume }: HeroProps) {
+export default function Hero({ personalInfo }: HeroProps) {
   // A/B test for CTA buttons
   const { config, trackConversion, variantId } = useEdgeABTest('hero-cta-test', {
     ctaText: 'Download Resume',
@@ -30,16 +29,6 @@ export default function Hero({ personalInfo, onDownloadResume }: HeroProps) {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
       trackConversion('section_navigation', { section: href, variant: variantId });
-    }
-  };
-
-  const handleDownloadResume = () => {
-    if (onDownloadResume) {
-      onDownloadResume();
-      trackConversion('resume_download', { 
-        variant: variantId,
-        buttonText: ctaText 
-      });
     }
   };
 
@@ -152,14 +141,18 @@ export default function Hero({ personalInfo, onDownloadResume }: HeroProps) {
           {/* CTA Buttons - A/B Tested */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             {/* Primary CTA - varies based on experiment */}
-            <button
-              onClick={handleDownloadResume}
+            <a
+              href="/api/resume"
+              onClick={() => trackConversion('resume_download', {
+                variant: variantId,
+                buttonText: ctaText
+              })}
               className={getButtonStyles(ctaStyle, true)}
               data-testid="primary-cta"
             >
               <Download className="w-4 h-4" />
               {ctaText}
-            </button>
+            </a>
 
             {/* Secondary button or alternative action */}
             {showSecondaryButton ? (
