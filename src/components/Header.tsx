@@ -1,9 +1,20 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Download, Menu, X } from 'lucide-react';
-import DarkThemeToggleSimple from './DarkThemeToggleSimple';
+
+const DarkThemeToggleSimple = dynamic(() => import('./DarkThemeToggleSimple'), {
+  ssr: false,
+  loading: () => (
+    <span
+      className="inline-flex h-9 w-9 rounded-lg bg-secondary"
+      aria-hidden="true"
+    />
+  ),
+});
+
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);

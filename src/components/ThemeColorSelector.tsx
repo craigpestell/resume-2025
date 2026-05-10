@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { Palette } from 'lucide-react';
-import { useEdgeABTest } from '@/hooks/useEdgeExperiment';
 
 const themeOptions = [
   { name: 'Default', value: 'default', preview: '#ffffff' },
@@ -25,12 +24,6 @@ export default function ThemeColorSelector() {
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  
-  // Use experiment for default theme
-  const { config: themeExperiment } = useEdgeABTest('theme-default-test', {
-    defaultTheme: 'nord',
-    defaultDarkMode: false
-  });
 
   useEffect(() => {
     setMounted(true);
@@ -56,7 +49,7 @@ export default function ThemeColorSelector() {
       }
       // If system prefers light, CSS defaults will handle it (no need to call applyTheme)
     }
-  }, [themeExperiment]);
+  }, []);
 
   useEffect(() => {
     // Listen for theme changes from other components

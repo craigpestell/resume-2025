@@ -1,7 +1,13 @@
 'use client';
 
-import DarkThemeToggle from './DarkThemeToggle';
-import ThemeColorSelector from './ThemeColorSelector';
+import dynamic from 'next/dynamic';
+
+const DarkThemeToggle = dynamic(() => import('./DarkThemeToggle'), {
+  ssr: false,
+});
+const ThemeColorSelector = dynamic(() => import('./ThemeColorSelector'), {
+  ssr: false,
+});
 
 interface ThemeChooserProps {
   className?: string;

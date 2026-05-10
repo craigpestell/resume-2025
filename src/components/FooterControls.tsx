@@ -1,9 +1,17 @@
 'use client';
 
-import FontSelector from './FontSelector';
-import LetterSpacingSelector from './LetterSpacingSelector';
-import ThemeChooser from './ThemeChooser';
+import dynamic from 'next/dynamic';
 import HydrationSafeWrapper from './HydrationSafeWrapper';
+
+const ThemeChooser = dynamic(() => import('./ThemeChooser'), {
+  ssr: false,
+});
+const FontSelector = dynamic(() => import('./FontSelector'), {
+  ssr: false,
+});
+const LetterSpacingSelector = dynamic(() => import('./LetterSpacingSelector'), {
+  ssr: false,
+});
 
 /**
  * Footer controls component that shows theme/font controls only when JavaScript is enabled.

@@ -3,12 +3,12 @@ import Header from '@/components/Header';
 import Hero from '@/components/HeroWithTesting';
 import StructuredData from '@/components/StructuredData';
 import Skills from '@/components/Skills';
+import LazyFooterControls from '@/components/LazyFooterControls';
 import { portfolioData } from '@/data/portfolio';
 
 const Projects = dynamic(() => import('@/components/Projects'));
 const Experience = dynamic(() => import('@/components/Experience'));
 const Contact = dynamic(() => import('@/components/Contact'));
-const FooterControls = dynamic(() => import('@/components/FooterControls'));
 
 export default function Home() {
   return (
@@ -40,7 +40,7 @@ export default function Home() {
             <p className="text-muted-foreground text-center md:text-left">
               © 2025 {portfolioData.personalInfo.name}. Built with Next.js and TailwindCSS.
             </p>
-            <FooterControls />
+            <LazyFooterControls />
           </div>
         </div>
       </footer>
