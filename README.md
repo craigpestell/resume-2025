@@ -152,7 +152,7 @@ src/
 2. Connect your repository to [Vercel](https://vercel.com)
 3. Deploy with zero configuration
 
-The site is currently deployed at: [https://www.craigpestell.com](https://www.craigpestell.com)
+The site is currently deployed at: [https://craigpestell.com](https://craigpestell.com)
 
 ### Other Platforms
 

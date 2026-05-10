@@ -68,7 +68,7 @@ export const portfolioData: PortfolioData = {
     email: "craigpestell@gmail.com",
     phone: "+1 (415) 513-7188",
     location: "Vancouver, BC, Canada",
-    website: "https://www.craigpestell.com",
+    website: "https://craigpestell.com",
     github: "https://github.com/craigpestell",
     linkedin: "https://linkedin.com/in/craigpestell",
     profileImage: "/images/icons8-eggman-robotnik-480.png",

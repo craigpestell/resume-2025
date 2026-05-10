@@ -1,11 +1,13 @@
-import { pdf } from '@react-pdf/renderer';
 import { portfolioData } from '@/data/portfolio';
-import { ResumeDocument } from '@/lib/resumeDocument';
 
 export const runtime = 'nodejs';
 
 export async function GET() {
   const fileName = `${portfolioData.personalInfo.name.replace(/\s+/g, '_')}_Resume.pdf`;
+  const [{ pdf }, { ResumeDocument }] = await Promise.all([
+    import('@react-pdf/renderer'),
+    import('@/lib/resumeDocument'),
+  ]);
   const pdfBlob = await pdf(<ResumeDocument data={portfolioData} />).toBlob();
 
   return new Response(pdfBlob, {
