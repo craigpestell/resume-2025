@@ -7,7 +7,6 @@ A modern, responsive portfolio website for Craig Pestell, Senior Software Engine
 - **Modern Design**: Clean, responsive design with multiple theme options and dark/light mode toggle
 - **Dynamic Resume Generation**: Click to download a professionally formatted PDF resume
 - **Theme Customization**: Multiple theme variants, font selection, and letter spacing controls
-- **Smooth Animations**: Framer Motion animations for enhanced user experience  
 - **Responsive Layout**: Optimized for all devices and screen sizes
 - **SEO Optimized**: Built with Next.js 15 for optimal performance with structured data
 - **Email Integration**: Contact form with EmailJS integration
@@ -25,7 +24,6 @@ A modern, responsive portfolio website for Craig Pestell, Senior Software Engine
 
 - **Framework**: Next.js 15 with App Router
 - **Styling**: TailwindCSS v4
-- **Animations**: Framer Motion
 - **PDF Generation**: @react-pdf/renderer
 - **Email Service**: EmailJS
 - **Icons**: Lucide React
