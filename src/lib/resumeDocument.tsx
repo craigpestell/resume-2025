@@ -78,8 +78,12 @@ const styles = StyleSheet.create({
 });
 
 function formatDate(dateString: string) {
-  const date = new Date(dateString);
-  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
+  const [year, month, day] = dateString.split('-').map(Number);
+  const date = year && month
+    ? new Date(year, month - 1, day ?? 1)
+    : new Date(dateString);
+  const formatted = date.toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
+  return formatted.replace(/^Sep\b/, 'Sept');
 }
 
 function chunk<T>(items: T[], size: number) {

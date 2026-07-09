@@ -13,14 +13,24 @@ interface ExperienceProps {
 export default function ExperienceSection({ experience, education }: ExperienceProps) {
   // Show only recent experience from 2015 onwards (Apple, Healthcare Startup, Google, Williams Sonoma, Macy's)
   const recentExperience = experience.filter(exp => new Date(exp.startDate) >= new Date('2015-01-01'));
+
+  const parseDateString = (dateString: string) => {
+    const [year, month, day] = dateString.split('-').map(Number);
+    if (year && month) {
+      return new Date(year, month - 1, day ?? 1);
+    }
+    return new Date(dateString);
+  };
+
   const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
+    const date = parseDateString(dateString);
+    const formatted = date.toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
+    return formatted.replace(/^Sep\b/, 'Sept');
   };
 
   const calculateDuration = (startDate: string, endDate?: string) => {
-    const start = new Date(startDate);
-    const end = endDate ? new Date(endDate) : new Date();
+    const start = parseDateString(startDate);
+    const end = endDate ? parseDateString(endDate) : new Date();
     
     const months = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth());
     const years = Math.floor(months / 12);

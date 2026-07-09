@@ -64,7 +64,7 @@ export interface PortfolioData {
 export const portfolioData: PortfolioData = {
   personalInfo: {
     name: "Craig Pestell",
-    title: "Senior Computer Systems Analyst",
+    title: "Senior Software Engineer",
     email: "craigpestell@gmail.com",
     phone: "+1 (415) 513-7188",
     location: "Vancouver, BC, Canada",
@@ -72,7 +72,7 @@ export const portfolioData: PortfolioData = {
     github: "https://github.com/craigpestell",
     linkedin: "https://linkedin.com/in/craigpestell",
     profileImage: "/images/icons8-eggman-robotnik-480.png",
-    summary: "Senior Computer Systems Analyst with 15+ years of experience analyzing and designing complex enterprise-scale computer systems for global organizations including Apple, Google, and Macy's. Expert in evaluating organizational data processing needs, architecting scalable system infrastructures, and optimizing information workflows to deliver high-value technical solutions."
+    summary: "Senior Software Engineer with 15+ years of experience building enterprise applications for Apple, Google, Macy's, and Williams Sonoma. Proven in full-stack delivery, authentication and infrastructure integration, and turning complex data workflows into simple, reliable internal products."
   },
   skills: [
     { name: "React", level: 9, category: "frontend" },
@@ -98,6 +98,7 @@ export const portfolioData: PortfolioData = {
     { name: "Google Cloud", level: 7, category: "tools" },
     { name: "Docker", level: 8, category: "tools" },
     { name: "Kubernetes", level: 7, category: "tools" },
+    { name: "AI-Assisted Development (Claude, Copilot)", level: 9, category: "tools" },
     { name: "Auth0", level: 8, category: "tools" },
     { name: "GraphQL", level: 7, category: "backend" },
     { name: "Redux", level: 8, category: "frontend" }
@@ -117,8 +118,8 @@ export const portfolioData: PortfolioData = {
     {
       id: "project-2", 
       title: "AI-Powered Healthcare Platform",
-      description: "Systems analysis and requirements evaluation for AI-powered healthcare platform with integrated subscription management and authentication infrastructure",
-      longDescription: "Performed feasibility studies evaluating AI technology integration for healthcare operations. Analyzed requirements for subscription management and authentication systems, documented security and integration specifications, and assessed workflow optimization opportunities.",
+      description: "Enterprise healthcare solution leveraging LLMs with integrated subscription management and Chrome extension",
+      longDescription: "Architected and delivered a sophisticated healthcare platform leveraging AI large language models to reduce operational costs and deliver measurable value to enterprise customers. Developed comprehensive web dashboard for subscription management, Chrome extension for seamless website integration, and implemented enterprise-grade Auth0 authentication across all platform components.",
       technologies: ["TypeScript", "Next.js", "NestJS", "Python", "Azure", "Auth0"],
       imageUrl: "/images/portfolio-2.jpg",
       projectUrl: "https://example-healthcare.com",
@@ -129,8 +130,8 @@ export const portfolioData: PortfolioData = {
     {
       id: "project-3",
       title: "Silicon Design Collaboration Platform",
-      description: "Systems analysis and requirements evaluation for version control and collaboration platform serving silicon chip design teams across 20+ engineering organizations",
-      longDescription: "Evaluated collaboration workflow requirements for silicon chip design teams across 20+ organizations. Analyzed integration and performance needs, documented technical specifications and wireframes, and assessed architectural approaches to support distributed engineering teams.",
+      description: "Version control and collaboration system for silicon chip specifications across 20+ engineering teams",
+      longDescription: "Designed and prototyped Fuse Manager, an innovative version control system for silicon chip design specifications at Google. Created comprehensive proof-of-concepts and wireframes that guided architectural decisions for a platform enabling seamless collaboration across 20+ hardware engineering teams. Successfully transitioned prototypes to production-ready application using Angular and Google's internal toolchain.",
       technologies: ["Angular", "TypeScript", "Python", "RxJS"],
       imageUrl: "/images/portfolio-3.jpg",
       startDate: "2022-02",
@@ -140,8 +141,8 @@ export const portfolioData: PortfolioData = {
     {
       id: "project-4",
       title: "Enterprise Micro-Frontend Architecture",
-      description: "Systems analysis and evaluation of legacy monolithic e-commerce platform modernization requirements and architectural recommendations",
-      longDescription: "Evaluated Williams Sonoma's legacy e-commerce platform to identify modernization opportunities and scalability requirements. Analyzed deployment workflows, documented architectural specifications, and assessed performance optimization strategies for supporting independent team deployment models.",
+      description: "Large-scale architectural transformation from monolithic e-commerce platform to modular micro-frontend ecosystem",
+      longDescription: "Spearheaded the architectural transformation of Williams Sonoma's legacy monolithic e-commerce platform into a modern, scalable micro-frontend ecosystem. Designed and implemented reusable component architecture enabling independent team deployment cycles, significantly improving developer velocity and end-user experience through enhanced performance and maintainability.",
       technologies: ["Vue.js", "Node.js", "TailwindCSS", "SASS", "Jest", "Yeoman"],
       imageUrl: "/images/portfolio-4.jpg",
       startDate: "2020-10",
@@ -151,8 +152,8 @@ export const portfolioData: PortfolioData = {
     {
       id: "project-4a",
       title: "Context-Agnostic Component Library",
-      description: "Systems analysis for multi-brand component system requirements and architecture supporting Williams Sonoma's portfolio brands",
-      longDescription: "Evaluated component library requirements for Williams Sonoma's multi-brand portfolio (Pottery Barn, West Elm, Mark and Graham). Analyzed theming and customization needs across brands, documented architectural specifications for scalable component reuse, and assessed maintainability requirements.",
+      description: "Multi-brand component system serving Williams Sonoma's portfolio with configurable behaviors and CSS variable theming",
+      longDescription: "Architected a context-agnostic component library serving Williams Sonoma's brand portfolio (Pottery Barn, West Elm, Mark and Graham). Components adapt to each brand's design language through CSS variables while maintaining consistent functionality. Implemented configurable behaviors allowing customization of component orientation, initial states, and interaction patterns while preserving accessibility and performance standards.",
       technologies: ["Vue.js", "JavaScript", "SASS", "CSS Variables", "Storybook", "Jest"],
       imageUrl: "/images/portfolio-10.jpg",
       startDate: "2020-12",
@@ -162,8 +163,8 @@ export const portfolioData: PortfolioData = {
     {
       id: "project-5",
       title: "High-Performance E-commerce Platform",
-      description: "Systems analysis and performance evaluation for scalable e-commerce platform serving millions of users with advanced integration requirements",
-      longDescription: "Evaluated performance and scalability requirements for Macy's enterprise e-commerce platform serving millions of users. Analyzed system architecture and integration approaches, documented optimization opportunities, and assessed analytics infrastructure requirements.",
+      description: "Scalable micro-frontend architecture with advanced performance optimization for enterprise e-commerce",
+      longDescription: "Architected and implemented a componentized, loosely coupled, isomorphic micro-frontend platform for Macy's e-commerce operations. Delivered comprehensive performance optimization across REST services and Node.js applications on Google Cloud Platform. Integrated enterprise analytics solutions including Adobe Analytics, Google Analytics, and Tealium for comprehensive customer insights.",
       technologies: ["React", "Redux", "GraphQL", "Node.js", "Webpack", "Foundation"],
       imageUrl: "/images/portfolio-5.jpg",
       startDate: "2015-02",
@@ -222,74 +223,101 @@ export const portfolioData: PortfolioData = {
     {
       id: "exp-1",
       company: "Apple Inc.",
-      position: "Senior Computer Systems Analyst",
-      startDate: "2024-08",
-      description: "Analyzing enterprise-level system architectures and optimizing embedded software engineering workflows and mission-critical hardware testing processes through comprehensive systems evaluation and documentation",
+      position: "Senior Full Stack Engineer (Contract)",
+      startDate: "2026-03",
+      description: "Rejoined Apple by request to own and deliver confidential internal tooling that streamlines hardware engineer workflows for retrieving large-scale factory test datasets.",
       achievements: [
-        "Analyzed complex organizational workflows and system requirements to optimize embedded software engineering processes and hardware testing infrastructure",
-        "Evaluated business and technical requirements in collaboration with cross-functional teams to design scalable system architectures for high-volume test data processing",
-        "Documented technical specifications and system interfaces for backend services to support automated data analysis and performance monitoring requirements"
+        "Rejoined the team by request and rebuilt the core web experience from a blank slate using Next.js, integrated with existing Python/Flask services",
+        "Implemented OIDC authentication and productionized delivery workflows within Apple infrastructure, including Kubernetes and Rio CI",
+        "Used AI-assisted development workflows daily (Claude and Copilot) to accelerate prototyping, debugging, and documentation while maintaining production code quality through review and testing",
+        "Replaced error-prone legacy configuration with guided parameter selection that surfaces only valid options from thousands of values",
+        "Implemented S3-polled progress telemetry and an in-app media browser for images, text, and CSV files during long-running fetches",
+        "Scaled workflows to handle 1-4 TB datasets typically, with peak pipeline sizes around 20 TB",
+        "Drove adoption across approximately 30 hardware engineers and reduced reliance on Box.com folder navigation and ad-hoc parsing scripts",
+        "Improved productivity by an estimated one hour per engineer per day, equivalent to roughly 30 engineer-hours saved daily"
       ],
-      technologies: ["TypeScript", "Next.js", "React", "Python", "Docker", "Kubernetes"]
+      technologies: ["TypeScript", "Next.js", "React", "Python", "Flask", "OIDC", "S3", "Kubernetes", "Rio CI"]
     },
     {
       id: "exp-2",
+      company: "Apple Inc.",
+      position: "Senior Full Stack Engineer (Contract)",
+      startDate: "2024-09-01",
+      endDate: "2025-08-31",
+      description: "Delivered the first version of confidential internal tooling for hardware test data retrieval, establishing the workflow foundation for later platform expansion.",
+      achievements: [
+        "Built the initial internal web application to simplify hardware engineer access to test results from factory stations in China",
+        "Partnered directly with hardware engineering stakeholders to translate operational pain points into a streamlined retrieval workflow",
+        "Established early UI and API integration patterns that reduced parameter mistakes and improved first-pass fetch success",
+        "Ramped on Apple platform practices and delivery workflows to support secure, production-ready releases"
+      ],
+      technologies: ["TypeScript", "Next.js", "React", "Python", "Flask", "OIDC", "Kubernetes", "Rio CI"]
+    },
+    {
+      id: "exp-3",
       company: "Healthcare Technology Startup",
-      position: "Senior Computer Systems Analyst",
+      position: "Senior Full Stack Developer",
       startDate: "2023-07",
       endDate: "2024-05",
-      description: "Performed comprehensive feasibility studies and systems analysis for AI-powered healthcare platform to optimize operational workflows and reduce infrastructure costs through detailed requirement analysis and system evaluation",
+      description: "Led development of AI-powered healthcare platform designed to reduce operational costs and deliver measurable value to enterprise customers",
       achievements: [
-        "Conducted feasibility studies and comprehensive systems analysis to evaluate organizational requirements for AI-powered healthcare platform optimization and cost reduction",
-        "Analyzed and documented system-wide requirements for customer subscription management infrastructure, evaluating technical approaches and integration points",
-        "Evaluated security and data integrity requirements, documenting enterprise-grade authentication system specifications across distributed application ecosystem"
+        "Architected and delivered customer subscription management dashboard from concept to production",
+        "Developed Chrome extension enabling seamless website augmentation through intelligent script injection",
+        "Implemented enterprise-grade Auth0 authentication and authorization across distributed application ecosystem",
+        "Established standardized Azure deployment pipelines ensuring consistent application hosting procedures",
+        "Created comprehensive Tailwind component library enabling consistent brand experience across platforms"
       ],
       technologies: ["TypeScript", "Next.js", "NestJS", "Python", "Azure", "Auth0"]
     },
     {
-      id: "exp-3",
+      id: "exp-4",
       company: "Google Inc.",
-      position: "Senior Computer Systems Analyst",
+      position: "Senior UI Developer",
       startDate: "2022-02",
       endDate: "2023-10",
-      description: "Conducted comprehensive systems analysis and evaluation for silicon chip design collaboration platforms utilized by over 20 global engineering teams, focusing on architectural requirements and workflow optimization",
+      description: "Designed and developed innovative collaboration platform for silicon chip design specifications across 20+ engineering teams",
       achievements: [
-        "Conducted detailed systems analysis to evaluate collaboration workflow requirements for silicon chip design specifications across 20+ global engineering teams",
-        "Analyzed business and technical requirements, creating technical specifications and wireframes for Fuse Manager application to ensure architectural alignment with design requirements",
-        "Evaluated system-wide performance requirements and architectural trade-offs, providing recommendations for critical design decisions and standards adherence"
+        "Created comprehensive proof-of-concepts and technical wireframes for Fuse Manager application",
+        "Delivered production-ready features using Angular, RxJS, and Google's internal development ecosystem",
+        "Conducted thorough code reviews ensuring high-quality standards across frontend development team",
+        "Provided technical leadership for architectural decisions in chip design collaboration platform"
       ],
       technologies: ["Angular", "TypeScript", "Python", "RxJS"]
     },
     {
-      id: "exp-4",
+      id: "exp-5",
       company: "Williams Sonoma",
-      position: "Senior Computer Systems Analyst",
+      position: "Senior UI Developer",
       startDate: "2020-10",
       endDate: "2021-12",
-      description: "Led comprehensive systems analysis and evaluation of legacy e-commerce platform to identify optimization opportunities and system modernization requirements for scalability and performance improvement",
+      description: "Led architectural transformation of legacy monolithic e-commerce platform to modern micro-frontend ecosystem",
       achievements: [
-        "Conducted systems analysis and evaluation of legacy monolithic e-commerce platform to identify architectural inefficiencies and modernization requirements",
-        "Analyzed system requirements for component-based architecture and CI/CD pipeline integration, documenting technical specifications to ensure high system availability",
-        "Evaluated migration strategies and assessed performance impact of system modernization, providing recommendations for platform transformation"
+        "Delivered significant performance improvements enhancing end-user experience across all customer touchpoints",
+        "Streamlined developer experience and accelerated feature delivery lifecycle through modern tooling",
+        "Architected and implemented micro-frontend component build system with structured CI/CD pipeline",
+        "Successfully migrated complex legacy monolithic architecture to scalable, maintainable modern platform"
       ],
       technologies: ["Vue.js", "Node.js", "TailwindCSS", "SASS", "Jest"]
     },
     {
-      id: "exp-5",
+      id: "exp-6",
       company: "Macy's",
-      position: "Senior Computer Systems Analyst",
+      position: "Senior UI Developer",
       startDate: "2015-02",
       endDate: "2020-04",
-      description: "Analyzed enterprise-scale system requirements and designed scalable system architecture to serve millions of users, evaluating performance optimization opportunities and system integration needs",
+      description: "Architected enterprise-scale micro-frontend platform and led comprehensive performance optimization initiatives",
       achievements: [
-        "Analyzed system requirements and performance characteristics to design enterprise-scale platform architecture capable of serving millions of users",
-        "Evaluated server-side system performance requirements, analyzing REST service and application optimization opportunities within cloud-based infrastructure",
-        "Analyzed developer workflow requirements and documented system tooling specifications to standardize onboarding procedures and technical processes"
+        "Designed componentized, loosely coupled, scalable isomorphic micro-frontend architecture serving millions of users",
+        "Contributed to Java-based backend services and REST API development supporting enterprise e-commerce platform",
+        "Optimized REST services and Node.js applications on Google Cloud Platform achieving significant performance gains",
+        "Integrated comprehensive analytics ecosystem including Adobe Analytics, Google Analytics, and Tealium",
+        "Mentored development teams on advanced frontend and backend development practices",
+        "Created developer tooling and frameworks streamlining onboarding and accelerating feature development"
       ],
       technologies: ["React", "Redux", "GraphQL", "Node.js", "Java", "Webpack", "SASS"]
     },
     {
-      id: "exp-6",
+      id: "exp-7",
       company: "Kali Protectives",
       position: "Lead Full Stack Developer",
       startDate: "2016-01",
@@ -305,7 +333,7 @@ export const portfolioData: PortfolioData = {
       technologies: ["Node.js", "Express", "PostgreSQL", "Handlebars", "TinyMCE"]
     },
     {
-      id: "exp-7",
+      id: "exp-8",
       company: "Autodesk",
       position: "UI Developer",
       startDate: "2014-09",
@@ -319,7 +347,7 @@ export const portfolioData: PortfolioData = {
       technologies: ["jQuery", "Backbone.js", "Require.js", "Bootstrap", "Node.js", "HTML5", "CSS3", "Jasmine", "Gulp", "Grunt", "LESS"]
     },
     {
-      id: "exp-8",
+      id: "exp-9",
       company: "Google Inc.",
       position: "Software Engineer",
       startDate: "2012-02",
@@ -335,7 +363,7 @@ export const portfolioData: PortfolioData = {
       technologies: ["Python", "JavaScript", "Google Closures", "Fava Framework", "Oracle DB", "BMC Remedy"]
     },
     {
-      id: "exp-9",
+      id: "exp-10",
       company: "Race Face Performance Products",
       position: "Web Developer",
       startDate: "2008-06",
@@ -351,7 +379,7 @@ export const portfolioData: PortfolioData = {
       technologies: ["PHP", "MySQL", "WordPress", "jQuery", "HTML", "CSS", "JavaScript"]
     },
     {
-      id: "exp-10",
+      id: "exp-11",
       company: "TIC / The Cooperators",
       position: "Web Developer",
       startDate: "2006-02",
@@ -366,7 +394,7 @@ export const portfolioData: PortfolioData = {
       technologies: ["PHP", "MySQL", "JavaScript", "SOAP", "XML", "HTML", "CSS"]
     },
     {
-      id: "exp-11",
+      id: "exp-18",
       company: "Hayes Bicycle Group",
       position: "Web Developer",
       startDate: "2009-01",
