@@ -64,7 +64,7 @@ export interface PortfolioData {
 export const portfolioData: PortfolioData = {
   personalInfo: {
     name: "Craig Pestell",
-    title: "Senior Software Engineer",
+    title: "Staff Software Engineer",
     email: "craigpestell@gmail.com",
     phone: "+1 (415) 513-7188",
     location: "Vancouver, BC, Canada",
@@ -72,7 +72,7 @@ export const portfolioData: PortfolioData = {
     github: "https://github.com/craigpestell",
     linkedin: "https://linkedin.com/in/craigpestell",
     profileImage: "/images/icons8-eggman-robotnik-480.png",
-    summary: "Senior Software Engineer with 15+ years of experience building enterprise applications for Apple, Google, Macy's, and Williams Sonoma. Proven in full-stack delivery, authentication and infrastructure integration, and turning complex data workflows into simple, reliable internal products."
+    summary: "Staff Software Engineer with 15+ years of experience building enterprise applications for Apple, Google, Macy's, and Williams Sonoma. Owns full-stack delivery end-to-end, authentication and infrastructure integration, and complex data workflows turned into internal products that users voluntarily adopt."
   },
   skills: [
     { name: "React", level: 9, category: "frontend" },
@@ -90,6 +90,11 @@ export const portfolioData: PortfolioData = {
     { name: "MongoDB", level: 7, category: "backend" },
     { name: "Express.js", level: 9, category: "backend" },
     { name: "NestJS", level: 8, category: "backend" },
+    { name: "Flask", level: 7, category: "backend" },
+    { name: "GraphQL", level: 7, category: "backend" },
+    { name: "Redux", level: 8, category: "frontend" },
+    { name: "Storybook", level: 9, category: "tools" },
+    { name: "Playwright", level: 8, category: "tools" },
     { name: "Webpack", level: 8, category: "tools" },
     { name: "Git", level: 10, category: "tools" },
     { name: "Linux", level: 9, category: "tools" },
@@ -99,24 +104,21 @@ export const portfolioData: PortfolioData = {
     { name: "Docker", level: 8, category: "tools" },
     { name: "Kubernetes", level: 7, category: "tools" },
     { name: "AI-Assisted Development (Claude, Copilot)", level: 9, category: "tools" },
-    { name: "Auth0", level: 8, category: "tools" },
-    { name: "GraphQL", level: 7, category: "backend" },
-    { name: "Redux", level: 8, category: "frontend" }
+    { name: "Auth0", level: 8, category: "tools" }
   ],
   projects: [
     {
       id: "project-1",
-      title: "Enterprise Hardware Testing Platform",
-      description: "Systems analysis and requirements evaluation for mission-critical platform supporting embedded software engineering workflows and hardware test data processing",
-      longDescription: "Performed requirements analysis for Apple's embedded software engineering platform, evaluating testing workflows and data processing needs. Documented system performance requirements and scalability considerations to support hardware development teams across multiple product lines.",
-      technologies: ["TypeScript", "Next.js", "React", "Python"],
+      title: "Hardware Test Data Platform",
+      description: "End-to-end internal tooling for Apple hardware engineers — sole-architect frontend, substantive backend contributions, and Storybook-driven documentation pipeline",
+      longDescription: "Owned end-to-end delivery of confidential internal tooling for Apple's hardware engineering organization. Sole architect of the Next.js/React frontend with substantive contributions to the Flask API gateway and Kubernetes-scheduled sequencer service. Replaced legacy Box.com folder navigation and ad-hoc parsing scripts with a guided retrieval workflow that surfaces only valid parameter combinations from thousands of values, streams S3-polled progress telemetry, and provides an in-app browser for images, text, and CSV files. Voluntarily adopted by ~30 hardware engineers on 1-4 TB datasets (peaks near 20 TB). Includes a Storybook-driven documentation pipeline that keeps end-user docs in sync with the shipped UI.",
+      technologies: ["TypeScript", "Next.js", "React", "Tailwind", "Storybook", "Playwright", "Python", "Flask", "OIDC", "Kubernetes", "Rio CI"],
       imageUrl: "/images/portfolio-1.jpg",
       startDate: "2024-08",
-      endDate: "2025-09",
       featured: true
     },
     {
-      id: "project-2", 
+      id: "project-2",
       title: "AI-Powered Healthcare Platform",
       description: "Enterprise healthcare solution leveraging LLMs with integrated subscription management and Chrome extension",
       longDescription: "Architected and delivered a sophisticated healthcare platform leveraging AI large language models to reduce operational costs and deliver measurable value to enterprise customers. Developed comprehensive web dashboard for subscription management, Chrome extension for seamless website integration, and implemented enterprise-grade Auth0 authentication across all platform components.",
@@ -225,18 +227,18 @@ export const portfolioData: PortfolioData = {
       company: "Apple Inc.",
       position: "Senior Full Stack Engineer (Contract)",
       startDate: "2026-03",
-      description: "Rejoined Apple by request to own and deliver confidential internal tooling that streamlines hardware engineer workflows for retrieving large-scale factory test datasets.",
+      description: "Rejoined Apple by request to own end-to-end delivery of confidential internal tooling that consolidates hardware engineer workflows for retrieving and processing large-scale factory test datasets.",
       achievements: [
-        "Rejoined the team by request and rebuilt the core web experience from a blank slate using Next.js, integrated with existing Python/Flask services",
-        "Implemented OIDC authentication and productionized delivery workflows within Apple infrastructure, including Kubernetes and Rio CI",
-        "Used AI-assisted development workflows daily (Claude and Copilot) to accelerate prototyping, debugging, and documentation while maintaining production code quality through review and testing",
-        "Replaced error-prone legacy configuration with guided parameter selection that surfaces only valid options from thousands of values",
-        "Implemented S3-polled progress telemetry and an in-app media browser for images, text, and CSV files during long-running fetches",
-        "Scaled workflows to handle 1-4 TB datasets typically, with peak pipeline sizes around 20 TB",
-        "Drove adoption across approximately 30 hardware engineers and reduced reliance on Box.com folder navigation and ad-hoc parsing scripts",
-        "Improved productivity by an estimated one hour per engineer per day, equivalent to roughly 30 engineer-hours saved daily"
+        "Drove voluntary adoption across ~30 hardware engineers, saving an estimated 30 engineer-hours per day — north of 6,000 hours annually — by replacing Box.com folder navigation and ad-hoc parsing scripts with a purpose-built retrieval workflow",
+        "Sole architect of the Next.js 15 / React 19 / TypeScript frontend, built from a blank repository and integrated with existing Python/Flask services",
+        "Replaced error-prone legacy configuration with a guided parameter selection UI that surfaces only valid options from thousands of values, dramatically improving first-pass fetch success",
+        "Implemented S3-polled progress telemetry and an in-app media browser for images, text, and CSV files during long-running fetches over datasets typically 1-4 TB, peaking near 20 TB",
+        "Extended the Flask API gateway and the Kubernetes-scheduled sequencer service that advances pipelines through a multi-step lifecycle and dispatches work to a distributed task executor",
+        "Wired OIDC authentication end-to-end with per-request identity propagation into backend services; delivered via Kubernetes and Rio CI",
+        "Built a Storybook-driven documentation pipeline that regenerates every screenshot in the docs site from tagged component stories via Playwright, eliminating drift between shipped UI and end-user documentation",
+        "Established the visual, dark/light-theme, and interaction quality standard for the app — received unsolicited UX-quality feedback from hardware engineering users, unusual for internal tooling"
       ],
-      technologies: ["TypeScript", "Next.js", "React", "Python", "Flask", "OIDC", "S3", "Kubernetes", "Rio CI"]
+      technologies: ["TypeScript", "Next.js", "React", "Tailwind", "Storybook", "Playwright", "Python", "Flask", "OIDC", "S3", "Kubernetes", "Rio CI"]
     },
     {
       id: "exp-2",
@@ -249,7 +251,7 @@ export const portfolioData: PortfolioData = {
         "Built the initial internal web application to simplify hardware engineer access to test results from factory stations in China",
         "Partnered directly with hardware engineering stakeholders to translate operational pain points into a streamlined retrieval workflow",
         "Established early UI and API integration patterns that reduced parameter mistakes and improved first-pass fetch success",
-        "Ramped on Apple platform practices and delivery workflows to support secure, production-ready releases"
+        "Delivered production releases through Apple's Kubernetes and Rio CI workflows, establishing the deployment patterns the platform continues to use"
       ],
       technologies: ["TypeScript", "Next.js", "React", "Python", "Flask", "OIDC", "Kubernetes", "Rio CI"]
     },
@@ -515,7 +517,7 @@ export const portfolioData: PortfolioData = {
     },
     {
       id: "edu-2",
-      institution: "British Columbia Institute of Technology", 
+      institution: "British Columbia Institute of Technology",
       degree: "Certificate in Programming",
       field: "Programming Concepts and Methodologies",
       startDate: "1999-01",
