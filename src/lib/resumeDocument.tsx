@@ -99,7 +99,7 @@ function ExperienceSection({ items }: { items: Experience[] }) {
     <View style={styles.section}>
       <Text style={styles.sectionTitle}>Professional Experience</Text>
       {items.map((exp) => (
-        <View key={exp.id} style={styles.item}>
+        <View key={exp.id} style={styles.item} wrap={false}>
           <Text style={styles.itemTitle}>{exp.position}</Text>
           <Text style={styles.itemSubtitle}>{exp.company}</Text>
           <Text style={styles.dates}>
