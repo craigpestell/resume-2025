@@ -72,7 +72,7 @@ export const portfolioData: PortfolioData = {
     github: "https://github.com/craigpestell",
     linkedin: "https://linkedin.com/in/craigpestell",
     profileImage: "/images/icons8-eggman-robotnik-480.png",
-    summary: "Staff software engineer building internal tools that become the default workflow for the people who rely on them. I’ve shipped production systems for Apple, Google, and major consumer brands, including an Apple workflow used by 60+ users across hardware engineering and factory-floor operations to process 1–4 TB datasets with peaks near 20 TB."
+    summary: "Staff software engineer building internal tools that become the default workflow for the people who rely on them. I’ve shipped production systems for Apple, Google, and major consumer brands, including an Apple workflow accessed by 60+ production users across hardware engineering and factory-floor operations to process 1–4 TB datasets with peaks near 20 TB."
   },
   skills: [
     { name: "React", level: 9, category: "frontend" },
@@ -110,8 +110,8 @@ export const portfolioData: PortfolioData = {
     {
       id: "project-1",
       title: "Hardware Test Data Platform",
-      description: "Production internal tool for Apple hardware engineering — built end-to-end from a blank repo and adopted by 60+ users across Cupertino and factory operations",
-      longDescription: "Owned end-to-end delivery of confidential internal tooling for Apple's hardware engineering organization. Sole architect of the Next.js/React frontend with substantive contributions to the Flask API gateway and Kubernetes-scheduled sequencer service. Replaced legacy Box.com folder navigation and ad-hoc parsing scripts with a guided retrieval workflow that surfaces only valid parameter combinations from thousands of values, streams S3-polled progress telemetry, and provides an in-app browser for images, text, and CSV files. Adoption was organic and viral: the workflow became the default path for 60+ users across Apple hardware engineering and factory-floor operations, processing 1–4 TB datasets with peaks near 20 TB. Includes a Storybook-driven documentation pipeline that keeps end-user docs in sync with the shipped UI.",
+      description: "Production internal tool for Apple hardware engineering — reduced pipeline setup from up to an hour to 30 seconds for simple cases and a few minutes for complex ones",
+      longDescription: "Owned end-to-end delivery of confidential internal tooling for Apple's hardware engineering organization. Sole architect of the Next.js/React frontend with substantive contributions to the Flask API gateway and Kubernetes-scheduled sequencer service. Replaced error-prone parameter entry and deep Box.com folder navigation with a guided retrieval workflow that validates real parameter combinations and makes pipeline setup take about 30 seconds for simple cases and a few minutes for complex ones. Added an in-app media browser with search so users can view images, CSV files, and text files without switching between external systems. Added pipeline observability for downloaded and pending days, excluded files, data volume, and total, passed, and failed tests. The workflow has been accessed by 60+ production users across Apple hardware engineering and factory-floor operations while processing 1–4 TB datasets with peaks near 20 TB. Includes a Storybook-driven documentation pipeline that keeps end-user docs in sync with the shipped UI.",
       technologies: ["TypeScript", "Next.js", "React", "Tailwind", "Storybook", "Playwright", "Python", "Flask", "OIDC", "Kubernetes", "Rio CI"],
       imageUrl: "/images/portfolio-1.jpg",
       startDate: "2024-08",
@@ -229,10 +229,11 @@ export const portfolioData: PortfolioData = {
       startDate: "2026-03",
       description: "Rejoined Apple by request to own end-to-end delivery of confidential internal tooling that consolidates hardware engineer workflows for retrieving and processing large-scale factory test datasets.",
       achievements: [
-        "Drove voluntary adoption across ~30 hardware engineers, saving an estimated 30 engineer-hours per day — north of 6,000 hours annually — by replacing Box.com folder navigation and ad-hoc parsing scripts with a purpose-built retrieval workflow",
+        "Drove production adoption by 60+ users across hardware engineering and factory operations by replacing deep Box.com folder navigation and ad-hoc parsing scripts with a purpose-built retrieval workflow",
         "Sole architect of the Next.js 15 / React 19 / TypeScript frontend, built from a blank repository and integrated with existing Python/Flask services",
-        "Replaced error-prone legacy configuration with a guided parameter selection UI that surfaces only valid options from thousands of values, dramatically improving first-pass fetch success",
-        "Implemented S3-polled progress telemetry and an in-app media browser for images, text, and CSV files during long-running fetches over datasets typically 1-4 TB, peaking near 20 TB",
+        "Reduced pipeline setup from up to an hour to about 30 seconds for simple cases and a few minutes for complex ones with guided parameter selection that surfaces only valid options from thousands of values",
+        "Implemented pipeline progress telemetry showing downloaded and pending days, excluded files, data volume, and total, passed, and failed tests across datasets typically 1-4 TB, peaking near 20 TB",
+        "Built an in-app searchable media browser for viewing images, text, and CSV files without requiring users to navigate external systems",
         "Extended the Flask API gateway and the Kubernetes-scheduled sequencer service that advances pipelines through a multi-step lifecycle and dispatches work to a distributed task executor",
         "Wired OIDC authentication end-to-end with per-request identity propagation into backend services; delivered via Kubernetes and Rio CI",
         "Built a Storybook-driven documentation pipeline that regenerates every screenshot in the docs site from tagged component stories via Playwright, eliminating drift between shipped UI and end-user documentation",
