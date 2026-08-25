@@ -72,7 +72,7 @@ export const portfolioData: PortfolioData = {
     github: "https://github.com/craigpestell",
     linkedin: "https://linkedin.com/in/craigpestell",
     profileImage: "/images/icons8-eggman-robotnik-480.png",
-    summary: "Staff software engineer building internal tools that users voluntarily adopt — from Next.js frontends and Flask APIs to Kubernetes workflows. I’ve shipped production systems for Apple, Google, and major consumer brands, including a tool used by ~30 hardware engineers on 1–4 TB datasets."
+    summary: "Staff software engineer building internal tools that become the default workflow for the people who rely on them. I’ve shipped production systems for Apple, Google, and major consumer brands, including an Apple workflow used by 60+ users across hardware engineering and factory-floor operations to process 1–4 TB datasets with peaks near 20 TB."
   },
   skills: [
     { name: "React", level: 9, category: "frontend" },
@@ -110,8 +110,8 @@ export const portfolioData: PortfolioData = {
     {
       id: "project-1",
       title: "Hardware Test Data Platform",
-      description: "End-to-end internal tooling for Apple hardware engineers — sole-architect frontend, substantive backend contributions, and Storybook-driven documentation pipeline",
-      longDescription: "Owned end-to-end delivery of confidential internal tooling for Apple's hardware engineering organization. Sole architect of the Next.js/React frontend with substantive contributions to the Flask API gateway and Kubernetes-scheduled sequencer service. Replaced legacy Box.com folder navigation and ad-hoc parsing scripts with a guided retrieval workflow that surfaces only valid parameter combinations from thousands of values, streams S3-polled progress telemetry, and provides an in-app browser for images, text, and CSV files. Voluntarily adopted by ~30 hardware engineers on 1-4 TB datasets (peaks near 20 TB). Includes a Storybook-driven documentation pipeline that keeps end-user docs in sync with the shipped UI.",
+      description: "Production internal tool for Apple hardware engineering — built end-to-end from a blank repo and adopted by 60+ users across Cupertino and factory operations",
+      longDescription: "Owned end-to-end delivery of confidential internal tooling for Apple's hardware engineering organization. Sole architect of the Next.js/React frontend with substantive contributions to the Flask API gateway and Kubernetes-scheduled sequencer service. Replaced legacy Box.com folder navigation and ad-hoc parsing scripts with a guided retrieval workflow that surfaces only valid parameter combinations from thousands of values, streams S3-polled progress telemetry, and provides an in-app browser for images, text, and CSV files. Adoption was organic and viral: the workflow became the default path for 60+ users across Apple hardware engineering and factory-floor operations, processing 1–4 TB datasets with peaks near 20 TB. Includes a Storybook-driven documentation pipeline that keeps end-user docs in sync with the shipped UI.",
       technologies: ["TypeScript", "Next.js", "React", "Tailwind", "Storybook", "Playwright", "Python", "Flask", "OIDC", "Kubernetes", "Rio CI"],
       imageUrl: "/images/portfolio-1.jpg",
       startDate: "2024-08",

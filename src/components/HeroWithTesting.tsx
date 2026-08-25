@@ -87,7 +87,7 @@ export default function Hero({ personalInfo }: HeroProps) {
               {personalInfo.name}
             </h1>
             <h2 className="text-2xl md:text-3xl text-muted-foreground font-light">
-              {personalInfo.title}
+              Staff engineer building tools users adopt by default
             </h2>
           </div>
 
