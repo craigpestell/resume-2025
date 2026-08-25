@@ -25,7 +25,7 @@ export default function Header() {
       setIsScrolled(window.scrollY > 50);
       
       // Find the current active section
-      const sections = ['about', 'skills', 'projects', 'experience', 'contact'];
+      const sections = ['about', 'projects', 'experience', 'contact'];
       const currentSection = sections.find(section => {
         const element = document.querySelector(`#${section}`);
         if (element) {
@@ -46,7 +46,6 @@ export default function Header() {
 
   const navLinks = [
     { href: '#about', label: 'About' },
-    { href: '#skills', label: 'Skills' },
     { href: '#projects', label: 'Projects' },
     { href: '#experience', label: 'Experience' },
     { href: '#contact', label: 'Contact' },
