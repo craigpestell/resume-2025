@@ -86,14 +86,6 @@ function formatDate(dateString: string) {
   return formatted.replace(/^Sep\b/, 'Sept');
 }
 
-function chunk<T>(items: T[], size: number) {
-  const chunks: T[][] = [];
-  for (let index = 0; index < items.length; index += size) {
-    chunks.push(items.slice(index, index + size));
-  }
-  return chunks;
-}
-
 function ExperienceSection({ items }: { items: Experience[] }) {
   return (
     <View style={styles.section}>
@@ -121,10 +113,6 @@ function ExperienceSection({ items }: { items: Experience[] }) {
 }
 
 export function ResumeDocument({ data }: { data: PortfolioData }) {
-  const experienceChunks = chunk(data.experience, 4);
-  const firstExperienceChunk = experienceChunks[0] ?? [];
-  const remainingExperienceChunks = experienceChunks.slice(1);
-
   return (
     <Document>
       <Page size="A4" style={styles.page}>
@@ -141,16 +129,8 @@ export function ResumeDocument({ data }: { data: PortfolioData }) {
           <Text style={styles.bodyText}>{data.personalInfo.summary}</Text>
         </View>
 
-        <ExperienceSection items={firstExperienceChunk} />
-      </Page>
+        <ExperienceSection items={data.experience} />
 
-      {remainingExperienceChunks.map((items, index) => (
-        <Page key={`experience-page-${index + 2}`} size="A4" style={styles.page}>
-          <ExperienceSection items={items} />
-        </Page>
-      ))}
-
-      <Page size="A4" style={styles.page}>
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Technical Skills</Text>
           <Text style={styles.bodyText}>{data.skills.map((skill) => skill.name).join(', ')}</Text>
@@ -161,7 +141,7 @@ export function ResumeDocument({ data }: { data: PortfolioData }) {
           {data.projects
             .filter((project) => project.featured)
             .map((project) => (
-              <View key={project.id} style={styles.item}>
+              <View key={project.id} style={styles.item} wrap={false}>
                 <Text style={styles.itemTitle}>{project.title}</Text>
                 <Text style={styles.bodyText}>{project.description}</Text>
                 <Text style={styles.meta}>Technologies: {project.technologies.join(', ')}</Text>
@@ -172,7 +152,7 @@ export function ResumeDocument({ data }: { data: PortfolioData }) {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Education</Text>
           {data.education.map((edu) => (
-            <View key={edu.id} style={styles.item}>
+            <View key={edu.id} style={styles.item} wrap={false}>
               <Text style={styles.itemTitle}>
                 {edu.degree} in {edu.field}
               </Text>

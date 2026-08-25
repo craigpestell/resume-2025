@@ -38,7 +38,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-muted-foreground text-center md:text-left">
-              © 2025 {portfolioData.personalInfo.name}. Built with Next.js and TailwindCSS.
+              © 2026 {portfolioData.personalInfo.name}. Built with Next.js and TailwindCSS.
             </p>
             <LazyFooterControls />
           </div>

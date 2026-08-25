@@ -72,7 +72,7 @@ export const portfolioData: PortfolioData = {
     github: "https://github.com/craigpestell",
     linkedin: "https://linkedin.com/in/craigpestell",
     profileImage: "/images/icons8-eggman-robotnik-480.png",
-    summary: "Staff Software Engineer with 15+ years of experience building enterprise applications for Apple, Google, Macy's, and Williams Sonoma. Owns full-stack delivery end-to-end, authentication and infrastructure integration, and complex data workflows turned into internal products that users voluntarily adopt."
+    summary: "Staff software engineer building internal tools that users voluntarily adopt — from Next.js frontends and Flask APIs to Kubernetes workflows. I’ve shipped production systems for Apple, Google, and major consumer brands, including a tool used by ~30 hardware engineers on 1–4 TB datasets."
   },
   skills: [
     { name: "React", level: 9, category: "frontend" },
@@ -257,11 +257,11 @@ export const portfolioData: PortfolioData = {
     },
     {
       id: "exp-3",
-      company: "Healthcare Technology Startup",
+      company: "Series B Healthcare AI Startup",
       position: "Senior Full Stack Developer",
       startDate: "2023-07",
       endDate: "2024-05",
-      description: "Led development of AI-powered healthcare platform designed to reduce operational costs and deliver measurable value to enterprise customers",
+      description: "Led product and platform work for a Series B healthcare AI startup, building customer-facing and internal tools that reduced operational friction and supported enterprise rollout.",
       achievements: [
         "Architected and delivered customer subscription management dashboard from concept to production",
         "Developed Chrome extension enabling seamless website augmentation through intelligent script injection",

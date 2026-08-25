@@ -92,9 +92,14 @@ export default function Hero({ personalInfo }: HeroProps) {
           </div>
 
           {/* Summary */}
-          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-muted-foreground mb-6 max-w-3xl mx-auto leading-relaxed">
             {personalInfo.summary}
           </p>
+
+          <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-sm font-medium text-foreground shadow-sm">
+            <span className="h-2.5 w-2.5 rounded-full bg-emerald-500" aria-hidden="true" />
+            Available for staff/principal IC roles or long-term contract work. Based in Vancouver; open to California and remote opportunities.
+          </div>
 
           {/* Social Links */}
           <div className="flex justify-center space-x-6 mb-8">
