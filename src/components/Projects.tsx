@@ -1,6 +1,6 @@
 'use client';
 
-import { Github, Calendar } from 'lucide-react';
+import { Github, Calendar, ExternalLink } from 'lucide-react';
 import Image from 'next/image';
 import { Project } from '@/data/portfolio';
 import MotionWrapper from './MotionWrapper';
@@ -134,7 +134,7 @@ export default function Projects({ projects }: ProjectsProps) {
           </div>
         )}
 
-        {/* Other Projects */}
+        {/* Earlier work */}
         {otherProjects.length > 0 && (
           <div>
             <MotionWrapper
@@ -142,20 +142,65 @@ export default function Projects({ projects }: ProjectsProps) {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
-              className="text-2xl font-semibold text-center mb-12 text-foreground"
+              className="text-2xl font-semibold text-center mb-8 text-foreground"
               as="h3"
             >
-              Other Projects
+              Earlier Work
             </MotionWrapper>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+
+            <div className="max-w-4xl mx-auto divide-y divide-border border-y border-border">
               {otherProjects.map((project, index) => (
-                <ProjectCard
+                <MotionWrapper
                   key={project.id}
-                  project={project}
-                  index={index + featuredProjects.length}
-                  featured={false}
-                />
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                  viewport={{ once: true }}
+                  className="flex flex-col gap-3 py-5 md:flex-row md:items-start md:justify-between"
+                >
+                  <div className="min-w-0">
+                    <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                      <h4 className="text-lg font-semibold text-foreground">
+                        {project.title}
+                      </h4>
+                      <span className="text-sm text-muted-foreground">
+                        {formatDate(project.startDate)}{project.endDate ? ` - ${formatDate(project.endDate)}` : ''}
+                      </span>
+                    </div>
+                    <p className="mt-1 text-muted-foreground">
+                      {project.description}
+                    </p>
+                    <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-xs text-muted-foreground">
+                      {project.technologies.map((technology) => (
+                        <span key={technology}>{technology}</span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="flex shrink-0 items-center gap-3">
+                    {project.projectUrl && (
+                      <a
+                        href={project.projectUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-sm text-primary transition-colors"
+                      >
+                        <ExternalLink className="h-4 w-4" />
+                        <span>Visit</span>
+                      </a>
+                    )}
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-sm text-primary transition-colors"
+                      >
+                        <Github className="h-4 w-4" />
+                        <span>Source</span>
+                      </a>
+                    )}
+                  </div>
+                </MotionWrapper>
               ))}
             </div>
           </div>
