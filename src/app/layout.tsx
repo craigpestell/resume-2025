@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/react';
 import { ThemeProvider } from '@/components/ThemeProvider';
-import DynamicFontLoader from '@/components/DynamicFontLoader';
 import { portfolioData } from '@/data/portfolio';
 import { defaultFont } from '@/lib/fontLoader';
 import "./globals.css";
@@ -99,7 +98,6 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <ThemeProvider>
-          <DynamicFontLoader />
           {children}
           <SpeedInsights />
           <Analytics />

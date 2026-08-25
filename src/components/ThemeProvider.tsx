@@ -32,16 +32,12 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   const [isHydrated, setIsHydrated] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [selectedTheme, setSelectedTheme] = useState('nord');
-  const [selectedFont, setSelectedFont] = useState('inconsolata');
+  const [selectedFont] = useState('inter');
   const [selectedSpacing, setSelectedSpacing] = useState('normal');
 
   useEffect(() => {
     // Load saved preferences only after hydration
     const savedDarkMode = localStorage.getItem('selected-dark-mode');
-    const savedTheme = localStorage.getItem('selected-theme') || 'nord';
-    const savedFont = localStorage.getItem('selected-font') || 'inconsolata';
-    const savedSpacing = localStorage.getItem('selected-letter-spacing') || 'normal';
-
     // Set dark mode preference
     if (savedDarkMode !== null) {
       setIsDarkMode(savedDarkMode === 'true');
@@ -51,15 +47,14 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
       setIsDarkMode(systemPrefersDark);
     }
 
-    setSelectedTheme(savedTheme);
-    setSelectedFont(savedFont);
-    setSelectedSpacing(savedSpacing);
+    setSelectedTheme('nord');
+    setSelectedSpacing('normal');
 
     // Apply initial settings
     const darkModeToApply = savedDarkMode !== null ? savedDarkMode === 'true' : window.matchMedia('(prefers-color-scheme: dark)').matches;
-    applyTheme(savedTheme, darkModeToApply);
-    applyFont(savedFont);
-    applySpacing(savedSpacing);
+    applyTheme('nord', darkModeToApply);
+    applyFont('inter');
+    applySpacing('normal');
 
     setIsHydrated(true);
   }, []);
@@ -137,22 +132,18 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     applyTheme(selectedTheme, darkMode);
   };
 
-  const setTheme = (theme: string) => {
-    setSelectedTheme(theme);
-    localStorage.setItem('selected-theme', theme);
-    applyTheme(theme, isDarkMode);
+  const setTheme = () => {
+    setSelectedTheme('nord');
+    localStorage.setItem('selected-theme', 'nord');
+    applyTheme('nord', isDarkMode);
   };
 
-  const setFont = (font: string) => {
-    setSelectedFont(font);
-    localStorage.setItem('selected-font', font);
-    applyFont(font);
+  const setFont = () => {
+    applyFont('inter');
   };
 
-  const setSpacing = (spacing: string) => {
-    setSelectedSpacing(spacing);
-    localStorage.setItem('selected-letter-spacing', spacing);
-    applySpacing(spacing);
+  const setSpacing = () => {
+    applySpacing('normal');
   };
 
   return (

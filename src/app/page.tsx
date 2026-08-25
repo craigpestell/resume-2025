@@ -3,7 +3,6 @@ import Header from '@/components/Header';
 import Hero from '@/components/HeroWithTesting';
 import StructuredData from '@/components/StructuredData';
 import Skills from '@/components/Skills';
-import LazyFooterControls from '@/components/LazyFooterControls';
 import { portfolioData } from '@/data/portfolio';
 
 const Projects = dynamic(() => import('@/components/Projects'));
@@ -36,11 +35,10 @@ export default function Home() {
       {/* Footer */}
       <footer className="bg-card text-card-foreground py-8">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+          <div className="flex justify-center">
             <p className="text-muted-foreground text-center md:text-left">
               © 2026 {portfolioData.personalInfo.name}. Built with Next.js and TailwindCSS.
             </p>
-            <LazyFooterControls />
           </div>
         </div>
       </footer>

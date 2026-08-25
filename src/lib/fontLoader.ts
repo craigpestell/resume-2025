@@ -1,13 +1,13 @@
-import { Inconsolata } from 'next/font/google';
+import { Inter } from 'next/font/google';
 
-// Default font (always loaded) - Inconsolata
-export const defaultFont = Inconsolata({
+// Default font (always loaded) - Inter
+export const defaultFont = Inter({
   subsets: ['latin'],
-  variable: '--font-inconsolata',
+  variable: '--font-inter',
 });
 
 // Default font key
-export const DEFAULT_FONT = 'inconsolata';
+export const DEFAULT_FONT = 'inter';
 
 // Get all font names for the selector
 export const fontOptions = [
