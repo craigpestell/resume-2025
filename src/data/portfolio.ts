@@ -72,7 +72,7 @@ export const portfolioData: PortfolioData = {
     github: "https://github.com/craigpestell",
     linkedin: "https://linkedin.com/in/craigpestell",
     profileImage: "/images/icons8-eggman-robotnik-480.png",
-    summary: "Staff software engineer building internal tools that become the default workflow for the people who rely on them. I’ve shipped production systems for Apple, Google, and major consumer brands, including an Apple workflow accessed by 60+ production users across hardware engineering and factory-floor operations to process 1–4 TB datasets with peaks near 20 TB."
+    summary: "Staff software engineer building products that become the default workflow for the people who rely on them. I’ve shipped production systems for Apple, Google, and major consumer brands, including an Apple workflow accessed by 60+ production users across hardware engineering and factory-floor operations to process 1–4 TB datasets with peaks near 20 TB."
   },
   skills: [
     { name: "React", level: 9, category: "frontend" },
