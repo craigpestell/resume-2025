@@ -1,6 +1,5 @@
 import { Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
 import type { Experience, PortfolioData } from '@/data/portfolio';
-import { formatPhoneForDisplay } from '@/lib/phoneUtils';
 
 const styles = StyleSheet.create({
   page: {
@@ -165,7 +164,6 @@ export function ResumeDocument({ data }: { data: PortfolioData }) {
           <Text style={styles.name}>{data.personalInfo.name}</Text>
           <Text style={styles.title}>{data.personalInfo.title}</Text>
           <Text style={styles.contactLine}>{data.personalInfo.email}</Text>
-          <Text style={styles.contactLine}>{formatPhoneForDisplay(data.personalInfo.phone)}</Text>
           <Text style={styles.contactLine}>{data.personalInfo.location}</Text>
         </View>
 
