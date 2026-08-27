@@ -284,7 +284,7 @@ export const portfolioData: PortfolioData = {
     {
       id: "exp-4",
       company: "Google Inc.",
-      position: "Senior UI Developer",
+      position: "Senior UI Developer (Contract)",
       startDate: "2022-02",
       endDate: "2023-10",
       description: "Designed and developed innovative collaboration platform for silicon chip design specifications across 20+ engineering teams",
@@ -346,7 +346,7 @@ export const portfolioData: PortfolioData = {
     {
       id: "exp-9",
       company: "Google Inc.",
-      position: "Software Engineer",
+      position: "Software Engineer (Contract)",
       startDate: "2012-02",
       endDate: "2014-09",
       description: "Developed and maintained Google Unified Ticketing System (GUTS), a high-performance internal application serving over 10,000 requests per second",
