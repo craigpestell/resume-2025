@@ -320,22 +320,6 @@ export const portfolioData: PortfolioData = {
       technologies: ["React", "Redux", "GraphQL", "Node.js", "Java", "Webpack", "SASS"]
     },
     {
-      id: "exp-7",
-      company: "Kali Protectives",
-      position: "Lead Full Stack Developer",
-      startDate: "2016-01",
-      endDate: "2019-10",
-      description: "Independently delivered comprehensive e-commerce platform and brand digital presence for sports equipment manufacturer",
-      achievements: [
-        "Collaborated with marketing team to establish compelling brand identity and comprehensive style guide",
-        "Architected and implemented robust Node.js REST API providing scalable data endpoints",
-        "Integrated Cloudinary for advanced image optimization delivering superior responsive web performance",
-        "Established complete DevOps infrastructure across development, staging, and production environments",
-        "Designed and delivered targeted HTML email marketing campaigns driving customer engagement"
-      ],
-      technologies: ["Node.js", "Express", "PostgreSQL", "Handlebars", "TinyMCE"]
-    },
-    {
       id: "exp-8",
       company: "Autodesk",
       position: "UI Developer",
