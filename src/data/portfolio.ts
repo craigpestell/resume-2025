@@ -40,6 +40,12 @@ export interface Experience {
   description: string;
   achievements: string[];
   technologies: string[];
+  resumeIncluded?: boolean;
+}
+
+export interface ResumeProfile {
+  earlierCareerSummary: string;
+  earlierCareerHighlights: string[];
 }
 
 export interface Education {
@@ -55,6 +61,7 @@ export interface Education {
 
 export interface PortfolioData {
   personalInfo: PersonalInfo;
+  resume: ResumeProfile;
   skills: Skill[];
   projects: Project[];
   experience: Experience[];
@@ -72,6 +79,13 @@ export const portfolioData: PortfolioData = {
     linkedin: "https://linkedin.com/in/craigpestell",
     profileImage: "/images/icons8-eggman-robotnik-480.png",
     summary: "Staff software engineer building products that become trusted parts of how people work. I’ve shipped production systems for Apple, Google, and major consumer brands, including an Apple workflow used by over 60 active production users today, across hardware engineering and factory-floor operations."
+  },
+  resume: {
+    earlierCareerSummary: "Earlier career included concurrent consulting and contract engagements across database applications, PHP web systems, public-sector software, e-commerce, CMS platforms, web services, and Linux administration.",
+    earlierCareerHighlights: [
+      "Built a call-center application and geographic branch locator for Canada Reconnect before online mapping services were commonplace, using Canadian postal-code coordinates and spherical distance calculations to rank nearby payment locations.",
+      "As the sole developer, built a PHP education administration and student information system for the Durham District School Board, including FileMaker Pro-style ad hoc search across any field and complex query construction."
+    ]
   },
   skills: [
     { name: "React", level: 9, category: "frontend" },
@@ -359,7 +373,8 @@ export const portfolioData: PortfolioData = {
         "Configured Linux server environments with proper security, user management, and FTP access controls",
         "Designed MySQL database architecture for efficient product and content management"
       ],
-      technologies: ["PHP", "MySQL", "WordPress", "jQuery", "HTML", "CSS", "JavaScript"]
+      technologies: ["PHP", "MySQL", "WordPress", "jQuery", "HTML", "CSS", "JavaScript"],
+      resumeIncluded: false
     },
     {
       id: "exp-11",
@@ -374,7 +389,8 @@ export const portfolioData: PortfolioData = {
         "Built public-facing websites serving thousands of customers seeking travel insurance policies",
         "Implemented web services and APIs enabling integration with third-party insurance systems"
       ],
-      technologies: ["PHP", "MySQL", "JavaScript", "SOAP", "XML", "HTML", "CSS"]
+      technologies: ["PHP", "MySQL", "JavaScript", "SOAP", "XML", "HTML", "CSS"],
+      resumeIncluded: false
     },
     {
       id: "exp-18",
@@ -389,7 +405,8 @@ export const portfolioData: PortfolioData = {
         "Optimized images and file formats for responsive web design using early optimization techniques",
         "Created Linux server environments for development, staging, and production hosting"
       ],
-      technologies: ["PHP", "MySQL", "WordPress", "HTML", "CSS", "JavaScript"]
+      technologies: ["PHP", "MySQL", "WordPress", "HTML", "CSS", "JavaScript"],
+      resumeIncluded: false
     },
     {
       id: "exp-12",
@@ -404,7 +421,8 @@ export const portfolioData: PortfolioData = {
         "Developed SOAP web services for integration with third-party environmental systems",
         "Created user interfaces for waste tracking and reporting functionality"
       ],
-      technologies: ["PHP", "XML", "HTML", "CSS", "JavaScript", "SOAP"]
+      technologies: ["PHP", "XML", "HTML", "CSS", "JavaScript", "SOAP"],
+      resumeIncluded: false
     },
     {
       id: "exp-13",
@@ -419,7 +437,8 @@ export const portfolioData: PortfolioData = {
         "Built multiple marketing campaign websites for diverse client portfolio",
         "Enabled agency to take on projects outside their core business scope through technical expertise"
       ],
-      technologies: ["PHP", "MySQL", "HTML", "CSS", "JavaScript", "Bootstrap"]
+      technologies: ["PHP", "MySQL", "HTML", "CSS", "JavaScript", "Bootstrap"],
+      resumeIncluded: false
     },
     {
       id: "exp-14",
@@ -434,7 +453,8 @@ export const portfolioData: PortfolioData = {
         "Designed and implemented global search feature to align with legacy FileMaker application functionality",
         "Built comprehensive student management system using modern web technologies for the era"
       ],
-      technologies: ["PHP", "MySQL", "HTML", "CSS", "JavaScript"]
+      technologies: ["PHP", "MySQL", "HTML", "CSS", "JavaScript"],
+      resumeIncluded: false
     },
     {
       id: "exp-15",
@@ -449,7 +469,8 @@ export const portfolioData: PortfolioData = {
         "Built Recreational Hockey League application for player statistics, metrics, and tournament management",
         "Developed Air India bombing trial document management system for legal proceedings"
       ],
-      technologies: ["PHP", "ColdFusion", "MySQL", "HTML", "CSS", "JavaScript"]
+      technologies: ["PHP", "ColdFusion", "MySQL", "HTML", "CSS", "JavaScript"],
+      resumeIncluded: false
     },
     {
       id: "exp-16",
@@ -464,7 +485,8 @@ export const portfolioData: PortfolioData = {
         "Designed reports providing metrics to guide TV commercial spending and targeting decisions",
         "Installed and administered local area network for call center operations"
       ],
-      technologies: ["MS Access", "VB Script"]
+      technologies: ["MS Access", "VB Script"],
+      resumeIncluded: false
     },
     {
       id: "exp-17",
@@ -479,7 +501,8 @@ export const portfolioData: PortfolioData = {
         "Gained early experience in enterprise software development and client relationship management",
         "Contributed to applications serving critical business operations for large organizations"
       ],
-      technologies: ["MS Access", "VB Script", "ColdFusion"]
+      technologies: ["MS Access", "VB Script", "ColdFusion"],
+      resumeIncluded: false
     }
   ],
   education: [

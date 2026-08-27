@@ -112,6 +112,20 @@ function ExperienceSection({ items }: { items: Experience[] }) {
   );
 }
 
+function EarlierCareerSection({ summary, highlights }: { summary: string; highlights: string[] }) {
+  return (
+    <View style={styles.section}>
+      <Text style={styles.sectionTitle}>Earlier Career</Text>
+      <Text style={styles.bodyText}>{summary}</Text>
+      {highlights.map((highlight, index) => (
+        <Text key={`earlier-career-${index}`} style={styles.bullet}>
+          • {highlight}
+        </Text>
+      ))}
+    </View>
+  );
+}
+
 export function ResumeDocument({ data }: { data: PortfolioData }) {
   return (
     <Document>
@@ -129,7 +143,11 @@ export function ResumeDocument({ data }: { data: PortfolioData }) {
           <Text style={styles.bodyText}>{data.personalInfo.summary}</Text>
         </View>
 
-        <ExperienceSection items={data.experience} />
+        <ExperienceSection items={data.experience.filter((experience) => experience.resumeIncluded !== false)} />
+        <EarlierCareerSection
+          summary={data.resume.earlierCareerSummary}
+          highlights={data.resume.earlierCareerHighlights}
+        />
 
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Technical Skills</Text>
