@@ -75,6 +75,9 @@ const styles = StyleSheet.create({
     marginTop: 3,
     fontStyle: 'italic',
   },
+  skillLabel: {
+    fontWeight: 'bold',
+  },
 });
 
 function formatDate(dateString: string) {
@@ -126,6 +129,34 @@ function EarlierCareerSection({ summary, highlights }: { summary: string; highli
   );
 }
 
+function SkillsSection({ skills }: { skills: PortfolioData['skills'] }) {
+  const categoryLabels: Record<string, string> = {
+    frontend: 'Frontend',
+    backend: 'Backend',
+    languages: 'Languages',
+    tools: 'Tools & Platforms',
+    other: 'Other',
+  };
+  const categoryOrder = ['frontend', 'backend', 'languages', 'tools', 'other'];
+
+  return (
+    <View style={styles.section}>
+      <Text style={styles.sectionTitle}>Technical Skills</Text>
+      {categoryOrder.map((category) => {
+        const categorySkills = skills.filter((skill) => skill.category === category);
+        if (categorySkills.length === 0) return null;
+
+        return (
+          <Text key={category} style={styles.bodyText}>
+            <Text style={styles.skillLabel}>{categoryLabels[category]}: </Text>
+            {categorySkills.map((skill) => skill.name).join(', ')}
+          </Text>
+        );
+      })}
+    </View>
+  );
+}
+
 export function ResumeDocument({ data }: { data: PortfolioData }) {
   return (
     <Document>
@@ -149,12 +180,9 @@ export function ResumeDocument({ data }: { data: PortfolioData }) {
           highlights={data.resume.earlierCareerHighlights}
         />
 
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Technical Skills</Text>
-          <Text style={styles.bodyText}>{data.skills.map((skill) => skill.name).join(', ')}</Text>
-        </View>
+        <SkillsSection skills={data.skills} />
 
-        <View style={styles.section}>
+        <View style={styles.section} wrap={false}>
           <Text style={styles.sectionTitle}>Key Projects</Text>
           {data.projects
             .filter((project) => project.featured)
@@ -172,7 +200,7 @@ export function ResumeDocument({ data }: { data: PortfolioData }) {
           {data.education.map((edu) => (
             <View key={edu.id} style={styles.item} wrap={false}>
               <Text style={styles.itemTitle}>
-                {edu.degree} in {edu.field}
+                {edu.field ? `${edu.degree} in ${edu.field}` : edu.degree}
               </Text>
               <Text style={styles.itemSubtitle}>{edu.institution}</Text>
               <Text style={styles.dates}>

@@ -522,8 +522,8 @@ export const portfolioData: PortfolioData = {
     {
       id: "edu-2",
       institution: "British Columbia Institute of Technology",
-      degree: "Certificate in Programming",
-      field: "Programming Concepts and Methodologies",
+      degree: "Programming Concepts and Methodologies",
+      field: "Programming coursework",
       startDate: "1999-01",
       endDate: "1999-12",
       achievements: [
