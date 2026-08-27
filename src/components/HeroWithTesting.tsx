@@ -1,6 +1,6 @@
 'use client';
 
-import { Github, Linkedin, Mail, ExternalLink, Download } from 'lucide-react';
+import { Linkedin, Mail, ExternalLink, Download } from 'lucide-react';
 import Image from 'next/image';
 import { PersonalInfo } from '@/data/portfolio';
 import { useEdgeABTest } from '@/hooks/useEdgeExperiment';
@@ -66,7 +66,7 @@ export default function Hero({ personalInfo }: HeroProps) {
               {personalInfo.profileImage ? (
                 <Image 
                   src={personalInfo.profileImage} 
-                  alt={`${personalInfo.name} - ${personalInfo.title} | Professional headshot of senior software engineer with experience at Apple, Google, and Williams Sonoma`}
+                  alt={`${personalInfo.name} - illustrated avatar`}
                   width={192}
                   height={192}
                   sizes="192px"
@@ -101,18 +101,23 @@ export default function Hero({ personalInfo }: HeroProps) {
             Available for staff/principal IC roles or long-term contract work. Based in Vancouver; open to California and remote opportunities.
           </div>
 
+          <div className="mb-8 grid gap-4 text-left sm:grid-cols-3 max-w-4xl mx-auto">
+            <div className="rounded-lg border border-border bg-card/70 p-4">
+              <h3 className="font-semibold text-foreground">Architecture ownership</h3>
+              <p className="mt-1 text-sm text-muted-foreground">Frontend, API, and platform decisions that hold together in production.</p>
+            </div>
+            <div className="rounded-lg border border-border bg-card/70 p-4">
+              <h3 className="font-semibold text-foreground">Ambiguous problems</h3>
+              <p className="mt-1 text-sm text-muted-foreground">Turning operational pain into durable workflows.</p>
+            </div>
+            <div className="rounded-lg border border-border bg-card/70 p-4">
+              <h3 className="font-semibold text-foreground">Engineering leverage</h3>
+              <p className="mt-1 text-sm text-muted-foreground">Reusable systems, tooling, documentation, and guidance for teams.</p>
+            </div>
+          </div>
+
           {/* Social Links */}
           <div className="flex justify-center space-x-6 mb-8">
-            <a
-              href={personalInfo.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 bg-card rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
-              aria-label={`Visit ${personalInfo.name}'s GitHub profile`}
-              onClick={() => trackConversion('social_click', { platform: 'github', variant: variantId })}
-            >
-              <Github className="w-6 h-6 text-card-foreground" />
-            </a>
             <a
               href={personalInfo.linkedin}
               target="_blank"

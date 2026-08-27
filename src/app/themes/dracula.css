@@ -67,7 +67,7 @@ html[data-theme="dracula"]:is(.dark *) {
   
   /* Muted colors */
   --muted: #44475a;
-  --muted-foreground: #6272a4;
+  --muted-foreground: #d8dee9;
   
   /* Border and input colors */
   --border: #6272a4;
@@ -84,7 +84,7 @@ html[data-theme="dracula"]:is(.dark *) {
   
   /* Destructive colors */
   --destructive: #ff5555;
-  --destructive-foreground: #ffffff;
+  --destructive-foreground: #282a36;
   
   /* Success colors */
   --success: #50fa7b;

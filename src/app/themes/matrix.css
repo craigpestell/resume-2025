@@ -67,7 +67,7 @@ html[data-theme="matrix"]:is(.dark *) {
   
   /* Muted colors */
   --muted: #001100;
-  --muted-foreground: #008800;
+  --muted-foreground: #00cc00;
   
   /* Border and input colors */
   --border: #003300;
@@ -84,7 +84,7 @@ html[data-theme="matrix"]:is(.dark *) {
   
   /* Destructive colors */
   --destructive: #ff0000;
-  --destructive-foreground: #ffffff;
+  --destructive-foreground: #000000;
   
   /* Success colors */
   --success: #00ff00;

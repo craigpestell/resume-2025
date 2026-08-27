@@ -5,7 +5,6 @@ export interface PersonalInfo {
   phone: string;
   location: string;
   website: string;
-  github: string;
   linkedin: string;
   profileImage?: string;
   summary: string;
@@ -22,6 +21,7 @@ export interface Project {
   title: string;
   description: string;
   longDescription: string;
+  highlights?: string[];
   technologies: string[];
   imageUrl: string;
   projectUrl?: string;
@@ -69,10 +69,9 @@ export const portfolioData: PortfolioData = {
     phone: "+1 (415) 513-7188",
     location: "Vancouver, BC, Canada",
     website: "https://craigpestell.com",
-    github: "https://github.com/craigpestell",
     linkedin: "https://linkedin.com/in/craigpestell",
     profileImage: "/images/icons8-eggman-robotnik-480.png",
-    summary: "Staff software engineer building products that become the default workflow for the people who rely on them. I’ve shipped production systems for Apple, Google, and major consumer brands, including an Apple workflow used by over 60 active production users today, across hardware engineering and factory-floor operations."
+    summary: "Staff software engineer building products that become trusted parts of how people work. I’ve shipped production systems for Apple, Google, and major consumer brands, including an Apple workflow used by over 60 active production users today, across hardware engineering and factory-floor operations."
   },
   skills: [
     { name: "React", level: 9, category: "frontend" },
@@ -111,7 +110,14 @@ export const portfolioData: PortfolioData = {
       id: "project-1",
       title: "Hardware Test Data Platform",
       description: "Production internal tool for Apple hardware engineering — reduced pipeline setup from up to an hour to 30 seconds for simple cases and a few minutes for complex ones",
-      longDescription: "Owned end-to-end delivery of confidential internal tooling for Apple's hardware engineering organization. Sole architect of the Next.js/React frontend with substantive contributions to the Flask API gateway and Kubernetes-scheduled sequencer service. Replaced error-prone parameter entry and deep Box.com folder navigation with a guided retrieval workflow that validates real parameter combinations and makes pipeline setup take about 30 seconds for simple cases and a few minutes for complex ones. Added an in-app media browser with search so users can view images, CSV files, and text files without switching between external systems. Added pipeline observability for downloaded and pending days, excluded files, data volume, and total, passed, and failed tests. The workflow has been accessed by 60+ production users across Apple hardware engineering and factory-floor operations while processing 1–4 TB datasets with peaks near 20 TB. Includes a Storybook-driven documentation pipeline that keeps end-user docs in sync with the shipped UI.",
+      longDescription: "Owned end-to-end delivery of confidential internal tooling for Apple's hardware engineering organization.",
+      highlights: [
+        "Sole architect of the Next.js and React frontend, with contributions to the Flask API gateway and Kubernetes-scheduled sequencer service",
+        "Replaced error-prone parameter entry and deep folder navigation with guided retrieval that reduced pipeline setup from up to an hour to about 30 seconds for simple cases",
+        "Added an in-app media browser and pipeline observability for data volume, downloaded and pending days, excluded files, and test outcomes",
+        "Used by over 60 production users across hardware engineering and factory-floor operations",
+        "Built a Storybook-driven documentation pipeline that keeps end-user documentation aligned with the shipped UI"
+      ],
       technologies: ["TypeScript", "Next.js", "React", "Tailwind", "Storybook", "Playwright", "Python", "Flask", "OIDC", "Kubernetes", "Rio CI"],
       imageUrl: "/images/portfolio-1.jpg",
       startDate: "2024-08",
@@ -164,10 +170,10 @@ export const portfolioData: PortfolioData = {
     },
     {
       id: "project-5",
-      title: "High-Performance E-commerce Platform",
-      description: "Scalable micro-frontend architecture with advanced performance optimization for enterprise e-commerce",
-      longDescription: "Architected and implemented a componentized, loosely coupled, isomorphic micro-frontend platform for Macy's e-commerce operations. Delivered comprehensive performance optimization across REST services and Node.js applications on Google Cloud Platform. Integrated enterprise analytics solutions including Adobe Analytics, Google Analytics, and Tealium for comprehensive customer insights.",
-      technologies: ["React", "Redux", "GraphQL", "Node.js", "Webpack", "Foundation"],
+      title: "Macys.com Micro-Frontend Migration",
+      description: "Co-architected the Macys.com micro-frontend architecture that enabled independent team releases and cut product discovery page load time from 27 seconds to 7 seconds",
+      longDescription: "Co-architected the Macys.com micro-frontend architecture with another engineer, guiding the migration from a monolithic frontend so teams could develop components independently and release on their own schedules. Improved the product discovery catalog page, which supported product thumbnails, search, and product groupings, from a 27-second load time to 7 seconds. Researched and applied Node.js clustering strategies in the cloud to improve application throughput and resilience under enterprise traffic. Integrated Adobe Analytics, Google Analytics, and Tealium for comprehensive customer insights.",
+      technologies: ["React", "Redux", "GraphQL", "Node.js", "Google Cloud", "Webpack", "Foundation"],
       imageUrl: "/images/portfolio-5.jpg",
       startDate: "2015-02",
       endDate: "2020-04",
@@ -226,9 +232,13 @@ export const portfolioData: PortfolioData = {
       id: "exp-1",
       company: "Apple Inc.",
       position: "Senior Full Stack Engineer (Contract)",
-      startDate: "2026-03",
-      description: "Rejoined Apple by request to own end-to-end delivery of confidential internal tooling that consolidates hardware engineer workflows for retrieving and processing large-scale factory test datasets.",
+      startDate: "2024-09",
+      description: "Rejoined Apple by request and progressed from establishing the first version of confidential internal tooling to owning end-to-end delivery across hardware engineering and factory operations.",
       achievements: [
+        "Built the initial internal web application to simplify hardware engineer access to test results from factory stations in China, establishing the workflow foundation for later platform expansion",
+        "Partnered directly with hardware engineering stakeholders to translate operational pain points into a streamlined retrieval workflow",
+        "Established early UI and API integration patterns that reduced parameter mistakes and improved first-pass fetch success",
+        "Delivered production releases through Apple's Kubernetes and Rio CI workflows, establishing the deployment patterns the platform continues to use",
         "Drove production adoption by 60+ users across hardware engineering and factory operations by replacing deep Box.com folder navigation and ad-hoc parsing scripts with a purpose-built retrieval workflow",
         "Sole architect of the Next.js 15 / React 19 / TypeScript frontend, built from a blank repository and integrated with existing Python/Flask services",
         "Reduced pipeline setup from up to an hour to about 30 seconds for simple cases and a few minutes for complex ones with guided parameter selection that surfaces only valid options from thousands of values",
@@ -240,21 +250,6 @@ export const portfolioData: PortfolioData = {
         "Established the visual, dark/light-theme, and interaction quality standard for the app — received unsolicited UX-quality feedback from hardware engineering users, unusual for internal tooling"
       ],
       technologies: ["TypeScript", "Next.js", "React", "Tailwind", "Storybook", "Playwright", "Python", "Flask", "OIDC", "S3", "Kubernetes", "Rio CI"]
-    },
-    {
-      id: "exp-2",
-      company: "Apple Inc.",
-      position: "Senior Full Stack Engineer (Contract)",
-      startDate: "2024-09-01",
-      endDate: "2025-08-31",
-      description: "Delivered the first version of confidential internal tooling for hardware test data retrieval, establishing the workflow foundation for later platform expansion.",
-      achievements: [
-        "Built the initial internal web application to simplify hardware engineer access to test results from factory stations in China",
-        "Partnered directly with hardware engineering stakeholders to translate operational pain points into a streamlined retrieval workflow",
-        "Established early UI and API integration patterns that reduced parameter mistakes and improved first-pass fetch success",
-        "Delivered production releases through Apple's Kubernetes and Rio CI workflows, establishing the deployment patterns the platform continues to use"
-      ],
-      technologies: ["TypeScript", "Next.js", "React", "Python", "Flask", "OIDC", "Kubernetes", "Rio CI"]
     },
     {
       id: "exp-3",
@@ -308,8 +303,9 @@ export const portfolioData: PortfolioData = {
       position: "Senior UI Developer",
       startDate: "2015-02",
       endDate: "2020-04",
-      description: "Architected enterprise-scale micro-frontend platform and led comprehensive performance optimization initiatives",
+      description: "Co-architected Macys.com's enterprise-scale micro-frontend architecture with another engineer, while leading comprehensive performance optimization initiatives",
       achievements: [
+        "Co-architected the Macys.com micro-frontend architecture with another engineer, enabling teams to build and release website components independently",
         "Designed componentized, loosely coupled, scalable isomorphic micro-frontend architecture serving millions of users",
         "Contributed to Java-based backend services and REST API development supporting enterprise e-commerce platform",
         "Optimized REST services and Node.js applications on Google Cloud Platform achieving significant performance gains",

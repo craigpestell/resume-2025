@@ -1,6 +1,6 @@
 'use client';
 
-import { Github, Linkedin, Mail, ExternalLink } from 'lucide-react';
+import { Linkedin, Mail, ExternalLink } from 'lucide-react';
 import Image from 'next/image';
 import { PersonalInfo } from '@/data/portfolio';
 
@@ -26,7 +26,7 @@ export default function Hero({ personalInfo }: HeroProps) {
               {personalInfo.profileImage ? (
                 <Image 
                   src={personalInfo.profileImage} 
-                  alt={`${personalInfo.name} - ${personalInfo.title} | Professional headshot of senior software engineer with experience at Apple, Google, and Williams Sonoma`}
+                  alt={`${personalInfo.name} - illustrated avatar`}
                   width={192}
                   height={192}
                   sizes="192px"
@@ -58,15 +58,6 @@ export default function Hero({ personalInfo }: HeroProps) {
 
           {/* Social Links */}
           <div className="flex justify-center space-x-6 mb-8">
-            <a
-              href={personalInfo.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 bg-card rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
-              aria-label={`Visit ${personalInfo.name}'s GitHub profile`}
-            >
-              <Github className="w-6 h-6 text-card-foreground" />
-            </a>
             <a
               href={personalInfo.linkedin}
               target="_blank"

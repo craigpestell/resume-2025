@@ -9,7 +9,7 @@ import "./globals.css";
 const { personalInfo } = portfolioData;
 
 const siteTitle = `${personalInfo.name} - ${personalInfo.title} | React, TypeScript, Enterprise Applications`;
-const siteDescription = `${personalInfo.title} with 15+ years of experience designing enterprise-scale computer systems for organizations including Apple, Google, and Macy's. Expert in React, TypeScript, Node.js, and scalable information workflows.`;
+const siteDescription = `${personalInfo.title} building enterprise-scale computer systems for organizations including Apple, Google, and Macy's since 1998. Expert in React, TypeScript, Node.js, and scalable information workflows.`;
 
 export const metadata: Metadata = {
   title: siteTitle,

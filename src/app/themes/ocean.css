@@ -55,7 +55,7 @@ html[data-theme="ocean"]:is(.dark *) {
   --background: #0c1821;
   --foreground: #e0f2fe;
   --primary: #06b6d4;
-  --primary-foreground: #ffffff;
+  --primary-foreground: #0c1821;
   
   /* Secondary colors */
   --secondary: #164e63;
@@ -67,7 +67,7 @@ html[data-theme="ocean"]:is(.dark *) {
   
   /* Muted colors */
   --muted: #164e63;
-  --muted-foreground: #94a3b8;
+  --muted-foreground: #cffafe;
   
   /* Border and input colors */
   --border: #155e75;
@@ -84,17 +84,17 @@ html[data-theme="ocean"]:is(.dark *) {
   
   /* Destructive colors */
   --destructive: #ef4444;
-  --destructive-foreground: #ffffff;
+  --destructive-foreground: #0c1821;
   
   /* Success colors */
   --success: #10b981;
-  --success-foreground: #ffffff;
+  --success-foreground: #0c1821;
   
   /* Warning colors */
   --warning: #f59e0b;
-  --warning-foreground: #ffffff;
+  --warning-foreground: #0c1821;
   
   /* Info colors */
   --info: #06b6d4;
-  --info-foreground: #ffffff;
+  --info-foreground: #0c1821;
 }

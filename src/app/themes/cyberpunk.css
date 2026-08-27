@@ -67,7 +67,7 @@ html[data-theme="cyberpunk"]:is(.dark *) {
   
   /* Muted colors */
   --muted: #1a0a1a;
-  --muted-foreground: #aa00aa;
+  --muted-foreground: #f0a3ff;
   
   /* Border and input colors */
   --border: #330a33;

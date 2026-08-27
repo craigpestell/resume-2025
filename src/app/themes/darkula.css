@@ -55,7 +55,7 @@ html[data-theme="darkula"]:is(.dark *) {
   --background: #2b2b2b;
   --foreground: #a9b7c6;
   --primary: #6897bb;
-  --primary-foreground: #ffffff;
+  --primary-foreground: #1e293b;
   
   /* Secondary colors */
   --secondary: #3c3f41;
@@ -67,7 +67,7 @@ html[data-theme="darkula"]:is(.dark *) {
   
   /* Muted colors */
   --muted: #3c3f41;
-  --muted-foreground: #808080;
+  --muted-foreground: #cbd5e1;
   
   /* Border and input colors */
   --border: #515151;
@@ -88,7 +88,7 @@ html[data-theme="darkula"]:is(.dark *) {
   
   /* Success colors */
   --success: #5f8a5f;
-  --success-foreground: #ffffff;
+  --success-foreground: #000000;
   
   /* Warning colors */
   --warning: #bbaa66;
@@ -96,5 +96,5 @@ html[data-theme="darkula"]:is(.dark *) {
   
   /* Info colors */
   --info: #6897bb;
-  --info-foreground: #ffffff;
+  --info-foreground: #1e293b;
 }

@@ -66,9 +66,20 @@ export default function Projects({ projects }: ProjectsProps) {
           </div>
         </div>
 
-        <p className="text-muted-foreground mb-4 leading-relaxed">
-          {featured ? project.longDescription : project.description}
-        </p>
+        {featured && project.highlights ? (
+          <div className="mb-4 text-muted-foreground">
+            <p className="leading-relaxed">{project.longDescription}</p>
+            <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed">
+              {project.highlights.map((highlight) => (
+                <li key={highlight}>{highlight}</li>
+              ))}
+            </ul>
+          </div>
+        ) : (
+          <p className="text-muted-foreground mb-4 leading-relaxed">
+            {featured ? project.longDescription : project.description}
+          </p>
+        )}
 
         {/* Technologies */}
         <div className="flex flex-wrap gap-2 mb-4">
@@ -111,7 +122,7 @@ export default function Projects({ projects }: ProjectsProps) {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
-            Enterprise Projects
+            Selected Systems & Platforms
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Mission-critical applications built for Apple, Google, and Fortune 500 companies using React, TypeScript, and modern web technologies
@@ -206,27 +217,6 @@ export default function Projects({ projects }: ProjectsProps) {
           </div>
         )}
 
-        {/* Call to Action */}
-        <MotionWrapper
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="text-center mt-16"
-        >
-          <p className="text-lg text-muted-foreground mb-6">
-            Want to see more of my work?
-          </p>
-          <a
-            href="https://github.com/craigpestell"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center space-x-2 bg-foreground text-background px-8 py-3 rounded-lg font-medium transition-colors"
-          >
-            <Github className="w-5 h-5" />
-            <span>View All Projects on GitHub</span>
-          </a>
-        </MotionWrapper>
       </div>
     </section>
   );

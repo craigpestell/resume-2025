@@ -55,7 +55,7 @@ html[data-theme="nord"]:is(.dark *) {
   --background: #2e3440;
   --foreground: #d8dee9;
   --primary: #5e81ac;
-  --primary-foreground: #ffffff;
+  --primary-foreground: #000000;
   
   /* Secondary colors */
   --secondary: #3b4252;
@@ -67,7 +67,7 @@ html[data-theme="nord"]:is(.dark *) {
   
   /* Muted colors */
   --muted: #3b4252;
-  --muted-foreground: #81a1c1;
+  --muted-foreground: #d8dee9;
   
   /* Border and input colors */
   --border: #434c5e;
@@ -84,7 +84,7 @@ html[data-theme="nord"]:is(.dark *) {
   
   /* Destructive colors */
   --destructive: #bf616a;
-  --destructive-foreground: #ffffff;
+  --destructive-foreground: #000000;
   
   /* Success colors */
   --success: #a3be8c;

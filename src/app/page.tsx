@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic';
 import Header from '@/components/Header';
 import Hero from '@/components/HeroWithTesting';
+import Skills from '@/components/Skills';
 import StructuredData from '@/components/StructuredData';
 import { portfolioData } from '@/data/portfolio';
 
@@ -16,6 +17,9 @@ export default function Home() {
       <Hero personalInfo={portfolioData.personalInfo} />
       <section id="projects">
         <Projects projects={portfolioData.projects} />
+      </section>
+      <section id="skills">
+        <Skills skills={portfolioData.skills} />
       </section>
       <section id="experience">
         <Experience 

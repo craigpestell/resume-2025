@@ -55,7 +55,7 @@ html[data-theme="forest"]:is(.dark *) {
   --background: #0f1b0f;
   --foreground: #dcfce7;
   --primary: #22c55e;
-  --primary-foreground: #ffffff;
+  --primary-foreground: #0f1b0f;
   
   /* Secondary colors */
   --secondary: #166534;
@@ -67,7 +67,7 @@ html[data-theme="forest"]:is(.dark *) {
   
   /* Muted colors */
   --muted: #166534;
-  --muted-foreground: #94a3b8;
+  --muted-foreground: #dcfce7;
   
   /* Border and input colors */
   --border: #15803d;
@@ -84,17 +84,17 @@ html[data-theme="forest"]:is(.dark *) {
   
   /* Destructive colors */
   --destructive: #ef4444;
-  --destructive-foreground: #ffffff;
+  --destructive-foreground: #0f1b0f;
   
   /* Success colors */
   --success: #22c55e;
-  --success-foreground: #ffffff;
+  --success-foreground: #0f1b0f;
   
   /* Warning colors */
   --warning: #f59e0b;
-  --warning-foreground: #ffffff;
+  --warning-foreground: #0f1b0f;
   
   /* Info colors */
   --info: #06b6d4;
-  --info-foreground: #ffffff;
+  --info-foreground: #0f1b0f;
 }

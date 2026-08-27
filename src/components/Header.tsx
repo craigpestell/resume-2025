@@ -25,7 +25,7 @@ export default function Header() {
       setIsScrolled(window.scrollY > 50);
       
       // Find the current active section
-      const sections = ['about', 'projects', 'experience', 'contact'];
+      const sections = ['about', 'projects', 'skills', 'experience', 'contact'];
       const currentSection = sections.find(section => {
         const element = document.querySelector(`#${section}`);
         if (element) {
@@ -40,13 +40,24 @@ export default function Header() {
       }
     };
 
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsMenuOpen(false);
+      }
+    };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('keydown', handleKeyDown);
+    };
   }, []);
 
   const navLinks = [
     { href: '#about', label: 'About' },
     { href: '#projects', label: 'Projects' },
+    { href: '#skills', label: 'Skills' },
     { href: '#experience', label: 'Experience' },
     { href: '#contact', label: 'Contact' },
   ];
@@ -113,6 +124,8 @@ export default function Header() {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="md:hidden p-2 rounded-lg bg-secondary hover:bg-secondary/80 transition-colors"
               aria-label="Toggle menu"
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-navigation"
             >
               {isMenuOpen ? (
                 <X className="w-5 h-5" />
@@ -125,7 +138,7 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden bg-card border-t border-border">
+          <div id="mobile-navigation" className="md:hidden bg-card border-t border-border">
             <div className="py-4 space-y-2">
               {navLinks.map((link) => (
                 <a

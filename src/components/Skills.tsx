@@ -31,7 +31,7 @@ export default function Skills({ skills }: SkillsProps) {
             Technical Skills & Enterprise Expertise
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            15+ years of hands-on experience with modern technologies, enterprise platforms, and scalable solutions at Fortune 500 companies
+            Career-spanning experience with modern technologies, enterprise platforms, and scalable solutions at Fortune 500 companies
           </p>
         </div>
 
@@ -62,35 +62,10 @@ export default function Skills({ skills }: SkillsProps) {
           })}
         </div>
 
-        <div className="mt-16 text-center">
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <div className="bg-card rounded-lg p-6 shadow-md">
-              <div className="text-3xl font-bold text-accent mb-2">
-                {skills.length}
-              </div>
-              <div className="text-muted-foreground">
-                Technologies
-              </div>
-            </div>
-
-            <div className="bg-card rounded-lg p-6 shadow-md">
-              <div className="text-3xl font-bold text-accent mb-2">
-                15+
-              </div>
-              <div className="text-muted-foreground">
-                Years building software
-              </div>
-            </div>
-
-            <div className="bg-card rounded-lg p-6 shadow-md">
-              <div className="text-3xl font-bold text-accent mb-2">
-                Staff
-              </div>
-              <div className="text-muted-foreground">
-                Delivery model
-              </div>
-            </div>
-          </div>
+        <div className="mt-16 mx-auto max-w-3xl text-center">
+          <p className="text-lg text-muted-foreground">
+            My work spans frontend architecture, full-stack delivery, developer tooling, cloud integration, and complex operational workflows.
+          </p>
         </div>
       </div>
     </section>

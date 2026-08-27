@@ -68,7 +68,7 @@ html[data-theme="monokai"]:is(.dark *) {
   
   /* Muted colors */
   --muted: #383830;
-  --muted-foreground: #75715e;
+  --muted-foreground: #d8d5c2;
   
   /* Border and input colors */
   --border: #49483e;
@@ -85,7 +85,7 @@ html[data-theme="monokai"]:is(.dark *) {
   
   /* Destructive colors */
   --destructive: #f92672;
-  --destructive-foreground: #ffffff;
+  --destructive-foreground: #000000;
   
   /* Success colors */
   --success: #a6e22e;

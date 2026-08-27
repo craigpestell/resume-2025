@@ -197,35 +197,11 @@ export default function Contact({ personalInfo }: ContactProps) {
                     LinkedIn
                   </a>
                   <a
-                    href={personalInfo.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-foreground transition-colors"
+                    href={`mailto:${personalInfo.email}`}
+                    className="text-primary hover:text-primary/80 transition-colors"
                   >
-                    GitHub
+                    Email
                   </a>
-                                      <div className="flex items-center gap-2">
-                      <a 
-                        href={showFullPhone ? phoneData.telLink : '#'}
-                        className="text-muted-foreground hover:text-success transition-colors"
-                        onClick={showFullPhone ? undefined : (e) => {
-                          e.preventDefault();
-                          setShowFullPhone(true);
-                        }}
-                      >
-                        {showFullPhone ? phoneData.original : "Phone"}
-                      </a>
-                      {!showFullPhone && (
-                        <button
-                          onClick={() => setShowFullPhone(true)}
-                          className="text-xs text-muted-foreground hover:text-success transition-colors flex items-center gap-1"
-                          aria-label="Reveal full phone number"
-                        >
-                          <Eye className="w-3 h-3" />
-                          Show
-                        </button>
-                      )}
-                    </div>
 
                 </div>
               </MotionWrapper>

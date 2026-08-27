@@ -62,8 +62,8 @@ html[data-theme="midnight"]:is(.dark *) {
   --secondary-foreground: #d6d3d1;
   
   /* Accent colors */
-  --accent: #8b5cf6;
-  --accent-foreground: #ffffff;
+  --accent: #c4b5fd;
+  --accent-foreground: #1c1917;
   
   /* Muted colors */
   --muted: #1c1917;
@@ -84,17 +84,17 @@ html[data-theme="midnight"]:is(.dark *) {
   
   /* Destructive colors */
   --destructive: #ef4444;
-  --destructive-foreground: #ffffff;
+  --destructive-foreground: #1c1917;
   
   /* Success colors */
   --success: #22c55e;
-  --success-foreground: #ffffff;
+  --success-foreground: #1c1917;
   
   /* Warning colors */
   --warning: #f59e0b;
-  --warning-foreground: #ffffff;
+  --warning-foreground: #1c1917;
   
   /* Info colors */
   --info: #06b6d4;
-  --info-foreground: #ffffff;
+  --info-foreground: #1c1917;
 }

@@ -11,8 +11,8 @@ interface ExperienceProps {
 }
 
 export default function ExperienceSection({ experience, education }: ExperienceProps) {
-  // Show only recent experience from 2015 onwards (Apple, Healthcare Startup, Google, Williams Sonoma, Macy's)
   const recentExperience = experience.filter(exp => new Date(exp.startDate) >= new Date('2015-01-01'));
+  const earlierExperience = experience.filter(exp => new Date(exp.startDate) < new Date('2015-01-01'));
 
   const parseDateString = (dateString: string) => {
     const [year, month, day] = dateString.split('-').map(Number);
@@ -86,29 +86,40 @@ export default function ExperienceSection({ experience, education }: ExperienceP
             {exp.description}
           </p>
 
-          {/* Achievements */}
+          {/* Keep the strongest proof visible while leaving the full detail expandable. */}
           {exp.achievements.length > 0 && (
             <div className="mb-4">
-              <button
-                onClick={() => setIsExpanded(!isExpanded)}
-                className="flex items-center text-sm font-medium text-card-foreground hover:text-primary transition-colors mb-2"
-              >
-                {isExpanded ? (
-                  <ChevronDown className="w-4 h-4 mr-1" />
-                ) : (
-                  <ChevronRight className="w-4 h-4 mr-1" />
-                )}
-                Key Achievements ({exp.achievements.length})
-              </button>
-              
-              {isExpanded && (
+              <ul className="mx-4 list-disc list-outside space-y-1">
+                <li className="text-muted-foreground text-sm">
+                  {exp.achievements[0]}
+                </li>
+              </ul>
+
+              {exp.achievements.length > 1 && (
+                <>
+                  <button
+                    onClick={() => setIsExpanded(!isExpanded)}
+                    className="flex items-center text-sm font-medium text-card-foreground hover:text-primary transition-colors mt-2"
+                    aria-expanded={isExpanded}
+                  >
+                    {isExpanded ? (
+                      <ChevronDown className="w-4 h-4 mr-1" />
+                    ) : (
+                      <ChevronRight className="w-4 h-4 mr-1" />
+                    )}
+                    {isExpanded ? 'Hide' : 'Show'} additional achievements ({exp.achievements.length - 1})
+                  </button>
+                </>
+              )}
+
+              {isExpanded && exp.achievements.length > 1 && (
                 <MotionWrapper
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: 'auto' }}
                   transition={{ duration: 0.2 }}
                 >
                   <ul className="mx-4 list-disc list-outside space-y-1">
-                    {exp.achievements.map((achievement, i) => (
+                    {exp.achievements.slice(1).map((achievement, i) => (
                       <li key={i} className="text-muted-foreground text-sm">
                         {achievement}
                       </li>
@@ -206,7 +217,7 @@ export default function ExperienceSection({ experience, education }: ExperienceP
             Experience & Education
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            My professional journey and educational background
+            A career spanning 1998 to the present, including concurrent consulting engagements and long-term product work.
           </p>
         </MotionWrapper>
 
@@ -229,6 +240,44 @@ export default function ExperienceSection({ experience, education }: ExperienceP
                 <div key={exp.id} className="relative">
                   <ExperienceCard exp={exp} index={index} />
                 </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Earlier work is intentionally compact because several engagements overlapped as contracts. */}
+          <div className="mb-16">
+            <MotionWrapper
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className="text-2xl font-semibold mb-3 text-foreground"
+              as="h3"
+            >
+              Earlier Work & Consulting
+            </MotionWrapper>
+            <p className="text-muted-foreground mb-8 max-w-3xl">
+              Earlier roles include database applications, PHP web systems, public-sector software, e-commerce, CMS platforms, web services, and Linux administration. Several were concurrent contract engagements.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {earlierExperience.map((exp, index) => (
+                <MotionWrapper
+                  key={exp.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.35, delay: index * 0.05 }}
+                  viewport={{ once: true }}
+                  className="border-l-2 border-primary/40 pl-5 py-2"
+                >
+                  <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+                    <h4 className="font-semibold text-foreground">{exp.company}</h4>
+                    <span className="text-sm text-primary">
+                      {formatDate(exp.startDate)} - {exp.endDate ? formatDate(exp.endDate) : 'Present'}
+                    </span>
+                  </div>
+                  <p className="text-sm font-medium text-muted-foreground mt-1">{exp.position}</p>
+                  <p className="text-sm text-muted-foreground mt-2">{exp.description}</p>
+                </MotionWrapper>
               ))}
             </div>
           </div>
