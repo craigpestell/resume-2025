@@ -65,19 +65,18 @@ export default function Footer({ personalInfo }: FooterProps) {
           </div>
         </div>
 
-        {/* The closing tag: the page's terminal mark, rhyming with the header logo. */}
-        <div className="flex flex-col items-start gap-4 pb-10 sm:flex-row sm:items-end sm:justify-between">
+        {/* The closing tag: bookends the header logo at the same size. */}
+        <div className="flex items-center justify-between gap-4 pb-8">
           <p
             aria-hidden="true"
-            className="font-jetbrains max-w-full select-none font-bold leading-none tracking-tight text-foreground"
-            style={{ fontSize: 'clamp(1.75rem, 8vw, 6rem)' }}
+            className="font-jetbrains select-none text-xl font-bold leading-none text-foreground"
           >
             &lt;/CraigPestell&gt;
           </p>
           <button
             type="button"
             onClick={scrollToTop}
-            className="group inline-flex shrink-0 items-center gap-1.5 pb-2 text-sm text-muted-foreground hover:text-foreground focus-visible:text-foreground focus-visible:outline-none"
+            className="group inline-flex shrink-0 items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground focus-visible:text-foreground focus-visible:outline-none"
           >
             Back to top
             <ArrowUp className="h-4 w-4 transition-transform group-hover:-translate-y-0.5" />
