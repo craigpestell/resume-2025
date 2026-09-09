@@ -1,9 +1,18 @@
-import { Inter } from 'next/font/google';
+import { Inter, JetBrains_Mono } from 'next/font/google';
 
 // Default font (always loaded) - Inter
 export const defaultFont = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
+});
+
+// Monospace font (always loaded) - used for the <CraigPestell> / </CraigPestell>
+// bookend tags in the header and footer. Loaded statically because the runtime
+// font selector that used to lazy-load it was removed.
+export const monoFont = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-jetbrains',
+  display: 'swap',
 });
 
 // Default font key

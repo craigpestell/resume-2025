@@ -57,7 +57,7 @@ export default function Hero({ personalInfo }: HeroProps) {
   };
 
   return (
-    <section id="about" className="min-h-screen flex items-center justify-center bg-gradient-to-b from-primary/10 via-accent/5 to-background pt-16">
+    <section id="about" className="min-h-screen flex items-center justify-center bg-gradient-to-b from-primary/10 via-accent/5 to-background pt-28 md:pt-36">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center">
           {/* Profile Image */}
