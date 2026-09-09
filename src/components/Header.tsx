@@ -75,9 +75,9 @@ export default function Header() {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
+          {/* Logo — opening tag; the footer closes it with </CraigPestell> */}
           <Link href="/" className="font-bold text-xl text-foreground hover:text-primary">
-            {"<CraigPestell />"}
+            {"<CraigPestell>"}
           </Link>
 
           {/* Desktop Navigation */}
