@@ -90,7 +90,7 @@ export default function Footer({ personalInfo }: FooterProps) {
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
             <span>Built with Next.js and Tailwind CSS</span>
             <a
-              href={`https://pagespeed.web.dev/analyze?url=${encodeURIComponent(personalInfo.website)}`}
+              href={`https://pagespeed.web.dev/analysis?url=${encodeURIComponent(personalInfo.website)}`}
               target="_blank"
               rel="noopener noreferrer"
               title="Run a fresh PageSpeed Insights / Lighthouse audit"
