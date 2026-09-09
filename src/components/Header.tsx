@@ -17,13 +17,10 @@ const DarkThemeToggleSimple = dynamic(() => import('./DarkThemeToggleSimple'), {
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-      
       // Find the current active section
       const sections = ['about', 'projects', 'skills', 'experience', 'contact'];
       const currentSection = sections.find(section => {
@@ -74,11 +71,7 @@ export default function Header() {
 
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-background/95 backdrop-blur-sm shadow-lg border-b border-border ${
-        isScrolled 
-          ? 'bg-background/90 backdrop-blur-sm shadow-lg border-b border-border' 
-          : 'js-enabled:bg-transparent js-enabled:shadow-none js-enabled:border-none'
-      }`}
+      className="header-fade fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-background/90 backdrop-blur-sm shadow-lg"
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
