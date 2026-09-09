@@ -83,11 +83,26 @@ export default function Footer({ personalInfo }: FooterProps) {
           </button>
         </div>
 
-        <div className="flex flex-col gap-2 border-t border-border py-6 font-jetbrains text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-3 border-t border-border py-6 font-jetbrains text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <span>
             © {year} {personalInfo.name}
           </span>
-          <span>Built with Next.js and Tailwind CSS</span>
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+            <span>Built with Next.js and Tailwind CSS</span>
+            <a
+              href={`https://pagespeed.web.dev/analyze?url=${encodeURIComponent(personalInfo.website)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Run a fresh PageSpeed Insights / Lighthouse audit"
+              className="inline-flex items-center gap-1.5 rounded-full border border-border px-2.5 py-1.5 text-foreground transition-colors hover:border-primary hover:text-primary focus-visible:border-primary focus-visible:text-primary focus-visible:outline-none"
+            >
+              <span
+                aria-hidden="true"
+                className="inline-block h-1.5 w-1.5 rounded-full bg-success"
+              />
+              Lighthouse 100
+            </a>
+          </div>
         </div>
       </div>
     </footer>
