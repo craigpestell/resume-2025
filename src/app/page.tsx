@@ -7,7 +7,7 @@ import { portfolioData } from '@/data/portfolio';
 
 const Projects = dynamic(() => import('@/components/Projects'));
 const Experience = dynamic(() => import('@/components/Experience'));
-const Contact = dynamic(() => import('@/components/Contact'));
+const Footer = dynamic(() => import('@/components/Footer'));
 
 export default function Home() {
   return (
@@ -22,26 +22,13 @@ export default function Home() {
         <Skills skills={portfolioData.skills} />
       </section>
       <section id="experience">
-        <Experience 
-          experience={portfolioData.experience} 
-          education={portfolioData.education} 
+        <Experience
+          experience={portfolioData.experience}
+          education={portfolioData.education}
         />
       </section>
-      
-      <section id="contact">
-        <Contact personalInfo={portfolioData.personalInfo} />
-      </section>
-      
-      {/* Footer */}
-      <footer className="bg-card text-card-foreground py-8">
-        <div className="container mx-auto px-4">
-          <div className="flex justify-center">
-            <p className="text-muted-foreground text-center md:text-left">
-              © 2026 {portfolioData.personalInfo.name}. Built with Next.js and TailwindCSS.
-            </p>
-          </div>
-        </div>
-      </footer>
+
+      <Footer personalInfo={portfolioData.personalInfo} />
     </main>
   );
 }
