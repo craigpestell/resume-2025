@@ -3,7 +3,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/react';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { portfolioData } from '@/data/portfolio';
-import { defaultFont } from '@/lib/fontLoader';
+import { defaultFont, monoFont } from '@/lib/fontLoader';
 import "./globals.css";
 
 const { personalInfo } = portfolioData;
@@ -94,7 +94,7 @@ export default function RootLayout({
         }} />
       </head>
       <body
-        className={`${defaultFont.className} ${defaultFont.variable} tracking-normal antialiased`}
+        className={`${defaultFont.className} ${defaultFont.variable} ${monoFont.variable} tracking-normal antialiased`}
         suppressHydrationWarning
       >
         <ThemeProvider>
