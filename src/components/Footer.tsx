@@ -22,7 +22,10 @@ export default function Footer({ personalInfo }: FooterProps) {
       id="contact"
       className="relative border-t border-border"
       style={{
-        background: 'color-mix(in srgb, var(--primary) 7%, var(--background))',
+        // Subtle lighter panel (not a primary tint — that dropped muted text
+        // below the 4.5:1 contrast threshold). The primary accent lives on in
+        // the top hairline below.
+        background: 'color-mix(in srgb, var(--card) 55%, var(--background))',
       }}
     >
       {/* Primary hairline along the top edge — echoes the header's fade. */}

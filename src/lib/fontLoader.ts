@@ -1,4 +1,4 @@
-import { Inter, JetBrains_Mono } from 'next/font/google';
+import { Inter } from 'next/font/google';
 
 // Default font (always loaded) - Inter
 export const defaultFont = Inter({
@@ -6,14 +6,10 @@ export const defaultFont = Inter({
   variable: '--font-inter',
 });
 
-// Monospace font (always loaded) - used for the <CraigPestell> / </CraigPestell>
-// bookend tags in the header and footer. Loaded statically because the runtime
-// font selector that used to lazy-load it was removed.
-export const monoFont = JetBrains_Mono({
-  subsets: ['latin'],
-  variable: '--font-jetbrains',
-  display: 'swap',
-});
+// Note: the .font-jetbrains class (header/footer bookend tags) intentionally
+// has no loaded webfont. It resolves to the system monospace stack via its
+// CSS fallback — a ~40 KB woff2 on the render path was not worth two 20px
+// logo elements. See src/app/globals.css.
 
 // Default font key
 export const DEFAULT_FONT = 'inter';
