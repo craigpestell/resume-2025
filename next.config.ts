@@ -7,8 +7,10 @@ const nextConfig: NextConfig = {
   // Enable experimental features for better SEO and performance
   experimental: {
     optimizePackageImports: ['lucide-react'],
-    // Enable CSS optimization
-    optimizeCss: true,
+    // Inline CSS into <style> tags in the HTML (App Router native; replaces
+    // critters/optimizeCss, which is a no-op with the App Router). Removes the
+    // render-blocking stylesheet request from the critical path.
+    inlineCss: true,
   },
 
   // Configure for modern browsers to reduce polyfills
