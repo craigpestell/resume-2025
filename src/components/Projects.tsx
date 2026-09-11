@@ -4,6 +4,7 @@ import { Github, Calendar, ExternalLink } from 'lucide-react';
 import Image from 'next/image';
 import { Project } from '@/data/portfolio';
 import MotionWrapper from './MotionWrapper';
+import { formatShortMonthYear } from '@/lib/formatDate';
 
 interface ProjectsProps {
   projects: Project[];
@@ -12,11 +13,6 @@ interface ProjectsProps {
 export default function Projects({ projects }: ProjectsProps) {
   const featuredProjects = projects.filter(project => project.featured);
   const otherProjects = projects.filter(project => !project.featured);
-
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
-  };
 
   const ProjectCard = ({ project, index, featured = false }: { project: Project; index: number; featured?: boolean }) => (
     <MotionWrapper
@@ -60,8 +56,8 @@ export default function Projects({ projects }: ProjectsProps) {
           <div className="flex items-center text-sm text-muted-foreground">
             <Calendar className="w-4 h-4 mr-3" />
             <div className="flex flex-col text-right text-primary">
-              <span className="text-right text-nowrap">{formatDate(project.startDate)}</span>
-              {project.endDate && <span className="text-right text-nowrap">{formatDate(project.endDate)}</span>}
+              <span className="text-right text-nowrap">{formatShortMonthYear(project.startDate)}</span>
+              {project.endDate && <span className="text-right text-nowrap">{formatShortMonthYear(project.endDate)}</span>}
             </div>
           </div>
         </div>
@@ -175,7 +171,7 @@ export default function Projects({ projects }: ProjectsProps) {
                         {project.title}
                       </h4>
                       <span className="text-sm text-muted-foreground">
-                        {formatDate(project.startDate)}{project.endDate ? ` - ${formatDate(project.endDate)}` : ''}
+                        {formatShortMonthYear(project.startDate)}{project.endDate ? ` - ${formatShortMonthYear(project.endDate)}` : ''}
                       </span>
                     </div>
                     <p className="mt-1 text-muted-foreground">

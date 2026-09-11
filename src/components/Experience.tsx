@@ -4,6 +4,7 @@ import { Calendar, Building, ChevronDown, ChevronRight } from 'lucide-react';
 import { Experience, Education } from '@/data/portfolio';
 import { useState, useEffect } from 'react';
 import MotionWrapper from './MotionWrapper';
+import { parseDateString, formatShortMonthYear } from '@/lib/formatDate';
 
 interface ExperienceProps {
   experience: Experience[];
@@ -13,20 +14,6 @@ interface ExperienceProps {
 export default function ExperienceSection({ experience, education }: ExperienceProps) {
   const recentExperience = experience.filter(exp => new Date(exp.startDate) >= new Date('2015-01-01'));
   const earlierExperience = experience.filter(exp => new Date(exp.startDate) < new Date('2015-01-01'));
-
-  const parseDateString = (dateString: string) => {
-    const [year, month, day] = dateString.split('-').map(Number);
-    if (year && month) {
-      return new Date(year, month - 1, day ?? 1);
-    }
-    return new Date(dateString);
-  };
-
-  const formatDate = (dateString: string) => {
-    const date = parseDateString(dateString);
-    const formatted = date.toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
-    return formatted.replace(/^Sep\b/, 'Sept');
-  };
 
   const calculateDuration = (startDate: string, endDate?: string) => {
     const start = parseDateString(startDate);
@@ -85,8 +72,8 @@ export default function ExperienceSection({ experience, education }: ExperienceP
               <div className="flex items-center mb-1">
                 <Calendar className="w-4 h-4 mr-3" />
                 <div className="flex flex-col text-primary">
-                  <span className="text-right text-nowrap">{formatDate(exp.startDate)}</span>
-                  <span className="text-right text-nowrap">{exp.endDate ? formatDate(exp.endDate) : 'Present'}</span>
+                  <span className="text-right text-nowrap">{formatShortMonthYear(exp.startDate)}</span>
+                  <span className="text-right text-nowrap">{exp.endDate ? formatShortMonthYear(exp.endDate) : 'Present'}</span>
                 </div>
               </div>
               {duration && (
@@ -188,8 +175,8 @@ export default function ExperienceSection({ experience, education }: ExperienceP
             <div className="flex items-center text-sm text-muted-foreground mb-1">
               <Calendar className="w-4 h-4 mr-3" />
               <div className="flex flex-col text-right text-primary">
-                <span className="text-right text-nowrap">{formatDate(edu.startDate)}</span>
-                <span className="text-right text-nowrap">{formatDate(edu.endDate)}</span>
+                <span className="text-right text-nowrap">{formatShortMonthYear(edu.startDate)}</span>
+                <span className="text-right text-nowrap">{formatShortMonthYear(edu.endDate)}</span>
               </div>
             </div>
             {edu.gpa && (
@@ -287,7 +274,7 @@ export default function ExperienceSection({ experience, education }: ExperienceP
                   <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
                     <h4 className="font-semibold text-foreground">{exp.company}</h4>
                     <span className="text-sm text-primary">
-                      {formatDate(exp.startDate)} - {exp.endDate ? formatDate(exp.endDate) : 'Present'}
+                      {formatShortMonthYear(exp.startDate)} - {exp.endDate ? formatShortMonthYear(exp.endDate) : 'Present'}
                     </span>
                   </div>
                   <p className="text-sm font-medium text-muted-foreground mt-1">{exp.position}</p>
