@@ -2,7 +2,7 @@
 
 import { Calendar, Building, ChevronDown, ChevronRight } from 'lucide-react';
 import { Experience, Education } from '@/data/portfolio';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import MotionWrapper from './MotionWrapper';
 
 interface ExperienceProps {
@@ -47,7 +47,20 @@ export default function ExperienceSection({ experience, education }: ExperienceP
 
   const ExperienceCard = ({ exp, index }: { exp: Experience; index: number }) => {
     const [isExpanded, setIsExpanded] = useState(false);
-    
+    // For an ongoing role, the duration depends on "now", which differs
+    // between when the static HTML was built and when a client hydrates it —
+    // that mismatch trips a React hydration error. Render nothing for it
+    // until after mount, when it's safe to use the real current time.
+    const [duration, setDuration] = useState<string | null>(
+      exp.endDate ? calculateDuration(exp.startDate, exp.endDate) : null
+    );
+
+    useEffect(() => {
+      if (!exp.endDate) {
+        setDuration(calculateDuration(exp.startDate));
+      }
+    }, [exp.startDate, exp.endDate]);
+
     return (
       <MotionWrapper
         initial={{ opacity: 0, y: 50 }}
@@ -76,9 +89,11 @@ export default function ExperienceSection({ experience, education }: ExperienceP
                   <span className="text-right text-nowrap">{exp.endDate ? formatDate(exp.endDate) : 'Present'}</span>
                 </div>
               </div>
-              <span className="text-xs bg-muted px-2 py-1 rounded block text-center">
-                {calculateDuration(exp.startDate, exp.endDate)}
-              </span>
+              {duration && (
+                <span className="text-xs bg-muted px-2 py-1 rounded block text-center">
+                  {duration}
+                </span>
+              )}
             </div>
           </div>
 
