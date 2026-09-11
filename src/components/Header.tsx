@@ -20,22 +20,27 @@ export default function Header() {
   const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {
-    const handleScroll = () => {
-      // Find the current active section
-      const sections = ['about', 'projects', 'skills', 'experience', 'contact'];
-      const currentSection = sections.find(section => {
-        const element = document.querySelector(`#${section}`);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
+    // Highlight the nav link for whichever section currently crosses the
+    // 100px-from-top line (just below the fixed header). IntersectionObserver
+    // gets this from the browser's own rendering pipeline instead of reading
+    // layout geometry (getBoundingClientRect) on every scroll event, which
+    // forced a synchronous reflow on each of dozens of scroll events/second.
+    const sections = ['about', 'projects', 'skills', 'experience', 'contact'];
+    const elements = sections
+      .map(id => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.find(entry => entry.isIntersecting);
+        if (visible) {
+          setActiveSection(visible.target.id);
         }
-        return false;
-      });
-      
-      if (currentSection) {
-        setActiveSection(currentSection);
-      }
-    };
+      },
+      { rootMargin: '-100px 0px -100% 0px' }
+    );
+
+    elements.forEach(el => observer.observe(el));
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -43,10 +48,9 @@ export default function Header() {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
     window.addEventListener('keydown', handleKeyDown);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      observer.disconnect();
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, []);
