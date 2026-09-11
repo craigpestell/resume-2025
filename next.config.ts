@@ -79,40 +79,16 @@ const nextConfig: NextConfig = {
         const entries = await originalEntry();
         return entries;
       };
-    }    // Optimize chunks for better loading
-    if (!dev && !isServer) {
-      config.optimization.splitChunks = {
-        chunks: 'all',
-        cacheGroups: {
-          // Split react-pdf and all its exclusive dependencies into separate chunk since they're only used on demand
-          reactPdf: {
-            test: /[\\/]node_modules[\\/](@react-pdf|yoga-layout|crypto-js|fontkit|brotli|base64-js|clone|dfa|bidi-js|jay-peg|abs-svg-path|linebreak|unicode-properties|unicode-trie|pako|tiny-inflate|restructure)[\\/]/,
-            name: 'react-pdf',
-            chunks: 'async', // Only load when needed
-            priority: 30,
-          },
-          lucideReact: {
-            test: /[\\/]node_modules[\\/]lucide-react[\\/]/,
-            name: 'lucide-react',
-            chunks: 'initial',
-            priority: 15,
-          },
-          vendor: {
-            test: /[\\/]node_modules[\\/]/,
-            name: 'vendors',
-            chunks: 'initial',
-            priority: 10,
-          },
-          common: {
-            name: 'common',
-            minChunks: 2,
-            chunks: 'initial',
-            priority: 5,
-            reuseExistingChunk: true,
-          },
-        },
-      };
     }
+    // Note: no manual splitChunks override here. Next.js's built-in production
+    // chunking already separates the framework (react/react-dom) from app code
+    // and splits large libs into their own cacheable chunks; a hand-rolled
+    // single "vendors" cache group (as this used to have) merges everything
+    // — including the framework runtime — into one chunk loaded on every
+    // route, which is worse for caching and inflates per-page unused JS.
+    // @react-pdf/renderer is only ever imported inside a server Route Handler
+    // (src/app/api/resume/route.tsx, runtime: 'nodejs'), so it never reaches
+    // the client bundle regardless of chunking config.
     return config;
   },
   
