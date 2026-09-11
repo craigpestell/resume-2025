@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
 
   // Enable experimental features for better SEO and performance
   experimental: {
+    optimizePackageImports: ['lucide-react'],
     esmExternals: true, // Optimizes the handling of modern npm packages
 
     // Inline CSS into <style> tags in the HTML (App Router native; replaces
