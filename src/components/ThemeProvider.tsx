@@ -4,13 +4,7 @@ import { createContext, useContext, useEffect, useState, ReactNode } from 'react
 
 interface ThemeContextType {
   isDarkMode: boolean;
-  selectedTheme: string;
-  selectedFont: string;
-  selectedSpacing: string;
   setDarkMode: (darkMode: boolean) => void;
-  setTheme: (theme: string) => void;
-  setFont: (font: string) => void;
-  setSpacing: (spacing: string) => void;
   isHydrated: boolean;
 }
 
@@ -28,137 +22,40 @@ interface ThemeProviderProps {
   children: ReactNode;
 }
 
+// The site has a single theme (Nord, applied statically via the <html
+// data-theme="nord"> attribute in layout.tsx) with light/dark variants
+// selected by the .dark class this provider toggles. It used to also drive
+// a font and letter-spacing picker; those had no remaining UI to change
+// them, so the font is now set statically via next/font in layout.tsx and
+// letter-spacing via a static Tailwind class.
 export function ThemeProvider({ children }: ThemeProviderProps) {
   const [isHydrated, setIsHydrated] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [selectedTheme, setSelectedTheme] = useState('nord');
-  const [selectedFont] = useState('inter');
-  const [selectedSpacing, setSelectedSpacing] = useState('normal');
-
-  const applyTheme = (themeValue: string, darkMode: boolean) => {
-    const html = document.documentElement;
-    html.removeAttribute('data-theme');
-    html.classList.remove('dark');
-    html.setAttribute('data-theme', themeValue);
-    if (darkMode) {
-      html.classList.add('dark');
-    }
-  };
-
-  const applyFont = (fontValue: string) => {
-    const body = document.body;
-    // Remove all font classes
-    const fontClasses = [
-      'font-dmsans', 'font-firacode', 'font-sans', 'font-inconsolata',
-      'font-inter', 'font-jetbrains', 'font-lato', 'font-montserrat',
-      'font-nunito', 'font-opensans', 'font-outfit', 'font-plusjakarta',
-      'font-poppins', 'font-roboto', 'font-sourcesans', 'font-spacemono',
-      'font-ubuntu', 'font-worksans'
-    ];
-    fontClasses.forEach(cls => body.classList.remove(cls));
-    
-    // Add selected font class
-    const fontClassMap: Record<string, string> = {
-      dmsans: 'font-dmsans', 
-      firacode: 'font-firacode', 
-      inconsolata: 'font-inconsolata', 
-      inter: 'font-inter', 
-      jetbrains: 'font-jetbrains',
-      lato: 'font-lato', 
-      montserrat: 'font-montserrat', 
-      nunito: 'font-nunito',
-      opensans: 'font-opensans', 
-      outfit: 'font-outfit', 
-      plusjakarta: 'font-plusjakarta',
-      poppins: 'font-poppins', 
-      roboto: 'font-roboto', 
-      sourcesans: 'font-sourcesans',
-      spacemono: 'font-spacemono', 
-      ubuntu: 'font-ubuntu', 
-      worksans: 'font-worksans'
-    };
-    const fontClass = fontClassMap[fontValue];
-    if (fontClass) {
-      body.classList.add(fontClass);
-    }
-  };
-
-  const applySpacing = (spacingValue: string) => {
-    const body = document.body;
-    const spacingClasses = ['tracking-tighter', 'tracking-tight', 'tracking-normal', 'tracking-wide', 'tracking-wider', 'tracking-widest'];
-    spacingClasses.forEach(cls => body.classList.remove(cls));
-    
-    const spacingClassMap: Record<string, string> = {
-      tighter: 'tracking-tighter',
-      tight: 'tracking-tight',
-      normal: 'tracking-normal',
-      wide: 'tracking-wide',
-      wider: 'tracking-wider',
-      widest: 'tracking-widest'
-    };
-    const spacingClass = spacingClassMap[spacingValue];
-    if (spacingClass) {
-      body.classList.add(spacingClass);
-    }
-  };
 
   const setDarkMode = (darkMode: boolean) => {
     setIsDarkMode(darkMode);
     localStorage.setItem('selected-dark-mode', darkMode.toString());
-    applyTheme(selectedTheme, darkMode);
-  };
-
-  const setTheme = () => {
-    setSelectedTheme('nord');
-    localStorage.setItem('selected-theme', 'nord');
-    applyTheme('nord', isDarkMode);
-  };
-
-  const setFont = () => {
-    applyFont('inter');
-  };
-
-  const setSpacing = () => {
-    applySpacing('normal');
+    document.documentElement.classList.toggle('dark', darkMode);
   };
 
   useEffect(() => {
-    // Load saved preferences only after hydration
+    // Load the saved preference only after hydration
     const savedDarkMode = localStorage.getItem('selected-dark-mode');
-    // Set dark mode preference
-    if (savedDarkMode !== null) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setIsDarkMode(savedDarkMode === 'true');
-    } else {
-      // Use system preference
-      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      setIsDarkMode(systemPrefersDark);
+    const darkModeToApply = savedDarkMode !== null
+      ? savedDarkMode === 'true'
+      : window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setIsDarkMode(darkModeToApply);
+    if (darkModeToApply) {
+      document.documentElement.classList.add('dark');
     }
-
-    setSelectedTheme('nord');
-    setSelectedSpacing('normal');
-
-    // Apply initial settings
-    const darkModeToApply = savedDarkMode !== null ? savedDarkMode === 'true' : window.matchMedia('(prefers-color-scheme: dark)').matches;
-    applyTheme('nord', darkModeToApply);
-    applyFont('inter');
-    applySpacing('normal');
 
     setIsHydrated(true);
   }, []);
 
   return (
-    <ThemeContext.Provider value={{
-      isDarkMode,
-      selectedTheme,
-      selectedFont,
-      selectedSpacing,
-      setDarkMode,
-      setTheme,
-      setFont,
-      setSpacing,
-      isHydrated
-    }}>
+    <ThemeContext.Provider value={{ isDarkMode, setDarkMode, isHydrated }}>
       {children}
     </ThemeContext.Provider>
   );
