@@ -18,32 +18,6 @@ export default function LetterSpacingSelector() {
   const [mounted, setMounted] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    setMounted(true);
-    
-    // Load saved letter spacing preference
-    const savedSpacing = localStorage.getItem('selected-letter-spacing') || 'normal';
-    setSelectedSpacing(savedSpacing);
-    applyLetterSpacing(savedSpacing);
-  }, []);
-
-  useEffect(() => {
-    // Close dropdown when clicking outside
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
-      }
-    };
-
-    if (isOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [isOpen]);
-
   const applyLetterSpacing = (spacingValue: string) => {
     const body = document.body;
     
@@ -65,6 +39,35 @@ export default function LetterSpacingSelector() {
     applyLetterSpacing(spacingValue);
     setIsOpen(false);
   };
+
+  useEffect(() => {
+    // Reading localStorage requires the browser, so the saved preference can
+    // only be applied post-mount — these setState calls swap the SSR-safe
+    // default rendered above for the real saved value.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMounted(true);
+
+    const savedSpacing = localStorage.getItem('selected-letter-spacing') || 'normal';
+    setSelectedSpacing(savedSpacing);
+    applyLetterSpacing(savedSpacing);
+  }, []);
+
+  useEffect(() => {
+    // Close dropdown when clicking outside
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
 
   const currentSpacing = letterSpacingOptions.find(spacing => spacing.value === selectedSpacing);
 

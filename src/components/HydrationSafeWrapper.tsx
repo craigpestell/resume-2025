@@ -24,6 +24,7 @@ export default function HydrationSafeWrapper({
 
   useEffect(() => {
     // This ensures the component is only rendered after hydration
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsHydrated(true);
   }, []);
 

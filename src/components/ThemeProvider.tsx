@@ -35,30 +35,6 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   const [selectedFont] = useState('inter');
   const [selectedSpacing, setSelectedSpacing] = useState('normal');
 
-  useEffect(() => {
-    // Load saved preferences only after hydration
-    const savedDarkMode = localStorage.getItem('selected-dark-mode');
-    // Set dark mode preference
-    if (savedDarkMode !== null) {
-      setIsDarkMode(savedDarkMode === 'true');
-    } else {
-      // Use system preference
-      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      setIsDarkMode(systemPrefersDark);
-    }
-
-    setSelectedTheme('nord');
-    setSelectedSpacing('normal');
-
-    // Apply initial settings
-    const darkModeToApply = savedDarkMode !== null ? savedDarkMode === 'true' : window.matchMedia('(prefers-color-scheme: dark)').matches;
-    applyTheme('nord', darkModeToApply);
-    applyFont('inter');
-    applySpacing('normal');
-
-    setIsHydrated(true);
-  }, []);
-
   const applyTheme = (themeValue: string, darkMode: boolean) => {
     const html = document.documentElement;
     html.removeAttribute('data-theme');
@@ -145,6 +121,31 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   const setSpacing = () => {
     applySpacing('normal');
   };
+
+  useEffect(() => {
+    // Load saved preferences only after hydration
+    const savedDarkMode = localStorage.getItem('selected-dark-mode');
+    // Set dark mode preference
+    if (savedDarkMode !== null) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setIsDarkMode(savedDarkMode === 'true');
+    } else {
+      // Use system preference
+      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      setIsDarkMode(systemPrefersDark);
+    }
+
+    setSelectedTheme('nord');
+    setSelectedSpacing('normal');
+
+    // Apply initial settings
+    const darkModeToApply = savedDarkMode !== null ? savedDarkMode === 'true' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    applyTheme('nord', darkModeToApply);
+    applyFont('inter');
+    applySpacing('normal');
+
+    setIsHydrated(true);
+  }, []);
 
   return (
     <ThemeContext.Provider value={{

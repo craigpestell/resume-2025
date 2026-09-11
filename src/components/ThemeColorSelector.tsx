@@ -25,19 +25,65 @@ export default function ThemeColorSelector() {
   const [mounted, setMounted] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    setMounted(true);
+  const applyTheme = (themeValue: string, darkMode: boolean) => {
+    const html = document.documentElement;
     
+    // Remove all theme attributes and classes
+    html.removeAttribute('data-theme');
+    html.classList.remove('dark');
+    
+    // Apply the selected theme (always set data-theme for all themes)
+    html.setAttribute('data-theme', themeValue);
+    
+    // Apply dark mode
+    if (darkMode) {
+      html.classList.add('dark');
+    }
+  };
+
+  const handleThemeChange = (themeValue: string) => {
+    setSelectedTheme(themeValue);
+    localStorage.setItem('selected-theme', themeValue);
+    
+    // Get current dark mode setting or use system preference
+    const savedDarkMode = localStorage.getItem('selected-dark-mode');
+    const currentDarkMode = savedDarkMode !== null 
+      ? savedDarkMode === 'true' 
+      : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    applyTheme(themeValue, currentDarkMode);
+    setIsOpen(false);
+    
+    // Sync with other theme selectors
+    window.dispatchEvent(new CustomEvent('themeSync', {
+      detail: { theme: themeValue, darkMode: currentDarkMode }
+    }));
+    
+    // Trigger storage event manually for same-tab synchronization
+    window.dispatchEvent(new StorageEvent('storage', {
+      key: 'selected-theme',
+      newValue: themeValue,
+      storageArea: localStorage
+    }));
+  };
+
+  useEffect(() => {
+    // Reading localStorage/matchMedia requires the browser, so the saved
+    // preference can only be applied post-mount — these setState calls swap
+    // the SSR-safe default rendered below for the real saved value.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMounted(true);
+
     // Only apply theme if user has explicitly saved preferences
     // Otherwise, let the CSS defaults (Nord theme) take precedence but apply system dark mode preference
     const savedTheme = localStorage.getItem('selected-theme');
     const savedDarkMode = localStorage.getItem('selected-dark-mode');
-    
+
     if (savedTheme || savedDarkMode !== null) {
       // User has saved preferences, apply them
       const defaultTheme = savedTheme || 'nord';
       const defaultDarkMode = savedDarkMode !== null ? savedDarkMode === 'true' : false;
-      
+
       setSelectedTheme(defaultTheme);
       applyTheme(defaultTheme, defaultDarkMode);
     } else {
@@ -90,48 +136,6 @@ export default function ThemeColorSelector() {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [isOpen]);
-
-  const applyTheme = (themeValue: string, darkMode: boolean) => {
-    const html = document.documentElement;
-    
-    // Remove all theme attributes and classes
-    html.removeAttribute('data-theme');
-    html.classList.remove('dark');
-    
-    // Apply the selected theme (always set data-theme for all themes)
-    html.setAttribute('data-theme', themeValue);
-    
-    // Apply dark mode
-    if (darkMode) {
-      html.classList.add('dark');
-    }
-  };
-
-  const handleThemeChange = (themeValue: string) => {
-    setSelectedTheme(themeValue);
-    localStorage.setItem('selected-theme', themeValue);
-    
-    // Get current dark mode setting or use system preference
-    const savedDarkMode = localStorage.getItem('selected-dark-mode');
-    const currentDarkMode = savedDarkMode !== null 
-      ? savedDarkMode === 'true' 
-      : window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    applyTheme(themeValue, currentDarkMode);
-    setIsOpen(false);
-    
-    // Sync with other theme selectors
-    window.dispatchEvent(new CustomEvent('themeSync', {
-      detail: { theme: themeValue, darkMode: currentDarkMode }
-    }));
-    
-    // Trigger storage event manually for same-tab synchronization
-    window.dispatchEvent(new StorageEvent('storage', {
-      key: 'selected-theme',
-      newValue: themeValue,
-      storageArea: localStorage
-    }));
-  };
 
   const currentTheme = themeOptions.find(theme => theme.value === selectedTheme);
 

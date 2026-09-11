@@ -59,7 +59,7 @@ function assignVariant(userId: string, experiment: EdgeExperiment) {
   return experiment.variants[0] || null;
 }
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   // Only run on main pages, not API routes or static files
   if (
     request.nextUrl.pathname.startsWith('/api') ||

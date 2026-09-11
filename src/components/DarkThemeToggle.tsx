@@ -20,8 +20,12 @@ export default function DarkThemeToggle({
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // Reading localStorage/matchMedia requires the browser, so the saved
+    // preference can only be applied post-mount — these setState calls swap
+    // the SSR-safe default rendered below for the real saved value.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
-    
+
     // Only set dark mode state if user has explicitly saved preferences
     // Otherwise, use the system preference
     const savedDarkMode = localStorage.getItem('selected-dark-mode');

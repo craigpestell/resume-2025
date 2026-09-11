@@ -10,32 +10,6 @@ export default function FontSelector() {
   const [mounted, setMounted] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    setMounted(true);
-    
-    // Load saved font preference
-    const savedFont = localStorage.getItem('selected-font') || 'inconsolata';
-    setSelectedFont(savedFont);
-    applyFont(savedFont);
-  }, []);
-
-  useEffect(() => {
-    // Close dropdown when clicking outside
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
-      }
-    };
-
-    if (isOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [isOpen]);
-
   const applyFont = async (fontValue: string) => {
     const body = document.body;
     
@@ -66,6 +40,35 @@ export default function FontSelector() {
     await applyFont(fontValue);
     setIsOpen(false);
   };
+
+  useEffect(() => {
+    // Reading localStorage requires the browser, so the saved preference can
+    // only be applied post-mount — these setState calls swap the SSR-safe
+    // default rendered above for the real saved value.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMounted(true);
+
+    const savedFont = localStorage.getItem('selected-font') || 'inconsolata';
+    setSelectedFont(savedFont);
+    applyFont(savedFont);
+  }, []);
+
+  useEffect(() => {
+    // Close dropdown when clicking outside
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
 
   const currentFont = fontOptions.find(font => font.value === selectedFont);
 
