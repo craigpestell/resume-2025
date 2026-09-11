@@ -45,7 +45,6 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
       ? savedDarkMode === 'true'
       : window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsDarkMode(darkModeToApply);
     if (darkModeToApply) {
       document.documentElement.classList.add('dark');

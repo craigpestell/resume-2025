@@ -59,7 +59,6 @@ export default function EdgeConfigDashboard() {
   useEffect(() => {
     // One-time data load on mount; loadExperiments fetches from the API and
     // then sets state with the result.
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     loadExperiments();
   }, []);
 
