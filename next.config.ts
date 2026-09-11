@@ -82,4 +82,4 @@ const nextConfig: NextConfig = {
 
 // Bundle analyzer only kicks in for `ANALYZE=true next build --webpack` — it
 // warns and no-ops under Turbopack, so the analyze script forces webpack.
-export default withBundleAnalyzer({ enabled: process.env.ANALYZE === 'true' })(nextConfig);
+//export default withBundleAnalyzer({ enabled: process.env.ANALYZE === 'true' })(nextConfig);
