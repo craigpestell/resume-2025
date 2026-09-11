@@ -56,5 +56,16 @@
   "overrides": {
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0"
+  },
+    "browserslist": {
+    "production": [
+      "last 2 Chrome versions",
+      "last 2 Firefox versions",
+      "last 2 Edge versions",
+      "last 2 Safari versions"
+    ],
+    "development": [
+      "last 1 Chrome version"
+    ]
   }
 }
