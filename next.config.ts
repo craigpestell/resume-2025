@@ -56,9 +56,13 @@ const nextConfig: NextConfig = {
     // is a passthrough 'default' policy that accepts any string unchanged —
     // satisfies a Lighthouse checkbox without adding real DOM-XSS protection,
     // so it's skipped rather than shipped as security theater.
+    // React uses eval() in development for debugging features (e.g.
+    // reconstructing server-side error stacks in the browser); it never
+    // does in production, so this is dev-only.
+    const isDev = process.env.NODE_ENV === 'development';
     const cspHeader = `
       default-src 'self';
-      script-src 'self' 'unsafe-inline';
+      script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''};
       style-src 'self' 'unsafe-inline';
       img-src 'self' data:;
       font-src 'self';
