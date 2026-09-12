@@ -41,6 +41,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# analytics dashboard data
+.analytics-data.json
+
 *storybook.log
 storybook-static
 .env*.local
