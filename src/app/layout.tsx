@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/react';
 import { GoogleAnalytics } from '@next/third-parties/google';
+import ClickTracker from '@/components/ClickTracker';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { portfolioData } from '@/data/portfolio';
 import { defaultFont } from '@/lib/fontLoader';
@@ -104,6 +105,7 @@ export default function RootLayout({
           <Analytics />
         </ThemeProvider>
         <GoogleAnalytics gaId="G-KCFTFCTSPW" />
+        <ClickTracker />
       </body>
     </html>
   );

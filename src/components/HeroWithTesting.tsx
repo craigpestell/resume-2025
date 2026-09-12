@@ -124,6 +124,7 @@ export default function Hero({ personalInfo }: HeroProps) {
               rel="noopener noreferrer"
               className="p-3 bg-card rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
               aria-label={`Connect with ${personalInfo.name} on LinkedIn`}
+              data-ga-skip
               onClick={() => trackConversion('social_click', { platform: 'linkedin', variant: variantId })}
             >
               <Linkedin className="w-6 h-6 text-card-foreground" />
@@ -132,6 +133,7 @@ export default function Hero({ personalInfo }: HeroProps) {
               href={`mailto:${personalInfo.email}`}
               className="p-3 bg-card rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
               aria-label={`Send email to ${personalInfo.name}`}
+              data-ga-skip
               onClick={() => trackConversion('social_click', { platform: 'email', variant: variantId })}
             >
               <Mail className="w-6 h-6 text-card-foreground" />
@@ -142,6 +144,7 @@ export default function Hero({ personalInfo }: HeroProps) {
               rel="noopener noreferrer"
               className="p-3 bg-card rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
               aria-label={`Visit ${personalInfo.name}'s portfolio website`}
+              data-ga-skip
               onClick={() => trackConversion('social_click', { platform: 'website', variant: variantId })}
             >
               <ExternalLink className="w-6 h-6 text-card-foreground" />
@@ -153,6 +156,7 @@ export default function Hero({ personalInfo }: HeroProps) {
             {/* Primary CTA - varies based on experiment */}
             <a
               href="/api/resume"
+              data-ga-skip
               onClick={() => trackConversion('resume_download', {
                 variant: variantId,
                 buttonText: ctaText
@@ -166,6 +170,7 @@ export default function Hero({ personalInfo }: HeroProps) {
             {/* Secondary button or alternative action */}
             {showSecondaryButton ? (
               <button
+                data-ga-skip
                 onClick={() => scrollToSection('#projects')}
                 className={getButtonStyles(ctaStyle, false)}
               >
@@ -174,12 +179,14 @@ export default function Hero({ personalInfo }: HeroProps) {
             ) : (
               <>
                 <button
+                  data-ga-skip
                   onClick={() => scrollToSection('#projects')}
                   className="px-8 py-3 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg font-medium transition-colors duration-300 shadow-lg hover:shadow-xl"
                 >
                   View My Work
                 </button>
                 <button
+                  data-ga-skip
                   onClick={handleContactClick}
                   className="px-8 py-3 border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground rounded-lg font-medium transition-all duration-300"
                 >

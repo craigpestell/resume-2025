@@ -70,10 +70,9 @@ export default function Header() {
     { href: '#contact', label: 'Contact' },
   ];
 
-  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string, label: string) => {
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     // Only prevent default and use smooth scroll if JavaScript is enabled
     e.preventDefault();
-    sendGAEvent('event', 'nav_click', { link_label: label, link_href: href });
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -98,7 +97,7 @@ export default function Header() {
               <a
                 key={link.href}
                 href={link.href}
-                onClick={(e) => handleSmoothScroll(e, link.href, link.label)}
+                onClick={(e) => handleSmoothScroll(e, link.href)}
                 className={`font-semibold text-foreground hover:text-primary transition-colors lg:text-xl relative cursor-pointer ${
                   activeSection === link.href.substring(1) 
                     ? 'text-primary after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-primary after:content-[\'\']' 
@@ -149,7 +148,7 @@ export default function Header() {
                 <a
                   key={link.href}
                   href={link.href}
-                  onClick={(e) => handleSmoothScroll(e, link.href, link.label)}
+                  onClick={(e) => handleSmoothScroll(e, link.href)}
                   className={`block w-full text-left px-4 py-2 hover:bg-muted transition-colors ${
                     activeSection === link.href.substring(1)
                       ? 'text-primary bg-primary/10 border-l-2 border-primary'
