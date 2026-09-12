@@ -35,7 +35,13 @@ export default function Header() {
       (entries) => {
         const visible = entries.find(entry => entry.isIntersecting);
         if (visible) {
-          setActiveSection(visible.target.id);
+          const id = visible.target.id;
+          setActiveSection(prev => {
+            if (prev !== id) {
+              sendGAEvent('event', 'section_view', { section_id: id });
+            }
+            return id;
+          });
         }
       },
       { rootMargin: '-100px 0px -100% 0px' }
