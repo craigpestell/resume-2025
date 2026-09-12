@@ -40,10 +40,44 @@ const nextConfig: NextConfig = {
 
   // Security headers
   async headers() {
+    // No external scripts, styles, images, or fonts — everything the site
+    // loads is same-origin (self-hosted fonts via next/font, local images,
+    // same-origin Vercel Analytics/Speed Insights script paths). 'unsafe-inline'
+    // covers the two same-origin inline tags Next.js itself renders: the
+    // <script> in layout.tsx and the <style> from experimental.inlineCss.
+    // A nonce-based policy would be stricter but requires dynamic rendering
+    // on every page (no static generation), which isn't a trade worth making
+    // here — see https://nextjs.org/docs/app/guides/content-security-policy.
+    //
+    // Deliberately no `require-trusted-types-for 'script'`: verified locally
+    // that React/Next's own runtime assigns innerHTML with a raw string
+    // somewhere internally (no official Trusted Types support), which throws
+    // and breaks hydration under real enforcement. The only way around that
+    // is a passthrough 'default' policy that accepts any string unchanged —
+    // satisfies a Lighthouse checkbox without adding real DOM-XSS protection,
+    // so it's skipped rather than shipped as security theater.
+    const cspHeader = `
+      default-src 'self';
+      script-src 'self' 'unsafe-inline';
+      style-src 'self' 'unsafe-inline';
+      img-src 'self' data:;
+      font-src 'self';
+      connect-src 'self';
+      object-src 'none';
+      base-uri 'self';
+      form-action 'self';
+      frame-ancestors 'none';
+      upgrade-insecure-requests;
+    `.replace(/\s{2,}/g, ' ').trim();
+
     return [
       {
         source: '/(.*)',
         headers: [
+          {
+            key: 'Content-Security-Policy',
+            value: cspHeader,
+          },
           {
             key: 'X-Frame-Options',
             value: 'DENY',
