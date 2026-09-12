@@ -103,6 +103,7 @@ export default function ExperienceSection({ experience, education }: ExperienceP
                     onClick={() => setIsExpanded(!isExpanded)}
                     className="flex items-center text-sm font-medium text-card-foreground hover:text-primary transition-colors mt-2"
                     aria-expanded={isExpanded}
+                    aria-label={`${isExpanded ? 'Hide' : 'Show'} additional achievements for ${exp.position} at ${exp.company}`}
                   >
                     {isExpanded ? (
                       <ChevronDown className="w-4 h-4 mr-1" />

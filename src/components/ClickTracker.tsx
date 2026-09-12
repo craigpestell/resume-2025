@@ -17,10 +17,21 @@ function describeElement(el: Element) {
     el.getAttribute('title') ||
     '';
 
+  // aria-* attributes often carry the per-instance detail plain text can't
+  // (e.g. aria-label disambiguating identical-looking buttons, aria-expanded
+  // for toggle state), so pass all of them through as their own params.
+  const ariaParams: Record<string, string> = {};
+  for (const attr of el.attributes) {
+    if (attr.name.startsWith('aria-')) {
+      ariaParams[attr.name.replace(/-/g, '_')] = attr.value;
+    }
+  }
+
   return {
     element_type: el.tagName.toLowerCase(),
     label,
     ...(el instanceof HTMLAnchorElement ? { href: el.getAttribute('href') ?? undefined } : {}),
+    ...ariaParams,
   };
 }
 
