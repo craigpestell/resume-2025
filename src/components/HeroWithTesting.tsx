@@ -158,7 +158,6 @@ export default function Hero({ personalInfo }: HeroProps) {
                 buttonText: ctaText
               })}
               className={getButtonStyles(ctaStyle, true)}
-              data-testid="primary-cta"
             >
               <Download className="w-4 h-4" />
               {ctaText}
@@ -169,7 +168,6 @@ export default function Hero({ personalInfo }: HeroProps) {
               <button
                 onClick={() => scrollToSection('#projects')}
                 className={getButtonStyles(ctaStyle, false)}
-                data-testid="secondary-cta"
               >
                 {secondaryText}
               </button>
