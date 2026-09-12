@@ -1,6 +1,7 @@
 'use client';
 
 import { Sun, Moon } from 'lucide-react';
+import { sendGAEvent } from '@next/third-parties/google';
 import { useTheme } from './ThemeProvider';
 
 interface DarkThemeToggleSimpleProps {
@@ -69,7 +70,9 @@ export default function DarkThemeToggleSimple({
   };
 
   const toggleDarkMode = () => {
-    setDarkMode(!isDarkMode);
+    const nextMode = !isDarkMode;
+    sendGAEvent('event', 'theme_toggle', { theme: nextMode ? 'dark' : 'light' });
+    setDarkMode(nextMode);
   };
 
   // Show default state for SEO/no-JS (light mode), then enhance with JavaScript
@@ -95,6 +98,7 @@ export default function DarkThemeToggleSimple({
       className={getButtonClasses()}
       aria-label={getThemeLabel()}
       title={getThemeLabel()}
+      data-ga-skip
       suppressHydrationWarning
     >
       {getThemeIcon()}
