@@ -45,9 +45,13 @@ const nextConfig: NextConfig = {
     // script paths) except Google Analytics: gtag.js itself loads from
     // googletagmanager.com, and it reports hits to google-analytics.com
     // (regional subdomains included) plus googletagmanager.com itself for
-    // config/consent requests. 'unsafe-inline' covers the two same-origin
-    // inline tags Next.js itself renders (the <script> in layout.tsx and the
-    // <style> from experimental.inlineCss) plus gtag's own inline init script.
+    // config/consent requests. With consent mode v2 signals present, gtag
+    // also routes hits through analytics.google.com and, in some
+    // regions/configs, www.google.com — both need to be allowed or hits are
+    // silently dropped by the CSP instead of just failing to send.
+    // 'unsafe-inline' covers the two same-origin inline tags Next.js itself
+    // renders (the <script> in layout.tsx and the <style> from
+    // experimental.inlineCss) plus gtag's own inline init script.
     // A nonce-based policy would be stricter but requires dynamic rendering
     // on every page (no static generation), which isn't a trade worth making
     // here — see https://nextjs.org/docs/app/guides/content-security-policy.
@@ -69,7 +73,7 @@ const nextConfig: NextConfig = {
       style-src 'self' 'unsafe-inline';
       img-src 'self' data:;
       font-src 'self';
-      connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com;
+      connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://www.google.com;
       object-src 'none';
       base-uri 'self';
       form-action 'self';

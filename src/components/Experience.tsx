@@ -120,6 +120,7 @@ export default function ExperienceSection({ experience, education }: ExperienceP
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: 'auto' }}
                   transition={{ duration: 0.2 }}
+                  className="mt-2"
                 >
                   <ul className="mx-4 list-disc list-outside space-y-1">
                     {exp.achievements.slice(1).map((achievement, i) => (
