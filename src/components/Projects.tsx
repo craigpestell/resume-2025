@@ -38,6 +38,7 @@ export default function Projects({ projects }: ProjectsProps) {
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={`View source for ${project.title}`}
                 className="p-3 bg-background/90 rounded-full transition-colors"
               >
                 <Github className="w-5 h-5 text-foreground" />
@@ -96,10 +97,11 @@ export default function Projects({ projects }: ProjectsProps) {
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={`View source for ${project.title}`}
               className="flex items-center space-x-2 text-muted-foreground transition-colors"
             >
               <Github className="w-4 h-4" />
-              <span>Source Code</span>
+              <span aria-hidden="true">Source Code</span>
             </a>
           )}
         </div>
@@ -189,10 +191,11 @@ export default function Projects({ projects }: ProjectsProps) {
                         href={project.projectUrl}
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label={`Visit ${project.title}`}
                         className="inline-flex items-center gap-1 text-sm text-primary transition-colors"
                       >
                         <ExternalLink className="h-4 w-4" />
-                        <span>Visit</span>
+                        <span aria-hidden="true">Visit</span>
                       </a>
                     )}
                     {project.githubUrl && (
@@ -200,10 +203,11 @@ export default function Projects({ projects }: ProjectsProps) {
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label={`View source for ${project.title}`}
                         className="inline-flex items-center gap-1 text-sm text-primary transition-colors"
                       >
                         <Github className="h-4 w-4" />
-                        <span>Source</span>
+                        <span aria-hidden="true">Source</span>
                       </a>
                     )}
                   </div>
