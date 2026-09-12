@@ -40,11 +40,14 @@ const nextConfig: NextConfig = {
 
   // Security headers
   async headers() {
-    // No external scripts, styles, images, or fonts — everything the site
-    // loads is same-origin (self-hosted fonts via next/font, local images,
-    // same-origin Vercel Analytics/Speed Insights script paths). 'unsafe-inline'
-    // covers the two same-origin inline tags Next.js itself renders: the
-    // <script> in layout.tsx and the <style> from experimental.inlineCss.
+    // Everything the site loads is same-origin (self-hosted fonts via
+    // next/font, local images, same-origin Vercel Analytics/Speed Insights
+    // script paths) except Google Analytics: gtag.js itself loads from
+    // googletagmanager.com, and it reports hits to google-analytics.com
+    // (regional subdomains included) plus googletagmanager.com itself for
+    // config/consent requests. 'unsafe-inline' covers the two same-origin
+    // inline tags Next.js itself renders (the <script> in layout.tsx and the
+    // <style> from experimental.inlineCss) plus gtag's own inline init script.
     // A nonce-based policy would be stricter but requires dynamic rendering
     // on every page (no static generation), which isn't a trade worth making
     // here — see https://nextjs.org/docs/app/guides/content-security-policy.
@@ -62,11 +65,11 @@ const nextConfig: NextConfig = {
     const isDev = process.env.NODE_ENV === 'development';
     const cspHeader = `
       default-src 'self';
-      script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''};
+      script-src 'self' 'unsafe-inline' https://www.googletagmanager.com${isDev ? " 'unsafe-eval'" : ''};
       style-src 'self' 'unsafe-inline';
       img-src 'self' data:;
       font-src 'self';
-      connect-src 'self';
+      connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com;
       object-src 'none';
       base-uri 'self';
       form-action 'self';

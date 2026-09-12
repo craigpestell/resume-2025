@@ -212,17 +212,17 @@ function sendToAnalytics(event: string, data: Record<string, unknown>) {
   if (typeof window !== 'undefined') {
     // Google Analytics 4
     if ('gtag' in window) {
-      (window as { gtag: (command: string, event: string, data: Record<string, unknown>) => void }).gtag('event', event, data);
+      (window as unknown as { gtag: (command: string, event: string, data: Record<string, unknown>) => void }).gtag('event', event, data);
     }
-    
+
     // PostHog
     if ('posthog' in window) {
-      (window as { posthog: { capture: (event: string, data: Record<string, unknown>) => void } }).posthog.capture(event, data);
+      (window as unknown as { posthog: { capture: (event: string, data: Record<string, unknown>) => void } }).posthog.capture(event, data);
     }
-    
+
     // Mixpanel
     if ('mixpanel' in window) {
-      (window as { mixpanel: { track: (event: string, data: Record<string, unknown>) => void } }).mixpanel.track(event, data);
+      (window as unknown as { mixpanel: { track: (event: string, data: Record<string, unknown>) => void } }).mixpanel.track(event, data);
     }
   }
   
