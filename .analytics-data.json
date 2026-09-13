@@ -404,5 +404,44 @@
       "user_id": "1532b30b-28c7-495a-8238-085c17b60671",
       "experiments": []
     }
+  },
+  {
+    "experimentId": "hero-cta-test",
+    "variantId": "variant-a",
+    "eventType": "resume_download",
+    "userId": "user-1787813048476",
+    "timestamp": 1787813048476,
+    "data": {
+      "variant": "variant-a",
+      "buttonText": "Get My Resume",
+      "user_id": "446176f9-7891-4a54-87cd-e2ba4a6d0099",
+      "experiments": []
+    }
+  },
+  {
+    "experimentId": "hero-cta-test",
+    "variantId": "variant-a",
+    "eventType": "social_click",
+    "userId": "user-1789280486398",
+    "timestamp": 1789280486398,
+    "data": {
+      "platform": "website",
+      "variant": "variant-a",
+      "user_id": "09a44e8c-dd9c-404f-9bac-047931f9f78d",
+      "experiments": []
+    }
+  },
+  {
+    "experimentId": "hero-cta-test",
+    "variantId": "variant-a",
+    "eventType": "section_navigation",
+    "userId": "user-1789280629441",
+    "timestamp": 1789280629441,
+    "data": {
+      "section": "#projects",
+      "variant": "variant-a",
+      "user_id": "09a44e8c-dd9c-404f-9bac-047931f9f78d",
+      "experiments": []
+    }
   }
 ]

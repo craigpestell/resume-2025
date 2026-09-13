@@ -3,7 +3,7 @@
 import dynamic from 'next/dynamic';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Download, Menu, X } from 'lucide-react';
+import { FileUser, Menu, X } from 'lucide-react';
 import { sendGAEvent } from '@next/third-parties/google';
 
 const DarkThemeToggleSimple = dynamic(() => import('./DarkThemeToggleSimple'), {
@@ -84,7 +84,7 @@ export default function Header() {
     <header 
       className="header-fade fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-background/90 backdrop-blur-sm shadow-lg"
     >
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 lg:px-8 xl:px-12">
         <div className="flex items-center justify-between h-16">
           {/* Logo — opening tag; the footer closes it with </CraigPestell> */}
           <Link href="/" className="font-jetbrains font-bold text-xl text-foreground hover:text-primary">
@@ -119,7 +119,7 @@ export default function Header() {
               href="/api/resume"
               className="hidden lg:flex items-center space-x-2 bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-2 rounded-lg transition-colors"
             >
-              <Download className="w-4 h-4" />
+              <FileUser className="w-4 h-4" />
               <span>Resume</span>
             </a>
 
@@ -163,7 +163,7 @@ export default function Header() {
                 onClick={() => setIsMenuOpen(false)}
                 className="flex items-center space-x-2 px-4 py-2 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg transition-colors ml-4 mt-4"
               >
-                <Download className="w-4 h-4" />
+                <FileUser className="w-4 h-4" />
                 <span>Download Resume</span>
               </a>
             </div>

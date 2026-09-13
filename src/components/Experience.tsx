@@ -209,7 +209,7 @@ export default function ExperienceSection({ experience, education }: ExperienceP
 
   return (
     <section className="py-20 bg-background">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 lg:px-8 xl:px-12">
         <MotionWrapper
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}

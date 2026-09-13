@@ -111,7 +111,7 @@ export default function Projects({ projects }: ProjectsProps) {
 
   return (
     <section className="py-20 bg-background">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 lg:px-8 xl:px-12">
         <MotionWrapper
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -143,7 +143,7 @@ export default function Projects({ projects }: ProjectsProps) {
           </div>
         )}
 
-        {/* Earlier work */}
+        {/* Additional, non-featured projects */}
         {otherProjects.length > 0 && (
           <div>
             <MotionWrapper
@@ -151,13 +151,13 @@ export default function Projects({ projects }: ProjectsProps) {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
-              className="text-2xl font-semibold text-center mb-8 text-foreground"
+              className="text-2xl font-semibold mb-8 text-foreground max-w-6xl mx-auto"
               as="h3"
             >
-              Earlier Work
+              Additional Projects
             </MotionWrapper>
 
-            <div className="max-w-4xl mx-auto divide-y divide-border border-y border-border">
+            <div className="max-w-6xl mx-auto divide-y divide-border border-y border-border">
               {otherProjects.map((project, index) => (
                 <MotionWrapper
                   key={project.id}

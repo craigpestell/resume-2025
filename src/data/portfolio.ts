@@ -360,6 +360,22 @@ export const portfolioData: PortfolioData = {
       technologies: ["Python", "JavaScript", "Google Closures", "Fava Framework", "Oracle DB", "BMC Remedy"]
     },
     {
+      id: "exp-18",
+      company: "Hayes Bicycle Group",
+      position: "Web Developer",
+      startDate: "2009-01",
+      endDate: "2009-12",
+      description: "Developed comprehensive website featuring product catalog, blog posts, and hierarchical page structure for bicycle component manufacturer",
+      achievements: [
+        "Collaborated with marketing team to build fresh website with dynamic product catalog",
+        "Implemented PHP/MySQL backend for dynamic content delivery and page management",
+        "Optimized images and file formats for responsive web design using early optimization techniques",
+        "Created Linux server environments for development, staging, and production hosting"
+      ],
+      technologies: ["PHP", "MySQL", "WordPress", "HTML", "CSS", "JavaScript"],
+      resumeIncluded: false
+    },
+    {
       id: "exp-10",
       company: "Race Face Performance Products",
       position: "Web Developer",
@@ -390,22 +406,6 @@ export const portfolioData: PortfolioData = {
         "Implemented web services and APIs enabling integration with third-party insurance systems"
       ],
       technologies: ["PHP", "MySQL", "JavaScript", "SOAP", "XML", "HTML", "CSS"],
-      resumeIncluded: false
-    },
-    {
-      id: "exp-18",
-      company: "Hayes Bicycle Group",
-      position: "Web Developer",
-      startDate: "2009-01",
-      endDate: "2009-12",
-      description: "Developed comprehensive website featuring product catalog, blog posts, and hierarchical page structure for bicycle component manufacturer",
-      achievements: [
-        "Collaborated with marketing team to build fresh website with dynamic product catalog",
-        "Implemented PHP/MySQL backend for dynamic content delivery and page management",
-        "Optimized images and file formats for responsive web design using early optimization techniques",
-        "Created Linux server environments for development, staging, and production hosting"
-      ],
-      technologies: ["PHP", "MySQL", "WordPress", "HTML", "CSS", "JavaScript"],
       resumeIncluded: false
     },
     {

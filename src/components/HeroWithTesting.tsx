@@ -1,64 +1,20 @@
 'use client';
 
-import { Linkedin, Mail, ExternalLink, Download } from 'lucide-react';
+import { Linkedin, Mail, FileUser } from 'lucide-react';
 import Image from 'next/image';
 import { PersonalInfo } from '@/data/portfolio';
-import { useEdgeABTest } from '@/hooks/useEdgeExperiment';
+import { useEdgeExperiment } from '@/hooks/useEdgeExperiment';
 
 interface HeroProps {
   personalInfo: PersonalInfo;
 }
 
 export default function Hero({ personalInfo }: HeroProps) {
-  // A/B test for CTA buttons
-  const { config, trackConversion, variantId } = useEdgeABTest('hero-cta-test', {
-    ctaText: 'Download Resume',
-    ctaStyle: 'primary' as 'primary' | 'gradient' | 'outline',
-    showSecondaryButton: false,
-    secondaryText: 'View Online'
-  });
-
-  // Type-safe config access
-  const ctaText = (config.ctaText as string) || 'Download Resume';
-  const ctaStyle = (config.ctaStyle as 'primary' | 'gradient' | 'outline') || 'primary';
-  const showSecondaryButton = (config.showSecondaryButton as boolean) || false;
-  const secondaryText = (config.secondaryText as string) || 'View Online';
-
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      trackConversion('section_navigation', { section: href, variant: variantId });
-    }
-  };
-
-  const handleContactClick = () => {
-    scrollToSection('#contact');
-    trackConversion('contact_click', { variant: variantId });
-  };
-
-  const getButtonStyles = (style: string, isPrimary = true) => {
-    const baseClasses = "px-8 py-3 rounded-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2";
-    
-    switch (style) {
-      case 'gradient':
-        return isPrimary 
-          ? `${baseClasses} bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground`
-          : `${baseClasses} border-2 border-primary/50 text-primary hover:bg-gradient-to-r hover:from-primary hover:to-accent hover:text-primary-foreground hover:border-transparent`;
-      case 'outline':
-        return isPrimary
-          ? `${baseClasses} border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground`
-          : `${baseClasses} border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground`;
-      default:
-        return isPrimary
-          ? `${baseClasses} bg-primary hover:bg-primary/90 text-primary-foreground`
-          : `${baseClasses} border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground`;
-    }
-  };
+  const { trackConversion, variantId } = useEdgeExperiment('hero-cta-test');
 
   return (
-    <section id="about" className="min-h-screen flex items-center justify-center bg-gradient-to-b from-primary/10 via-accent/5 to-background pt-28 md:pt-36">
-      <div className="container mx-auto px-4">
+    <section id="about" className="min-h-screen flex items-center justify-center bg-gradient-to-b from-primary/10 via-accent/5 to-background pt-28 md:pt-36 pb-20">
+      <div className="container mx-auto px-4 lg:px-8 xl:px-12">
         <div className="max-w-4xl mx-auto text-center">
           {/* Profile Image */}
           <div className="mb-8">
@@ -139,69 +95,15 @@ export default function Hero({ personalInfo }: HeroProps) {
               <Mail className="w-6 h-6 text-card-foreground" />
             </a>
             <a
-              href={personalInfo.website}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 bg-card rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
-              aria-label={`Visit ${personalInfo.name}'s portfolio website`}
-              data-ga-skip
-              onClick={() => trackConversion('social_click', { platform: 'website', variant: variantId })}
-            >
-              <ExternalLink className="w-6 h-6 text-card-foreground" />
-            </a>
-          </div>
-
-          {/* CTA Buttons - A/B Tested */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            {/* Primary CTA - varies based on experiment */}
-            <a
               href="/api/resume"
+              className="p-3 bg-card rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
+              aria-label={`Get ${personalInfo.name}'s resume`}
               data-ga-skip
-              onClick={() => trackConversion('resume_download', {
-                variant: variantId,
-                buttonText: ctaText
-              })}
-              className={getButtonStyles(ctaStyle, true)}
+              onClick={() => trackConversion('resume_download', { platform: 'social_icon', variant: variantId })}
             >
-              <Download className="w-4 h-4" />
-              {ctaText}
+              <FileUser className="w-6 h-6 text-card-foreground" />
             </a>
-
-            {/* Secondary button or alternative action */}
-            {showSecondaryButton ? (
-              <button
-                data-ga-skip
-                onClick={() => scrollToSection('#projects')}
-                className={getButtonStyles(ctaStyle, false)}
-              >
-                {secondaryText}
-              </button>
-            ) : (
-              <>
-                <button
-                  data-ga-skip
-                  onClick={() => scrollToSection('#projects')}
-                  className="px-8 py-3 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg font-medium transition-colors duration-300 shadow-lg hover:shadow-xl"
-                >
-                  View My Work
-                </button>
-                <button
-                  data-ga-skip
-                  onClick={handleContactClick}
-                  className="px-8 py-3 border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground rounded-lg font-medium transition-all duration-300"
-                >
-                  Get In Touch
-                </button>
-              </>
-            )}
           </div>
-
-          {/* Experiment indicator (only in development) */}
-          {process.env.NODE_ENV === 'development' && variantId && (
-            <div className="mt-4 text-xs text-muted-foreground bg-muted px-2 py-1 rounded inline-block">
-              Experiment: {variantId}
-            </div>
-          )}
         </div>
       </div>
     </section>

@@ -25,7 +25,7 @@ export default function Skills({ skills }: SkillsProps) {
 
   return (
     <section className="py-20 bg-background">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 lg:px-8 xl:px-12">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
             Technical Skills & Enterprise Expertise
@@ -35,15 +35,15 @@ export default function Skills({ skills }: SkillsProps) {
           </p>
         </div>
 
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl mx-auto divide-y divide-border border-y border-border">
           {categoryOrder.filter(category => groupedSkills[category]).map((category) => {
             const categorySkills = groupedSkills[category];
             return (
               <div
                 key={category}
-                className="mb-12"
+                className="flex flex-col gap-3 py-6 md:flex-row md:items-baseline md:gap-8"
               >
-                <h3 className="text-2xl font-semibold mb-6 text-foreground">
+                <h3 className="font-jetbrains text-sm font-semibold text-primary md:w-44 md:shrink-0">
                   {skillCategories[category as keyof typeof skillCategories]}
                 </h3>
 
