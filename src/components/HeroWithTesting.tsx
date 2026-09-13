@@ -1,6 +1,6 @@
 'use client';
 
-import { Linkedin, Mail, FileUser } from 'lucide-react';
+import { Linkedin, Mail, FileText } from 'lucide-react';
 import Image from 'next/image';
 import { PersonalInfo } from '@/data/portfolio';
 import { useEdgeExperiment } from '@/hooks/useEdgeExperiment';
@@ -101,7 +101,7 @@ export default function Hero({ personalInfo }: HeroProps) {
               data-ga-skip
               onClick={() => trackConversion('resume_download', { platform: 'social_icon', variant: variantId })}
             >
-              <FileUser className="w-6 h-6 text-card-foreground" />
+              <FileText className="w-6 h-6 text-card-foreground" />
             </a>
           </div>
         </div>
