@@ -13,7 +13,7 @@ export default function Hero({ personalInfo }: HeroProps) {
   const { trackConversion, variantId } = useEdgeExperiment('hero-cta-test');
 
   return (
-    <section id="about" className="min-h-screen flex items-center justify-center bg-gradient-to-b from-primary/10 via-accent/5 to-background pt-28 md:pt-36 pb-20">
+    <section id="about" aria-label="About" className="min-h-screen flex items-center justify-center bg-gradient-to-b from-primary/10 via-accent/5 to-background pt-28 md:pt-36 pb-20">
       <div className="container mx-auto px-4 lg:px-8 xl:px-12">
         <div className="max-w-4xl mx-auto text-center">
           {/* Profile Image */}

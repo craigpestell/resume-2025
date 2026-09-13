@@ -20,6 +20,7 @@ export default function Footer({ personalInfo }: FooterProps) {
   return (
     <footer
       id="contact"
+      aria-label="Contact"
       className="relative border-t border-border"
       style={{
         // Subtle lighter panel (not a primary tint — that dropped muted text
