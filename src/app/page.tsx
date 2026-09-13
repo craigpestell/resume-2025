@@ -15,13 +15,13 @@ export default function Home() {
       <StructuredData personalInfo={portfolioData.personalInfo} />
       <Header />
       <Hero personalInfo={portfolioData.personalInfo} />
-      <section id="projects">
+      <section id="projects" aria-label="Projects">
         <Projects projects={portfolioData.projects} />
       </section>
-      <section id="skills">
+      <section id="skills" aria-label="Skills">
         <Skills skills={portfolioData.skills} />
       </section>
-      <section id="experience">
+      <section id="experience" aria-label="Experience">
         <Experience
           experience={portfolioData.experience}
           education={portfolioData.education}

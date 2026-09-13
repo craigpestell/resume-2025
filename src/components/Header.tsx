@@ -92,7 +92,7 @@ export default function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8 lg:space-x-12">
+          <nav aria-label="Primary" className="hidden md:flex items-center space-x-8 lg:space-x-12">
             {navLinks.map((link) => (
               <a
                 key={link.href}
@@ -142,7 +142,7 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div id="mobile-navigation" className="md:hidden bg-card border-t border-border">
+          <nav id="mobile-navigation" aria-label="Mobile" className="md:hidden bg-card border-t border-border">
             <div className="py-4 space-y-2">
               {navLinks.map((link) => (
                 <a
@@ -167,7 +167,7 @@ export default function Header() {
                 <span>Download Resume</span>
               </a>
             </div>
-          </div>
+          </nav>
         )}
       </div>
     </header>
