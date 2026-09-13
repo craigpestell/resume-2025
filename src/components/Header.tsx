@@ -3,7 +3,7 @@
 import dynamic from 'next/dynamic';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { FileUser, Menu, X } from 'lucide-react';
+import { FileText, Menu, X } from 'lucide-react';
 import { sendGAEvent } from '@next/third-parties/google';
 
 const DarkThemeToggleSimple = dynamic(() => import('./DarkThemeToggleSimple'), {
@@ -119,7 +119,7 @@ export default function Header() {
               href="/api/resume"
               className="hidden lg:flex items-center space-x-2 bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-2 rounded-lg transition-colors"
             >
-              <FileUser className="w-4 h-4" />
+              <FileText className="w-4 h-4" />
               <span>Resume</span>
             </a>
 
@@ -163,7 +163,7 @@ export default function Header() {
                 onClick={() => setIsMenuOpen(false)}
                 className="flex items-center space-x-2 px-4 py-2 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg transition-colors ml-4 mt-4"
               >
-                <FileUser className="w-4 h-4" />
+                <FileText className="w-4 h-4" />
                 <span>Download Resume</span>
               </a>
             </div>
