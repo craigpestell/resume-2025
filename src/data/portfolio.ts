@@ -185,9 +185,9 @@ export const portfolioData: PortfolioData = {
     {
       id: "project-5",
       title: "Macys.com Micro-Frontend Migration",
-      description: "Co-architected the Macys.com micro-frontend architecture that enabled independent team releases and cut product discovery page load time from 27 seconds to 7 seconds",
-      longDescription: "Co-architected the Macys.com micro-frontend architecture with another engineer, guiding the migration from a monolithic frontend so teams could develop components independently and release on their own schedules. Improved the product discovery catalog page, which supported product thumbnails, search, and product groupings, from a 27-second load time to 7 seconds. Researched and applied Node.js clustering strategies in the cloud to improve application throughput and resilience under enterprise traffic. Integrated Adobe Analytics, Google Analytics, and Tealium for comprehensive customer insights.",
-      technologies: ["React", "Redux", "GraphQL", "Node.js", "Google Cloud", "Webpack", "Foundation"],
+      description: "Co-architected the Macys.com micro-frontend architecture, drove its voluntary adoption across ~8 teams, and cut product discovery page load from 27 seconds to 7 seconds",
+      longDescription: "Spent a year as one of two engineers designing and building the Macys.com micro-frontend architecture, replacing a monolithic frontend so teams could build components in the framework of their choice and release on their own schedules. Built a component harness that let developers work on a component in isolation, with site CSS, core libraries, and common third-party integrations pre-wired, which drove voluntary adoption across roughly eight teams. Components and modules communicated through a shared pub/sub schema and were versioned with semver, with major-version pinning enforced in CI. Cut the product discovery catalog page from a 27-second load to 7 seconds by auditing years of accumulated tag-manager configuration with each tag's owner, removing unused third-party scripts, deferring non-critical scripts, and prioritizing above-the-fold content. Replaced several separate analytics scripts with a Segment-style analytics layer backed by an in-house event store. Kept bundles lean with webpack tree-shaking, bundle analysis, and code splitting, including chunk-based delivery of server-selected A/B test variants. Applied Node.js clustering in the cloud to improve throughput and resilience under enterprise traffic.",
+      technologies: ["React", "Redux", "GraphQL", "Node.js", "Google Cloud", "Webpack", "Tealium", "Foundation"],
       imageUrl: "/images/portfolio-5.jpg",
       startDate: "2015-02",
       endDate: "2020-04",
@@ -317,15 +317,17 @@ export const portfolioData: PortfolioData = {
       position: "Senior UI Developer",
       startDate: "2015-02",
       endDate: "2020-04",
-      description: "Co-architected Macys.com's enterprise-scale micro-frontend architecture with another engineer, while leading comprehensive performance optimization initiatives",
+      description: "Co-architected Macys.com's micro-frontend architecture, built the tooling that drove its adoption across ~8 teams, and led the performance work that cut catalog load from 27s to 7s",
       achievements: [
-        "Co-architected the Macys.com micro-frontend architecture with another engineer, enabling teams to build and release website components independently",
-        "Designed componentized, loosely coupled, scalable isomorphic micro-frontend architecture serving millions of users",
+        "Co-architected the Macys.com micro-frontend architecture with another engineer, letting teams build components in their framework of choice and release on their own schedules",
+        "Built a component harness for developing components in isolation without running the full site, driving voluntary adoption of the architecture across ~8 teams",
+        "Cut catalog page load from 27s to 7s by removing unused third-party scripts, deferring non-critical scripts, and prioritizing above-the-fold content",
+        "Built a Segment-style analytics layer and in-house event store that consolidated multiple third-party analytics tools",
+        "Audited years of Tealium tag-manager configuration, working with each tag's owner to retire unused scripts",
+        "Defined a pub/sub contract and CI-enforced semver pinning so independently released components stayed compatible",
         "Contributed to Java-based backend services and REST API development supporting enterprise e-commerce platform",
-        "Optimized REST services and Node.js applications on Google Cloud Platform achieving significant performance gains",
-        "Integrated comprehensive analytics ecosystem including Adobe Analytics, Google Analytics, and Tealium",
-        "Mentored development teams on advanced frontend and backend development practices",
-        "Created developer tooling and frameworks streamlining onboarding and accelerating feature development"
+        "Optimized REST services and Node.js applications on Google Cloud Platform, applying clustering for throughput and resilience",
+        "Mentored development teams on advanced frontend and backend development practices"
       ],
       technologies: ["React", "Redux", "GraphQL", "Node.js", "Java", "Webpack", "SASS"]
     },
