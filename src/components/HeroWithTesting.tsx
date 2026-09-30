@@ -54,7 +54,7 @@ export default function Hero({ personalInfo }: HeroProps) {
 
           <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-sm font-medium text-foreground shadow-sm">
             <span className="h-2.5 w-2.5 rounded-full bg-emerald-500" aria-hidden="true" />
-            Available for staff/principal IC roles or long-term contract work. Based in Vancouver; open to California and remote opportunities.
+            {personalInfo.availability}
           </div>
 
           <div className="mb-8 grid gap-4 text-left sm:grid-cols-3 max-w-4xl mx-auto">
