@@ -15,13 +15,13 @@
 
 ## High-level architecture
 
-- This is a Next.js 15 App Router portfolio site. `src/app/page.tsx` assembles the landing page from section components (`Header`, `HeroWithTesting`, `Skills`, `Projects`, `Experience`, `Contact`) and feeds them from the shared `portfolioData` object.
+- This is a Next.js 15 App Router portfolio site. `src/app/page.tsx` assembles the landing page from section components (`Header`, `Hero`, `Skills`, `Projects`, `Experience`, `Contact`) and feeds them from the shared `portfolioData` object.
 - `src/data/portfolio.ts` is the canonical content and schema source for the site. Personal info, skills, projects, experience, and education are defined there and reused by the homepage, structured data, and resume generation.
 - The app shell lives in `src/app/layout.tsx`. It sets SEO metadata, mounts Vercel Analytics/Speed Insights, wraps the app in `ThemeProvider`, and loads the default font plus the dynamic font loader.
 - Theming is split between CSS variables and client-side persisted preferences. `src/app/globals.css` imports all theme CSS files from `src/app/themes/`, while `src/components/ThemeProvider.tsx` applies `data-theme`, dark mode, font, and letter-spacing choices from localStorage after hydration.
 - Resume generation is intentionally on-demand. `src/app/page.tsx` lazy-loads `src/components/ResumeGenerator.tsx` so `@react-pdf/renderer` stays out of the main bundle until the user downloads the resume.
-- The hero section is experiment-aware. `src/components/HeroWithTesting.tsx` uses `src/hooks/useEdgeExperiment.ts`, which reads experiment variants through `src/lib/edgeConfig.ts`.
-- Experiment data flows through multiple layers: `src/middleware.ts` assigns users into Edge Config experiments and sets cookies, `src/app/api/experiments/route.ts` exposes live or fallback experiment definitions, and `src/app/dashboard/page.tsx` with `src/components/EdgeConfigDashboard.tsx` displays experiment status and analytics.
+- The hero section (`src/components/Hero.tsx`) is a plain server component; it no longer runs an A/B experiment. The Edge Config experiment library (`src/lib/edgeConfig.ts`, `src/hooks/useEdgeExperiment.ts`) and the `/dashboard` admin remain but nothing on the public page uses them.
+- Leftover experiment tooling: `src/app/api/experiments/route.ts` exposes live or fallback experiment definitions, and `src/app/dashboard/page.tsx` with `src/components/EdgeConfigDashboard.tsx` displays experiment status and analytics.
 - Analytics for experiments are persisted locally in development through `src/app/api/analytics/track/route.ts` and `src/lib/analyticsStorage.ts`, which writes to `.analytics-data.json` at the repository root.
 
 ## Key conventions
