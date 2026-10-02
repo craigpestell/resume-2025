@@ -254,7 +254,7 @@ export const portfolioData: PortfolioData = {
       endDate: "2026-09",
       description: "Rejoined Apple by request. Sole frontend architect of an internal data-pipeline platform built from an empty repository, with ownership extending into the API gateway and Kubernetes-scheduled sequencer service.",
       achievements: [
-        "Drove organic adoption by 60+ users across Cupertino hardware engineering and factory-floor operations, with no top-down rollout, by replacing deep folder navigation and ad-hoc parsing scripts with a purpose-built retrieval workflow over datasets typically 1-4 TB and peaking near 20 TB",
+        "Drove organic adoption to 60+ users across Cupertino hardware engineering and factory-floor operations, with no top-down rollout, by replacing deep folder navigation and ad-hoc parsing scripts with a purpose-built retrieval workflow over datasets typically 1-4 TB and peaking near 20 TB",
         "Cut pipeline setup from up to an hour to about 30 seconds with guided parameter selection that surfaces only valid options from thousands of values",
         "Architected the Next.js / React 19 / TypeScript frontend from a blank repository, wired OIDC end to end with per-request identity propagation, and shipped through Kubernetes and internal CI/CD",
         "Split a 274-revision Flask monolith into 15+ blueprint packages in a single PR with no legacy shims, and replaced an N+1 per-user object-store sweep with one GET against a cached fleet index",
