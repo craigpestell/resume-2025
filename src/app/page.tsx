@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic';
 import Header from '@/components/Header';
-import Hero from '@/components/HeroWithTesting';
+import Hero from '@/components/Hero';
 import Skills from '@/components/Skills';
 import StructuredData from '@/components/StructuredData';
 import { portfolioData } from '@/data/portfolio';

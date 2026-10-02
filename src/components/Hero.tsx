@@ -1,17 +1,12 @@
-'use client';
-
 import { Linkedin, Mail, FileText } from 'lucide-react';
 import Image from 'next/image';
 import { PersonalInfo } from '@/data/portfolio';
-import { useEdgeExperiment } from '@/hooks/useEdgeExperiment';
 
 interface HeroProps {
   personalInfo: PersonalInfo;
 }
 
 export default function Hero({ personalInfo }: HeroProps) {
-  const { trackConversion, variantId } = useEdgeExperiment('hero-cta-test');
-
   return (
     <section id="about" aria-label="About" className="min-h-screen flex items-center justify-center bg-gradient-to-b from-primary/10 via-accent/5 to-background pt-28 md:pt-36 pb-20">
       <div className="container mx-auto px-4 lg:px-8 xl:px-12">
@@ -80,8 +75,6 @@ export default function Hero({ personalInfo }: HeroProps) {
               rel="noopener noreferrer"
               className="p-3 bg-card rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
               aria-label={`Connect with ${personalInfo.name} on LinkedIn`}
-              data-ga-skip
-              onClick={() => trackConversion('social_click', { platform: 'linkedin', variant: variantId })}
             >
               <Linkedin className="w-6 h-6 text-card-foreground" />
             </a>
@@ -89,8 +82,6 @@ export default function Hero({ personalInfo }: HeroProps) {
               href={`mailto:${personalInfo.email}`}
               className="p-3 bg-card rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
               aria-label={`Send email to ${personalInfo.name}`}
-              data-ga-skip
-              onClick={() => trackConversion('social_click', { platform: 'email', variant: variantId })}
             >
               <Mail className="w-6 h-6 text-card-foreground" />
             </a>
@@ -98,8 +89,6 @@ export default function Hero({ personalInfo }: HeroProps) {
               href="/api/resume"
               className="p-3 bg-card rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
               aria-label={`Get ${personalInfo.name}'s resume`}
-              data-ga-skip
-              onClick={() => trackConversion('resume_download', { platform: 'social_icon', variant: variantId })}
             >
               <FileText className="w-6 h-6 text-card-foreground" />
             </a>
