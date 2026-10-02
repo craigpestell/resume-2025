@@ -8,6 +8,7 @@ export interface PersonalInfo {
   linkedin: string;
   profileImage?: string;
   summary: string;
+  availability: string;
 }
 
 export interface Skill {
@@ -44,6 +45,7 @@ export interface Experience {
 }
 
 export interface ResumeProfile {
+  locationNote: string;
   earlierCareerSummary: string;
   earlierCareerHighlights: string[];
 }
@@ -78,9 +80,11 @@ export const portfolioData: PortfolioData = {
     website: "https://craigpestell.com",
     linkedin: "https://linkedin.com/in/craigpestell",
     profileImage: "/images/icons8-eggman-robotnik-480.png",
-    summary: "Staff software engineer building products that become trusted parts of how people work. I’ve shipped production systems for Apple, Google, and major consumer brands, including an Apple workflow used by over 60 active production users today, across hardware engineering and factory-floor operations."
+    summary: "Staff engineer who ships production-grade internal tools end to end, from Kubernetes deploys to polished React UIs, and whose tools get adopted voluntarily with no top-down rollout. At Apple, I was the sole frontend architect of a data-pipeline platform that 60+ hardware engineers and factory-floor operators now depend on. Earlier: Google, Williams Sonoma, and Macy's.",
+    availability: "Available now for staff/principal IC roles (FTE) or contract engagements (C2C). Based in Vancouver; open to relocating for the right role."
   },
   resume: {
+    locationNote: "open to US relocation (TN eligible)",
     earlierCareerSummary: "Earlier career included concurrent consulting and contract engagements across database applications, PHP web systems, public-sector software, e-commerce, CMS platforms, web services, and Linux administration.",
     earlierCareerHighlights: [
       "Built a call-center application and geographic branch locator for Canada Reconnect before online mapping services were commonplace, using Canadian postal-code coordinates and spherical distance calculations to rank nearby payment locations.",
@@ -132,9 +136,10 @@ export const portfolioData: PortfolioData = {
         "Used by over 60 production users across hardware engineering and factory-floor operations",
         "Built a Storybook-driven documentation pipeline that keeps end-user documentation aligned with the shipped UI"
       ],
-      technologies: ["TypeScript", "Next.js", "React", "Tailwind", "Storybook", "Playwright", "Python", "Flask", "OIDC", "Kubernetes", "Rio CI"],
+      technologies: ["TypeScript", "Next.js", "React", "Tailwind", "Storybook", "Playwright", "Python", "Flask", "OIDC", "Kubernetes"],
       imageUrl: "/images/portfolio-1.jpg",
-      startDate: "2024-08",
+      startDate: "2024-09",
+      endDate: "2026-09",
       featured: true
     },
     {
@@ -144,7 +149,6 @@ export const portfolioData: PortfolioData = {
       longDescription: "Architected and delivered a sophisticated healthcare platform leveraging AI large language models to reduce operational costs and deliver measurable value to enterprise customers. Developed comprehensive web dashboard for subscription management, Chrome extension for seamless website integration, and implemented enterprise-grade Auth0 authentication across all platform components.",
       technologies: ["TypeScript", "Next.js", "NestJS", "Python", "Azure", "Auth0"],
       imageUrl: "/images/portfolio-2.jpg",
-      projectUrl: "https://example-healthcare.com",
       startDate: "2023-07",
       endDate: "2024-05",
       featured: true
@@ -247,23 +251,19 @@ export const portfolioData: PortfolioData = {
       company: "Apple Inc.",
       position: "Senior Full Stack Engineer (Contract)",
       startDate: "2024-09",
-      description: "Rejoined Apple by request and progressed from establishing the first version of confidential internal tooling to owning end-to-end delivery across hardware engineering and factory operations.",
+      endDate: "2026-09",
+      description: "Rejoined Apple by request. Sole frontend architect of an internal data-pipeline platform built from an empty repository, with ownership extending into the API gateway and Kubernetes-scheduled sequencer service.",
       achievements: [
-        "Built the initial internal web application to simplify hardware engineer access to test results from factory stations in China, establishing the workflow foundation for later platform expansion",
-        "Partnered directly with hardware engineering stakeholders to translate operational pain points into a streamlined retrieval workflow",
-        "Established early UI and API integration patterns that reduced parameter mistakes and improved first-pass fetch success",
-        "Delivered production releases through Apple's Kubernetes and Rio CI workflows, establishing the deployment patterns the platform continues to use",
-        "Drove production adoption by 60+ users across hardware engineering and factory operations by replacing deep Box.com folder navigation and ad-hoc parsing scripts with a purpose-built retrieval workflow",
-        "Sole architect of the Next.js 15 / React 19 / TypeScript frontend, built from a blank repository and integrated with existing Python/Flask services",
-        "Reduced pipeline setup from up to an hour to about 30 seconds for simple cases and a few minutes for complex ones with guided parameter selection that surfaces only valid options from thousands of values",
-        "Implemented pipeline progress telemetry showing downloaded and pending days, excluded files, data volume, and total, passed, and failed tests across datasets typically 1-4 TB, peaking near 20 TB",
-        "Built an in-app searchable media browser for viewing images, text, and CSV files without requiring users to navigate external systems",
-        "Extended the Flask API gateway and the Kubernetes-scheduled sequencer service that advances pipelines through a multi-step lifecycle and dispatches work to a distributed task executor",
-        "Wired OIDC authentication end-to-end with per-request identity propagation into backend services; delivered via Kubernetes and Rio CI",
-        "Built a Storybook-driven documentation pipeline that regenerates every screenshot in the docs site from tagged component stories via Playwright, eliminating drift between shipped UI and end-user documentation",
-        "Established the visual, dark/light-theme, and interaction quality standard for the app — received unsolicited UX-quality feedback from hardware engineering users, unusual for internal tooling"
+        "Drove organic adoption to 60+ users across Cupertino hardware engineering and factory-floor operations, with no top-down rollout, by replacing deep folder navigation and ad-hoc parsing scripts with a purpose-built retrieval workflow over datasets typically 1-4 TB and peaking near 20 TB",
+        "Cut pipeline setup from up to an hour to about 30 seconds with guided parameter selection that surfaces only valid options from thousands of values",
+        "Architected the Next.js / React 19 / TypeScript frontend from a blank repository, wired OIDC end to end with per-request identity propagation, and shipped through Kubernetes and internal CI/CD",
+        "Split a 274-revision Flask monolith into 15+ blueprint packages in a single PR with no legacy shims, and replaced an N+1 per-user object-store sweep with one GET against a cached fleet index",
+        "Built the unit test suite from scratch to ~80% coverage and added an OpenAPI-to-TypeScript CI drift gate so frontend and API contracts cannot silently diverge",
+        "Reduced accessibility violations from 1,369 to 504 (color-contrast issues from 608 to ~43) with a custom Playwright and axe-core scanner",
+        "Built the docs site from scratch (~55 docs) with a Storybook-driven pipeline that regenerates every screenshot from tagged component stories",
+        "Built a customizable, widget-based admin dashboard graphing API performance (per-endpoint p50/p95), API usage by user, and pipeline data metrics, all filterable by date range and user"
       ],
-      technologies: ["TypeScript", "Next.js", "React", "Tailwind", "Storybook", "Playwright", "Python", "Flask", "OIDC", "S3", "Kubernetes", "Rio CI"]
+      technologies: ["TypeScript", "Next.js", "React", "Tailwind", "Storybook", "Playwright", "Python", "Flask", "OIDC", "S3", "Kubernetes"]
     },
     {
       id: "exp-3",
