@@ -258,7 +258,7 @@ export const portfolioData: PortfolioData = {
         "Cut pipeline setup from up to an hour to about 30 seconds with guided parameter selection that surfaces only valid options from thousands of values",
         "Architected the Next.js / React 19 / TypeScript frontend from a blank repository, wired OIDC end to end with per-request identity propagation, and shipped through Kubernetes and internal CI/CD",
         "Split a 274-revision Flask monolith into 15+ blueprint packages in a single PR with no legacy shims, and replaced an N+1 per-user object-store sweep with one GET against a cached fleet index",
-        "Raised unit test coverage from ~20% to ~96% and added an OpenAPI-to-TypeScript CI drift gate so frontend and API contracts cannot silently diverge",
+        "Raised unit test coverage from ~20% to ~80% and added an OpenAPI-to-TypeScript CI drift gate so frontend and API contracts cannot silently diverge",
         "Reduced accessibility violations from 1,369 to 504 (color-contrast issues from 608 to ~43) with a custom Playwright and axe-core scanner",
         "Built the docs site from scratch (~55 docs) with a Storybook-driven pipeline that regenerates every screenshot from tagged component stories, plus per-endpoint p50/p95 metrics"
       ],
