@@ -80,7 +80,7 @@ export const portfolioData: PortfolioData = {
     linkedin: "https://linkedin.com/in/craigpestell",
     profileImage: "/images/icons8-eggman-robotnik-480.png",
     summary: "Staff engineer who ships production-grade internal tools end to end, from Kubernetes deploys to polished React UIs, and whose tools get adopted voluntarily with no top-down rollout. At Apple, I was the sole frontend architect of a data-pipeline platform that 60+ hardware engineers and factory-floor operators now depend on. Earlier: Google, Williams Sonoma, and Macy's.",
-    availability: "Available now for staff/principal IC roles (FTE) or contract engagements (C2C). Based in Vancouver; open to relocating to California for the right role."
+    availability: "Available now for staff/principal IC roles (FTE) or contract engagements (C2C). Based in Vancouver; open to relocating for the right role."
   },
   resume: {
     earlierCareerSummary: "Earlier career included concurrent consulting and contract engagements across database applications, PHP web systems, public-sector software, e-commerce, CMS platforms, web services, and Linux administration.",
