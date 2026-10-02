@@ -170,7 +170,6 @@ export function ResumeDocument({ data }: { data: PortfolioData }) {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Professional Summary</Text>
           <Text style={styles.bodyText}>{data.personalInfo.summary}</Text>
-          <Text style={[styles.bodyText, { marginTop: 4 }]}>{data.personalInfo.availability}</Text>
         </View>
 
         <ExperienceSection items={data.experience.filter((experience) => experience.resumeIncluded !== false)} />
