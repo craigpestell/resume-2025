@@ -45,6 +45,7 @@ export interface Experience {
 }
 
 export interface ResumeProfile {
+  locationNote: string;
   earlierCareerSummary: string;
   earlierCareerHighlights: string[];
 }
@@ -83,6 +84,7 @@ export const portfolioData: PortfolioData = {
     availability: "Available now for staff/principal IC roles (FTE) or contract engagements (C2C). Based in Vancouver; open to relocating for the right role."
   },
   resume: {
+    locationNote: "open to US relocation (TN eligible)",
     earlierCareerSummary: "Earlier career included concurrent consulting and contract engagements across database applications, PHP web systems, public-sector software, e-commerce, CMS platforms, web services, and Linux administration.",
     earlierCareerHighlights: [
       "Built a call-center application and geographic branch locator for Canada Reconnect before online mapping services were commonplace, using Canadian postal-code coordinates and spherical distance calculations to rank nearby payment locations.",

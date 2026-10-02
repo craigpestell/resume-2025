@@ -164,7 +164,7 @@ export function ResumeDocument({ data }: { data: PortfolioData }) {
           <Text style={styles.name}>{data.personalInfo.name}</Text>
           <Text style={styles.title}>{data.personalInfo.title}</Text>
           <Text style={styles.contactLine}>{data.personalInfo.email}</Text>
-          <Text style={styles.contactLine}>{data.personalInfo.location}</Text>
+          <Text style={styles.contactLine}>{data.personalInfo.location} · {data.resume.locationNote}</Text>
         </View>
 
         <View style={styles.section}>
