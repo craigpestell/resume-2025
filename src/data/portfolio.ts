@@ -260,7 +260,8 @@ export const portfolioData: PortfolioData = {
         "Split a 274-revision Flask monolith into 15+ blueprint packages in a single PR with no legacy shims, and replaced an N+1 per-user object-store sweep with one GET against a cached fleet index",
         "Built the unit test suite from scratch to ~80% coverage and added an OpenAPI-to-TypeScript CI drift gate so frontend and API contracts cannot silently diverge",
         "Reduced accessibility violations from 1,369 to 504 (color-contrast issues from 608 to ~43) with a custom Playwright and axe-core scanner",
-        "Built the docs site from scratch (~55 docs) with a Storybook-driven pipeline that regenerates every screenshot from tagged component stories, plus per-endpoint p50/p95 metrics"
+        "Built the docs site from scratch (~55 docs) with a Storybook-driven pipeline that regenerates every screenshot from tagged component stories",
+        "Built a customizable, widget-based admin dashboard graphing API performance (per-endpoint p50/p95), API usage by user, and pipeline data metrics, all filterable by date range and user"
       ],
       technologies: ["TypeScript", "Next.js", "React", "Tailwind", "Storybook", "Playwright", "Python", "Flask", "OIDC", "S3", "Kubernetes"]
     },
