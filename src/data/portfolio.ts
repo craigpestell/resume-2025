@@ -256,7 +256,7 @@ export const portfolioData: PortfolioData = {
       achievements: [
         "Drove organic adoption to 60+ users across Cupertino hardware engineering and factory-floor operations, with no top-down rollout, by replacing deep folder navigation and ad-hoc parsing scripts with a purpose-built retrieval workflow over datasets typically 1-4 TB and peaking near 20 TB",
         "Cut pipeline setup from up to an hour to about 30 seconds with guided parameter selection that surfaces only valid options from thousands of values",
-        "Enabled hardware engineers to run their own Python post-processing code against pipeline files, provided by .zip upload or securely cloned from their repositories through a GitHub App integration",
+        "Enabled hardware engineers to run their own Python post-processing code against pipeline files, provided by .zip upload or cloned from their own repositories, with read access granted through a GitHub App I built for authorization",
         "Architected the Next.js / React 19 / TypeScript frontend from a blank repository, wired OIDC end to end with per-request identity propagation, and shipped through Kubernetes and internal CI/CD",
         "Split a 274-revision Flask monolith into 15+ blueprint packages in a single PR with no legacy shims, and replaced an N+1 per-user object-store sweep with one GET against a cached fleet index",
         "Built the unit test suite from scratch to ~80% coverage and added an OpenAPI-to-TypeScript CI drift gate so frontend and API contracts cannot silently diverge",
