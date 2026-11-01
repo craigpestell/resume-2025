@@ -298,7 +298,7 @@ export const portfolioData: PortfolioData = {
         "Built the product with strict PII handling: patient identifiers were scrubbed from all model data shown to users",
         "Architected and delivered the React customer subscription management dashboard from concept to production",
         "Developed Chrome extension enabling seamless website augmentation through intelligent script injection",
-        "Implemented enterprise-grade Auth0 authentication and authorization across distributed application ecosystem",
+        "Set up Auth0 OAuth with granular roles and permissions for the subscription dashboard and the wider platform",
         "Established standardized Azure deployment pipelines ensuring consistent application hosting procedures",
         "Created comprehensive Tailwind component library enabling consistent brand experience across platforms"
       ],
